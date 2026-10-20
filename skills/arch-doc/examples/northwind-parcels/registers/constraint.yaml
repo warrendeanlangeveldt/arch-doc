@@ -1,0 +1,39 @@
+# Constraint register (constraint). One record per item; ids are CON-nn.
+# Fields: id, title, status
+#   type: time | cost | vendor | regulatory | technology | organisational
+#   impact: text
+#   response: text
+#   owner: text
+# Status: active (done), under-review (partial), lifted (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CON-01
+  title: Live before the 2027 peak season
+  type: time
+  impact: Go-live in March 2027 leaves one quiet period for hypercare
+  response: Cutover in March; no new scope after the detailed review
+  owner: Head of Parcels
+  status: active
+
+- id: CON-02
+  title: Integration runs on the Northwind Platform
+  type: technology
+  impact: No team-run queues or gateways; we depend on the platform's dates (DEP-01)
+  response: Every integration uses a published platform interface
+  owner: Solution architect
+  status: active
+
+- id: CON-03
+  title: Contact data may be used for delivery notices only
+  type: regulatory
+  impact: No marketing use; deletion after delivery
+  response: Contact data stored and deleted apart from the timeline
+  owner: Privacy officer
+  status: active
+
+- id: CON-04
+  title: Carrier B's contract does not renew until 2028
+  type: vendor
+  impact: We cannot require webhooks from carrier B before then
+  response: Polling within its rate limit (EXC-01)
+  owner: Integration lead
+  status: active

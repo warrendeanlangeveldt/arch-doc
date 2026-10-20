@@ -1,0 +1,15 @@
+# Integration today: each team's systems reach each other through files,
+# batch jobs, their own queues and custom adapters.
+model "model.json"
+
+view current-landscape "Integration today: application landscape" {
+  width 960
+  viewpoint "Application Cooperation"
+  ACOL-CONS
+  ACMP-BATCH
+  ACMP-FILE
+  ACMP-TQ
+  ACMP-ADAPT
+  ACOL-CONS above ACMP-FILE
+  same ACMP-BATCH ACMP-FILE ACMP-TQ ACMP-ADAPT
+}

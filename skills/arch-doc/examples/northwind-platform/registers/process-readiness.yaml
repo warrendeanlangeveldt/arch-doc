@@ -1,0 +1,63 @@
+# Process readiness register (process-readiness). One record per item; ids are PRC-nn.
+# Fields: id, title, status
+#   process: incident | major-incident | problem | change | release | request | knowledge | event | configuration | availability | capacity | continuity | service-level
+#   design: text
+#   evidence: text
+#   owner: text
+# Status: not-started (not-started), in-progress (partial), ready (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: PRC-01
+  process: incident
+  title: Incidents raised against platform services
+  design: One assignment group per platform service; consumer incidents routed to the consumer first
+  evidence: Test incident routed end to end
+  owner: Platform support lead
+  status: in-progress
+
+- id: PRC-02
+  process: major-incident
+  title: Platform outage invokes the major incident process
+  design: Any broker or gateway outage over 15 minutes is major; consumer owners joined to the bridge
+  evidence: Tabletop exercise
+  owner: Platform support lead
+  status: not-started
+
+- id: PRC-03
+  process: change
+  title: Platform change models
+  design: Standard change for template releases; normal change for broker and gateway configuration
+  evidence: Change models approved by the change board
+  owner: Platform support lead
+  status: in-progress
+
+- id: PRC-04
+  process: request
+  title: Consumer requests through the portal
+  design: Onboarding, topic access and API publication requests in the portal, mirrored as requests for reporting
+  evidence: Request items live in pre-production
+  owner: Platform product manager
+  status: in-progress
+
+- id: PRC-05
+  process: knowledge
+  title: Knowledge articles for the service desk
+  design: How to recognise a platform fault and whom to call
+  evidence: Articles published
+  owner: Platform support lead
+  status: not-started
+
+- id: PRC-06
+  process: event
+  title: Alerts become incidents automatically
+  design: Monitoring platform raises incidents through INT-08
+  evidence: Integration test
+  owner: Platform engineering lead
+  status: not-started
+
+- id: PRC-07
+  process: configuration
+  title: Configuration records kept current
+  design: Records created by the environment templates; reconciled weekly
+  evidence: Reconciliation report
+  owner: Platform support lead
+  status: not-started

@@ -1,0 +1,3 @@
+- {id: FOR-01, title: Architecture Review Board, short: ARB, role: design-authority, purpose: Approves the design, decision: Approve, owner: Chief Architect, status: scheduled}
+- {id: FOR-02, title: Change Advisory Board, short: CAB, role: change, purpose: Approves the change, decision: Approve the release, owner: Change manager, status: pending}
+- {id: FOR-03, title: Security Review, short: SR, role: security, purpose: Accepts residual risk, decision: Accept, owner: Security lead, status: pending}

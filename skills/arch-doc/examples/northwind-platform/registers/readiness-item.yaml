@@ -1,0 +1,69 @@
+# Readiness item register (readiness-item). One record per item; ids are RDY-nn.
+# Fields: id, title, status
+#   area: service-ownership | support | configuration-records | monitoring | processes | runbooks | knowledge | access | hypercare | handover
+#   evidence: text
+#   owner: text
+# Status: not-ready (not-started), in-progress (partial), ready (done), accepted (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RDY-01
+  area: service-ownership
+  title: Service owner named for the platform
+  evidence: Service owner appointment
+  owner: Head of Platform
+  status: ready
+
+- id: RDY-02
+  area: support
+  title: Support groups and on-call roster
+  evidence: Interim roster to July 2027
+  owner: Platform support lead
+  status: in-progress
+
+- id: RDY-03
+  area: configuration-records
+  title: Configuration records for each platform service
+  evidence: Records in the service management platform
+  owner: Platform support lead
+  status: not-ready
+
+- id: RDY-04
+  area: monitoring
+  title: Alerts configured and tested end to end
+  evidence: Alert test log
+  owner: Platform engineering lead
+  status: in-progress
+
+- id: RDY-05
+  area: runbooks
+  title: Runbooks tested for every critical alert
+  evidence: Runbook register
+  owner: Platform support lead
+  status: in-progress
+
+- id: RDY-06
+  area: knowledge
+  title: Consumer onboarding guide and interface guide published
+  evidence: Published guides
+  owner: Platform product manager
+  status: in-progress
+
+- id: RDY-07
+  area: access
+  title: Production access model in place
+  evidence: Elevation and break-glass test
+  owner: Security architect
+  status: not-ready
+
+- id: RDY-08
+  area: handover
+  title: Support team accepts the platform from the build team
+  evidence: Signed handover checklist
+  owner: Platform support lead
+  status: not-ready
+
+- id: RDY-09
+  area: handover
+  title: Consumer teams accept the support hours and escalation path
+  evidence: Agreement recorded at the steering group
+  owner: Platform product manager
+  status: not-ready

@@ -1,0 +1,79 @@
+# Runbook register (runbook). One record per item; ids are RBK-nn.
+# Fields: id, title, status
+#   required_when: text
+#   location: text
+#   tested: yes | no
+#   test_date: date
+#   tester: text
+#   outcome: pass | fail | not-run
+#   owner: text
+# Status: required (not-started), draft (partial), published (partial), tested (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RBK-01
+  title: Replay dead-lettered scans and status changes
+  required_when: Dead-letter alert on a pts subscription
+  location: ServiceNow knowledge base, Parcels
+  tested: 'yes'
+  test_date: '2026-10-15'
+  tester: Integration lead
+  outcome: pass
+  owner: Integration lead
+  status: tested
+
+- id: RBK-02
+  title: Carrier poller back-off and quota
+  required_when: Carrier B rate-limit or failure alert
+  location: ServiceNow knowledge base, Parcels
+  tested: 'no'
+  outcome: not-run
+  owner: Integration lead
+  status: draft
+
+- id: RBK-03
+  title: Messaging provider outage
+  required_when: Notification failure rate alert
+  location: ServiceNow knowledge base, Parcels
+  tested: 'no'
+  outcome: not-run
+  owner: Product owner
+  status: required
+
+- id: RBK-04
+  title: Tracking API degraded
+  required_when: API error or latency alert
+  location: ServiceNow knowledge base, Parcels
+  tested: 'yes'
+  test_date: '2026-10-17'
+  tester: Integration lead
+  outcome: pass
+  owner: Integration lead
+  status: tested
+
+- id: RBK-05
+  title: Depot connectivity loss
+  required_when: Depot scan lag alert
+  location: ServiceNow knowledge base, Depot operations
+  tested: 'no'
+  outcome: not-run
+  owner: Depot operations manager
+  status: draft
+
+- id: RBK-06
+  title: Rotate a carrier's webhook secret
+  required_when: Signature failures or a carrier's request
+  location: ServiceNow knowledge base, Parcels
+  tested: 'yes'
+  test_date: '2026-10-16'
+  tester: Security architect
+  outcome: pass
+  owner: Integration lead
+  status: tested
+
+- id: RBK-07
+  title: Restore the tracking store
+  required_when: Data loss or corruption
+  location: 'TBC: Service owner'
+  tested: 'no'
+  outcome: not-run
+  owner: Service owner
+  status: required

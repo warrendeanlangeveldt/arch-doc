@@ -1,0 +1,6 @@
+- {id: RDY-01, title: Service owner named, area: service-ownership, evidence: Named in the service record, owner: Head of Freight, status: ready}
+- {id: RDY-02, title: Support team trained, area: support, evidence: Training plan, owner: Support lead, status: in-progress}
+- {id: RDY-03, title: Configuration records created, area: configuration-records, evidence: TBC, owner: Support lead, status: not-ready}
+- {id: RDY-04, title: Alerts routed to the support queue, area: monitoring, evidence: Alert test, owner: Support lead, status: in-progress}
+- {id: RDY-05, title: Knowledge articles written, area: knowledge, owner: Support lead, status: not-ready}
+- {id: RDY-06, title: Handover pack accepted, area: handover, owner: Head of Freight, status: not-ready}

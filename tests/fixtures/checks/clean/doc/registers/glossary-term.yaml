@@ -1,0 +1,2 @@
+- {id: GLO-01, title: Scan, definition: A parcel read at a depot or by a driver, status: agreed}
+- {id: GLO-02, title: Depot, definition: A site where parcels are sorted, status: agreed}

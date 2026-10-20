@@ -1,0 +1,10 @@
+- {id: RSK-01, title: Risk number 1, category: architecture, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-02, title: Risk number 2, category: architecture, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-03, title: Risk number 3, category: architecture, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-04, title: Risk number 4, category: architecture, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-05, title: Risk number 5, category: architecture, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-06, title: Risk number 6, category: architecture, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-07, title: Risk number 7, category: operational, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-08, title: Risk number 8, category: operational, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-09, title: Risk number 9, category: operational, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}
+- {id: RSK-10, title: Risk number 10, category: operational, likelihood: medium, impact: medium, rating: medium, owner: Integration lead, mitigation: Monitor, status: open}

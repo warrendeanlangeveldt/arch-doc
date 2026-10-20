@@ -1,0 +1,70 @@
+# Runbook register (runbook). One record per item; ids are RBK-nn.
+# Fields: id, title, status
+#   required_when: text
+#   location: text
+#   tested: yes | no
+#   test_date: date
+#   tester: text
+#   outcome: pass | fail | not-run
+#   owner: text
+# Status: required (not-started), draft (partial), published (partial), tested (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RBK-01
+  title: Replay dead-lettered events
+  required_when: A subscription's dead-letter queue grows
+  location: Platform knowledge space
+  tested: 'yes'
+  test_date: '2026-10-14'
+  tester: Platform support lead
+  outcome: pass
+  owner: Platform support lead
+  status: tested
+
+- id: RBK-02
+  title: Fail the broker over to the paired region
+  required_when: Primary region broker unavailable for 30 minutes
+  location: Platform knowledge space
+  tested: 'no'
+  outcome: not-run
+  owner: Platform engineering lead
+  status: draft
+
+- id: RBK-03
+  title: Renew gateway certificates
+  required_when: Certificate expiry alert
+  location: Platform knowledge space
+  tested: 'yes'
+  test_date: '2026-10-09'
+  tester: Platform engineering lead
+  outcome: pass
+  owner: Platform engineering lead
+  status: tested
+
+- id: RBK-04
+  title: Rotate a consumer's secrets out of cycle
+  required_when: Suspected exposure or a leaver with access
+  location: Platform knowledge space
+  tested: 'yes'
+  test_date: '2026-10-16'
+  tester: Security architect
+  outcome: fail
+  owner: Security architect
+  status: published
+
+- id: RBK-05
+  title: Onboard a consumer by hand
+  required_when: Portal unavailable or a request needs an exception
+  location: Platform knowledge space
+  tested: 'no'
+  outcome: not-run
+  owner: Platform product manager
+  status: draft
+
+- id: RBK-06
+  title: Clear stuck workflow instances
+  required_when: Workflow backlog alert
+  location: 'TBC: Platform engineering lead'
+  tested: 'no'
+  outcome: not-run
+  owner: Platform engineering lead
+  status: required

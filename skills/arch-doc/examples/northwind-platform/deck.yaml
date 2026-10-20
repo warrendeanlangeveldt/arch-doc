@@ -1,0 +1,276 @@
+# TL;DR deck for the Northwind Platform capability design: one entry per
+# chapter. Texts may use the content placeholders.
+
+cover:
+  line: Approve the release 1 build of shared integration and event services for internal teams
+
+runs:
+  1: What we ask the review board to decide, and the platform's boundary
+  2: The platform's parts, interfaces, data, hosting and controls
+  3: Decisions, operations, monitoring and the runbooks support needs
+  4: Going live, the risks, the evidence and what retires
+
+chapters:
+  summary:
+    claim: We ask for approval to build release 1; the design is ready to build and not yet ready to run.
+    points:
+      - Shared gateway, event broker, workflow runtime and secrets for every team, in {count:environment} environments
+      - Consumers use published interfaces only; the platform keeps its internals to itself
+      - "{count:risk where rating=high} high risks: support staffing, schema changes and leaked credentials"
+      - The pre-production zone is three weeks late (ISS-01), squeezing failover and load tests
+    callouts:
+      - {text: "Consumers build on the platform; it depends on no other design", x: 0.6, y: 0.33}
+    notes: >-
+      We are asking for approval to build, with security sign-off as the condition. The design is complete,
+      but readiness to run is not there yet: support staffing (RSK-02) and configuration records (DEP-04) are
+      the open items to watch.
+
+  context:
+    claim: The platform sits between the consumer teams and the organisation's identity, monitoring and service management.
+    cards:
+      - {title: In scope, text: "Gateway, broker, workflows, secrets, identity, telemetry, portal and templates"}
+      - {title: Out of scope, text: "Consumer services and their data; exactly-once delivery; finance file exchange"}
+      - {title: Parent, text: "Integration reference architecture 2.0, except its central service bus (EXC-01)"}
+    callouts:
+      - {text: "Every integration is a published interface", x: 0.55, y: 0.95}
+    notes: >-
+      The boundary is the published interfaces. Each consumer's own design covers what it builds on them.
+      The one departure from the reference architecture is the service bus, which needs approval.
+
+  governance:
+    claim: The Head of Platform and the security architect approve; the security review comes first.
+    points:
+      - Security design review on 5 November
+      - Detailed design review on 12 November
+      - Steering group decides the support staffing risk on 26 November
+      - The service management lead role is not yet filled
+    callouts:
+      - {text: "A security finding moves the design review", x: 0.3, y: 0.15}
+    notes: >-
+      Two approvers and four forums. The detailed design review depends on the security review the week
+      before, so any change to the control set moves it.
+
+  requirements:
+    claim: Teams must integrate through shared services, onboard in ten days and see their failures within minutes.
+    points:
+      - "{count:business-requirement} business requirements, {count:functional-requirement} functional and {count:nfr} non-functional"
+      - Schema checks at publish (FR-08) are a should, so RSK-04 stays high
+      - Peak volume under 5,000 events a second through 2027 is the assumption to watch
+    callouts:
+      - {text: "Cost show-back still has no acceptance measure", x: 0.4, y: 0.95}
+    notes: >-
+      Requirements come from strategy, a consumer survey, audit and the June outage. The assumption that
+      matters is peak volume; if it is wrong, the broker needs resizing before the 2027 peak.
+
+  current-state:
+    claim: Every team integrates its own way today, and nobody watches the integrations end to end.
+    points:
+      - Nightly files, batch jobs, team-run queues and custom adapters
+      - Direct database reads break silently when a schema changes
+      - The June 2026 manifest outage ran nine hours before a depot noticed
+    callouts:
+      - {text: "Four mechanisms, no shared monitoring", x: 0.5, y: 0.9}
+    notes: >-
+      The case for the platform is in this picture: four ways to integrate, each run by a different team,
+      none monitored end to end. The direct database reads are the worst of them.
+
+  target:
+    claim: One set of integration services, run once for every team, behind published interfaces.
+    cards:
+      - {title: Consumers, text: "Publish APIs, exchange events, run workflows and read secrets with their own identity"}
+      - {title: Platform, text: "Runs the shared services and answers for their availability"}
+      - {title: Organisation services, text: "Identity provider, monitoring platform and service management platform"}
+    callouts:
+      - {text: "Four interfaces, nothing more", x: 0.02, y: 0.03}
+      - {text: "No shared credentials anywhere", x: 0.02, y: 0.72}
+    notes: >-
+      Consumers stop running queues and adapters and accept at-least-once delivery. The platform team
+      becomes a service team, which it cannot staff out of hours until July 2027.
+
+  application:
+    claim: "{count:component} components in one platform application; the workflow runtime and portal are not started."
+    points:
+      - Gateway, broker, secrets, identity, telemetry and templates are in build or built
+      - Until the portal exists, consumers are onboarded by hand (RBK-05)
+      - Production is planned for the week of 11 January, after a late pre-production zone
+    callouts:
+      - {text: "Northwind Platform is the one new application", x: 0.45, y: 0.95}
+    notes: >-
+      Most components are in build. The portal is the slower of the two not started; manual onboarding
+      covers the gap. Production waits on the pre-production zone.
+
+  integration:
+    claim: Every interface fails safe, and every failure has a detector, a recovery and an owner.
+    points:
+      - Events retry with backoff, then wait in a dead-letter queue for replay
+      - A failed API publication leaves the last good route live
+      - Secret rotation keeps the previous version for 30 days
+      - The telemetry stream's protocol is still open (INT-02)
+    callouts:
+      - {text: "Consumers own dead-letters", x: 0.02, y: 0.05}
+    notes: >-
+      The failure table is the point of the chapter: each integration, what breaks, how we know and who acts.
+      Consumer teams own their subscriptions' dead-letter queues; the platform alerts them.
+
+  data:
+    claim: The platform carries consumers' events for seven days and never reads them; its own data is metadata, secrets and audit.
+    points:
+      - Payloads never reach telemetry; only envelopes do
+      - Producers declare personal data in the catalogue; we cannot check payloads
+      - Audit records are kept one year online, short of the standard's two (EXC-02)
+    callouts:
+      - {text: "Payloads never reach telemetry", x: 0.4, y: 0.95}
+    notes: >-
+      The matrix shows one component writing each object. The gap against the logging standard is an
+      exception until the archive tier is built.
+
+  infrastructure:
+    claim: Managed services in one zone per environment, with production replicated to the paired region.
+    points:
+      - Every zone is built from the same templates
+      - Private endpoints only; the gateway is the one public entry point
+      - Releases reach production after contract, load and failover tests and an approved change
+    callouts:
+      - {text: "The hub is a single point of failure", x: 0.62, y: 0.03}
+    notes: >-
+      Zones keep test away from production. Every zone routes through the shared hub, which is why its
+      failure would stop every consumer.
+
+  security:
+    claim: One identity per workload, private networking and a write-once audit trail; access and security monitoring are not in place yet.
+    points:
+      - No shared keys or connection strings
+      - Just-in-time elevation; break-glass not yet tested
+      - Security events are collected, and nobody watches them until security operations onboards them
+    callouts:
+      - {text: "Residual risk sits with the security architect", x: 0.2, y: 0.75}
+    notes: >-
+      The control set is designed; two parts are not in place: break-glass and security monitoring.
+      Production access is not ready until break-glass is tested.
+
+  nfr:
+    claim: Each quality target has a design and a test, and most tests wait on the late pre-production zone.
+    points:
+      - 99.9% availability for the gateway and broker
+      - Under 500 ms publish to delivery at 2,000 events a second
+      - Recovery time 4 hours, recovery point 15 minutes, failover runbook untested
+    callouts:
+      - {text: "Designed, not yet proven", x: 0.5, y: 0.1}
+    notes: >-
+      The targets are realistic for managed services, but none is demonstrated yet. The recovery objective
+      is a design figure until the failover runbook is tested.
+
+  decisions:
+    claim: "{count:decision} decisions taken; one departure from the reference architecture and one exception need approval."
+    points:
+      - At-least-once delivery with idempotent consumers (ADR-03)
+      - Producers own their topics and schemas (ADR-04)
+      - Schema registry after release 1, with debt accepted (ADR-05)
+    callouts:
+      - {text: "ADR-02 carries debt: two consumers to move", x: 0.6, y: 0.15}
+    notes: >-
+      Most decisions are accepted. The schema registry is deferred and is the reason RSK-04 stays high.
+
+  operations:
+    claim: The platform is not ready to operate; configuration records, production access and the handover are outstanding.
+    points:
+      - Support hours 08:00 to 18:00; the build team covers out of hours until July 2027
+      - Severity 1 response in 15 minutes at all times
+      - Configuration record classes are at risk (DEP-04)
+    callouts:
+      - {text: "{count:readiness-item where status=not-ready} readiness items not ready", x: 0.5, y: 0.1}
+    notes: >-
+      Readiness is the weakest chapter, and we say so. The steering group decision on staffing and the
+      configuration record classes are what move it.
+
+  monitoring:
+    claim: Every alert goes either to the platform on-call engineer or to the consumer that owns the failing subscription.
+    points:
+      - One incident per service and zone within ten minutes
+      - Dead-letter alerts are suppressed while the broker itself is down
+      - Alerts that bind to no configuration record are a gap until DEP-04
+    callouts:
+      - {text: "Critical alerts page a person", x: 0.7, y: 0.08}
+    notes: >-
+      Alert routing follows ownership: platform faults to the platform, consumer faults to the consumer.
+      Correlation keeps one fault to one incident.
+
+  service-processes:
+    claim: The service processes have to know the platform exists before the first consumer goes live.
+    points:
+      - Incident, change and request are in progress
+      - Major incident, knowledge, event and configuration have not started
+      - The service desk needs two articles on day one; neither is written
+    callouts:
+      - {text: "CAB approves broker changes", x: 0.35, y: 0.97}
+    notes: >-
+      Process readiness is behind. The two knowledge articles and the major incident tabletop are the
+      cheapest items to close before go-live.
+
+  runbooks:
+    claim: "{count:runbook where outcome=pass} of {count:runbook} runbooks have passed a test; secret rotation failed."
+    points:
+      - Failover, manual onboarding and stuck workflows are untested
+      - Secret rotation failed when a workload kept the old secret
+      - Dead-letter replay and certificate renewal have passed
+    callouts:
+      - {text: "An untested runbook is an open item", x: 0.25, y: 0.4}
+    notes: >-
+      Support cannot yet act without the build team. The failed rotation test is rerun once the rotation
+      notice event exists.
+
+  transition:
+    claim: Production first, then one pilot consumer, then everyone; the way back stays open until the platform opens to all.
+    points:
+      - Cutover from 11 to 25 January 2027
+      - The pilot keeps its own queue running in parallel until CUT-06
+      - Hypercare from 25 January to 19 February
+    callouts:
+      - {text: "No rollback after CUT-06", x: 0.3, y: 0.72}
+    notes: >-
+      The pilot is the safety net: it runs on the platform and on its old queue until the platform opens to
+      every consumer. After that we fix forward.
+
+  risks:
+    claim: Support staffing and schema changes without a registry are the risks to weigh; the late zone is already an issue.
+    points:
+      - RSK-02 needs people, not design; DRQ-03 asks for acceptance or funding
+      - RSK-04 stays high until the schema registry is built
+      - DEP-04 at risk means no incidents against the platform at go-live
+    callouts:
+      - {text: "High likelihood, high impact: none", x: 0.66, y: 0.88}
+    notes: >-
+      The heat map shows no risk in the top corner, but two high risks sit next to it. Staffing is a
+      decision for the steering group, not for the design.
+
+  assurance:
+    claim: The design is ready to approve once the security review passes, the deviation is approved and every decision request is answered.
+    points:
+      - Every component traces to a requirement
+      - Views are drawn from one model and checked against the registers
+      - Decision requests and the security review are still open
+    callouts:
+      - {text: "Approval items open until the review", x: 0.45, y: 0.62}
+    notes: >-
+      The checklist is short because the approval conditions are few. The security review on 5 November
+      closes most of them.
+
+  lifecycle:
+    claim: Nothing retires at go-live; each old path closes when the last team using it has moved.
+    points:
+      - Team-run queues by June 2027, their credentials revoked as each team moves
+      - Legacy file exchange by September 2027
+      - The batch jobs' date is still open
+    callouts:
+      - {text: "Retirement follows migration, team by team", x: 0.5, y: 0.1}
+    notes: >-
+      Retirement dates depend on consumer migrations, which is why one is still open.
+
+  appendix:
+    claim: The glossary, the list of views and figures, and the model behind them.
+    points:
+      - Terms a reviewer outside the team would not know
+      - Every view and figure with its source file
+      - The model's objects counted against the registers
+    notes: >-
+      Reference material for reviewers. The catalogue shows the model and the registers agree.

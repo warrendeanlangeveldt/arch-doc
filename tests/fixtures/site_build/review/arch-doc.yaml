@@ -1,0 +1,15 @@
+title: Depot Scanning Service
+short: DSS
+kind: solution
+layer: logical-and-physical
+version: "0.3"
+date: 2026-10-20
+author: {name: Solution Architect, role: Architect, team: Parcels architecture}
+owner: {name: Head of Depot Operations, role: Service owner}
+metamodel: seed
+profile: profile.yaml
+depends_on:
+  - {title: Northwind Platform, kind: capability, version: "0.2", ref: NP}
+history:
+  - {date: 2026-09-30, version: "0.2", author: Solution Architect, change: Integration chapter added}
+  - {date: 2026-10-20, version: "0.3", author: Solution Architect, change: Risks reviewed with depot leads}

@@ -1,0 +1,2 @@
+- {id: ISS-01, title: Test carrier sandbox is down two days a week, severity: high, impact: Integration tests stall, owner: Integration lead, due: 2026-11-05, status: open}
+- {id: ISS-02, title: No agreed address standard, severity: medium, impact: Validation rules differ by depot, owner: Data steward, due: 2026-11-20, status: in-progress}

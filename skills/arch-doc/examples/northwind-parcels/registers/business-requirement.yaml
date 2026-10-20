@@ -1,0 +1,79 @@
+# Business requirement register (business-requirement). One record per item; ids are BR-nn.
+# Fields: id, title, status
+#   source: text
+#   priority: must | should | could | wont
+#   response: text
+#   acceptance: text
+#   satisfied_by: list
+#   owner: text
+# Status: proposed (not-started), agreed (partial), designed (partial), verified (done), deferred (not-started), withdrawn (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: BR-01
+  title: Customers see where their parcel is within a minute of a scan
+  source: Customer experience strategy 2026
+  priority: must
+  response: Scans arrive as events and the timeline updates as each one lands
+  acceptance: 95% of scans visible to customers within 60 seconds over a peak week
+  satisfied_by:
+  - CMP-01
+  - CMP-04
+  - CMP-06
+  owner: Product owner
+  status: designed
+
+- id: BR-02
+  title: Customers are told when delivery is due, delayed or done, in the channel they chose
+  source: Customer complaints analysis, 2026
+  priority: must
+  response: Our own notification service sends email or SMS on each status change, by the customer's preference
+  acceptance: Notification within five minutes of the status change for 99% of parcels
+  satisfied_by:
+  - CMP-07
+  owner: Product owner
+  status: designed
+
+- id: BR-03
+  title: Customer service answers a tracking enquiry without calling the carrier
+  source: Customer service operating review
+  priority: must
+  response: Agents see the full timeline, carrier updates included, from their workspace
+  acceptance: Carrier calls for tracking enquiries fall by 80% in the first three months
+  satisfied_by:
+  - CMP-06
+  owner: Customer service manager
+  status: designed
+
+- id: BR-04
+  title: Operations sees parcels that have stopped moving
+  source: Depot operations review
+  priority: must
+  response: Exception workflows flag parcels with no scan for 48 hours on the ops dashboard
+  acceptance: Every stalled parcel appears on the dashboard within an hour of the 48-hour mark
+  satisfied_by:
+  - CMP-08
+  - CMP-09
+  owner: Depot operations manager
+  status: designed
+
+- id: BR-05
+  title: Customer contact data is used for delivery notices only and deleted afterwards
+  source: Privacy legislation and the privacy policy
+  priority: must
+  response: Contact data is kept apart from the timeline and deleted 30 days after delivery
+  acceptance: Privacy impact assessment accepted; deletion job evidence
+  satisfied_by:
+  - CMP-05
+  - CMP-07
+  owner: Privacy officer
+  status: agreed
+
+- id: BR-06
+  title: The legacy tracking lookup is retired by mid-2027
+  source: Technology roadmap
+  priority: should
+  response: Read-only from cutover, retired 90 days later
+  acceptance: Lookup switched off and its data disposed of
+  satisfied_by:
+  - RET-01
+  owner: Head of Parcels
+  status: agreed

@@ -1,0 +1,98 @@
+# Data object register (data-object). One record per item; ids are DAT-nn.
+# Fields: id, title, status
+#   description: text
+#   category: text
+#   source_of_truth: text
+#   system_of_record: text
+#   classification: public | internal | confidential | restricted
+#   retention: text
+#   owner: text
+# Status: identified (not-started), modelled (partial), agreed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DAT-01
+  title: Event envelope
+  description: 'Metadata on every event: type, key, producer, time, schema version, correlation id'
+  category: Platform metadata
+  source_of_truth: Producing service
+  system_of_record: Event broker
+  classification: internal
+  retention: Seven days with the event
+  owner: Platform architect
+  status: agreed
+
+- id: DAT-02
+  title: Event payload
+  description: The business content of an event, owned by the producing team
+  category: Consumer data
+  source_of_truth: Producing service
+  system_of_record: Producing service
+  classification: confidential
+  retention: Seven days on the broker
+  owner: Producing team
+  status: agreed
+
+- id: DAT-03
+  title: Catalogue entry
+  description: 'A published API or topic: owner, schema, version, consumers'
+  category: Platform metadata
+  source_of_truth: Platform portal
+  system_of_record: Platform portal
+  classification: internal
+  retention: Life of the API or topic plus one year
+  owner: Platform product manager
+  status: modelled
+
+- id: DAT-04
+  title: Consumer registration
+  description: A consuming team, its environments, owners and on-call contact
+  category: Platform metadata
+  source_of_truth: Platform portal
+  system_of_record: Platform portal
+  classification: internal
+  retention: Life of the consumer plus one year
+  owner: Platform product manager
+  status: modelled
+
+- id: DAT-05
+  title: Secret
+  description: A credential, key or certificate; its value never leaves the secrets store except to its workload
+  category: Security
+  source_of_truth: Secrets store
+  system_of_record: Secrets store
+  classification: restricted
+  retention: Until rotated, then 30 days soft-deleted
+  owner: Security architect
+  status: agreed
+
+- id: DAT-06
+  title: Audit record
+  description: Who did what to which platform resource, and when
+  category: Security
+  source_of_truth: Platform services
+  system_of_record: Audit store
+  classification: confidential
+  retention: One year online, six further years archived
+  owner: Security architect
+  status: agreed
+
+- id: DAT-07
+  title: Workflow state
+  description: A running workflow's inputs, step results and timers
+  category: Consumer data
+  source_of_truth: Workflow runtime
+  system_of_record: Workflow runtime
+  classification: confidential
+  retention: 30 days after completion
+  owner: Platform architect
+  status: modelled
+
+- id: DAT-08
+  title: Telemetry
+  description: Metrics, logs and traces tagged by consumer
+  category: Operational
+  source_of_truth: Platform services
+  system_of_record: Monitoring platform
+  classification: internal
+  retention: 'TBC: Platform engineering lead'
+  owner: Platform engineering lead
+  status: identified

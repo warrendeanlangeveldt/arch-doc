@@ -1,0 +1,26 @@
+# Where the platform runs: one zone per environment in the primary region,
+# production replicated to the paired region. ArchiMate Implementation and
+# Deployment viewpoint.
+model "model.json"
+
+view platform-deployment "Northwind Platform: zones and regions" {
+  width 1100
+  viewpoint "Technology"
+  NET-HUB
+  LOC-PRI {
+    NODE-DEV
+    NODE-TEST
+    NODE-PRE
+    NODE-PROD {
+      SSW-GWS
+      SSW-BRKS
+      SSW-WFS
+      SSW-SECS
+      SSW-CRT
+    }
+  }
+  LOC-PAIR {
+    NODE-PAIR
+  }
+  key "Box in a box: aggregation (region) or composition (zone)"
+}

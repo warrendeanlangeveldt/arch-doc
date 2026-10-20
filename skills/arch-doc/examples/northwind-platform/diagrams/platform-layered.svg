@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 475" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>Northwind Platform: layered view</title>
+<rect x="0" y="0" width="1100" height="475" fill="#ffffff"/>
+<defs><marker id="arr-platformlayered" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker><marker id="arrow-open-platformlayered" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#475569" stroke-width="1.2"/></marker><marker id="arrow-filled-platformlayered" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker></defs>
+<rect x="20.9" y="120.0" width="1058.2" height="175.0" rx="0" fill="#b5ffff" fill-opacity="0.45" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(1059.1 124.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="1073.1" y="290.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-NP</text>
+<text x="27.9" y="134.5" font-size="10.5" fill="#0f172a" font-weight="600">Northwind Platform</text>
+<rect x="385.5" y="16.0" width="153.1" height="36.0" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1.2"/>
+<g transform="translate(518.6 20.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="4"/><circle cx="10" cy="6" r="4"/></g>
+<text x="462.1" y="39.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Consumer services</text>
+<text x="533.6" y="48.0" font-size="7" fill="#94a3b8" text-anchor="end">ACOL-CONS</text>
+<rect x="36.9" y="165.0" width="200.7" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(217.6 169.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="137.3" y="188.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">API gateway</text>
+<text x="232.6" y="197.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-GW</text>
+<rect x="277.6" y="165.0" width="164.4" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(422.0 169.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="359.8" y="188.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Event broker</text>
+<text x="437.0" y="197.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-BRK</text>
+<rect x="482.0" y="165.0" width="175.6" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(637.6 169.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="569.8" y="188.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Workflow runtime</text>
+<text x="652.6" y="197.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-WF</text>
+<rect x="697.6" y="165.0" width="167.5" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(845.1 169.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="781.4" y="188.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Secrets store</text>
+<text x="860.1" y="197.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-SEC</text>
+<rect x="913.1" y="165.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(1043.1 169.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="988.1" y="188.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Workload identity</text>
+<text x="1058.1" y="197.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-WID</text>
+<rect x="284.8" y="245.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(414.8 249.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="359.8" y="268.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Telemetry pipeline</text>
+<text x="429.8" y="277.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-TEL</text>
+<rect x="502.9" y="347.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(632.9 351.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="577.9" y="370.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Identity provider</text>
+<text x="647.9" y="379.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-IDP</text>
+<rect x="692.9" y="347.0" width="154.2" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(827.1 351.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="770.0" y="370.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Monitoring platform</text>
+<text x="842.1" y="379.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-MON</text>
+<rect x="56.9" y="154.0" width="152.7" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="65.9" y="168.5" font-size="8.0" fill="#0f172a" font-weight="600">API publication interface</text>
+<text x="200.6" y="168.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-API</text>
+<rect x="297.6" y="154.0" width="116.4" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="306.6" y="168.5" font-size="8.25" fill="#0f172a" font-weight="600">Event interface</text>
+<text x="405.0" y="168.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-EVT</text>
+<rect x="502.0" y="154.0" width="127.6" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="511.0" y="168.5" font-size="8.25" fill="#0f172a" font-weight="600">Workflow interface</text>
+<text x="620.6" y="168.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-WF</text>
+<rect x="717.6" y="154.0" width="119.5" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="726.6" y="168.5" font-size="8.25" fill="#0f172a" font-weight="600">Secret interface</text>
+<text x="828.1" y="168.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-SEC</text>
+<polyline points="133.3,154.0 133.3,103.0 462.1,103.0 462.1,54.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<polyline points="355.8,154.0 355.8,34.0 383.5,34.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<polyline points="565.8,154.0 565.8,34.0 540.6,34.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<polyline points="777.4,154.0 777.4,34.0 540.6,34.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<polyline points="607.9,347.0 607.9,209.0 958.1,209.0 958.1,203.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<polyline points="913.1,183.0 867.1,183.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<polyline points="434.8,263.0 739.2,263.0 739.2,345.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-platformlayered)"/>
+<text x="526.1" y="258.0" font-size="8.5" fill="#64748b" text-anchor="middle" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">telemetry by consumer</text>
+<polyline points="359.8,201.0 359.8,243.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-platformlayered)"/>
+<text x="364.8" y="225.0" font-size="8.5" fill="#64748b" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">envelopes</text>
+<line x1="16" y1="403.0" x2="1084" y2="403.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="16.0" y="423.5" font-size="7.5" fill="#2b7c8c" font-weight="700" letter-spacing="0.6">APPLICATION</text>
+<rect x="83.229" y="414.0" width="22" height="14" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1"/>
+<g transform="translate(86.229 415.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g></g>
+<text x="110.2" y="423.5" font-size="8.5" fill="#475569">Application Component</text>
+<rect x="208.969" y="414.0" width="22" height="14" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1"/>
+<g transform="translate(211.969 415.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="4"/><circle cx="10" cy="6" r="4"/></g></g>
+<text x="236.0" y="423.5" font-size="8.5" fill="#475569">Application Collaboration</text>
+<rect x="341.679" y="414.0" width="22" height="12" rx="6" fill="#ffffff" stroke="#236e71" stroke-width="1.2"/>
+<text x="368.7" y="423.5" font-size="8.5" fill="#475569">Application Interface</text>
+<rect x="16" y="435.0" width="16" height="10" rx="2" fill="#ffffff" stroke="#475569" stroke-width="1.2" stroke-dasharray="3 2"/>
+<text x="37.0" y="443.5" font-size="8.5" fill="#475569">Proposed / designed / not started</text>
+<line x1="176.70999999999992" y1="440.0" x2="202.70999999999992" y2="440.0" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformlayered)"/>
+<text x="207.7" y="443.5" font-size="8.5" fill="#475569">Serving</text>
+<line x1="246.77999999999992" y1="440.0" x2="272.7799999999999" y2="440.0" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-platformlayered)"/>
+<text x="277.8" y="443.5" font-size="8.5" fill="#475569">Flow</text>
+<text x="16.0" y="461.5" font-size="8.5" fill="#475569">Box in a box: composition</text>
+<text x="134.3" y="461.5" font-size="8.5" fill="#475569">Pill on a component: the interface it publishes to consumers</text>
+</svg>

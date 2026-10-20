@@ -1,0 +1,3 @@
+- {id: APP-01, title: Tracking service, purpose: Tracks parcels end to end, state: target, change: new, owner: Head of Parcels, criticality: high, status: in-build}
+- {id: APP-02, title: Depot scanner app, purpose: Captures scans in depots, state: target, change: changed, owner: Depot manager, criticality: high, status: live}
+- {id: APP-03, title: Legacy tracker, purpose: Tracks parcels today, state: current, change: retired, owner: Head of Parcels, criticality: medium, status: live}

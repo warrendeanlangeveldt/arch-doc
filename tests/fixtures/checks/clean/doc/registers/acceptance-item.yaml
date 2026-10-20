@@ -1,0 +1,1 @@
+- {id: ACC-01, title: Every integration replays from its queue, stage: integration, required: "yes", evidence: Test report, owner: Test lead, status: open}

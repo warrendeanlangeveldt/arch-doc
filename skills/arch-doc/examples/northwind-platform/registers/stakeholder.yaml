@@ -1,0 +1,59 @@
+# Stakeholder register (stakeholder). One record per item; ids are STK-nn.
+# Fields: id, title, status
+#   name: text
+#   team: text
+#   interest: text
+#   involvement: approver | reviewer | contributor | informed
+# Status: identified (not-started), engaged (partial), signed-off (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: STK-01
+  title: Head of Platform
+  name: Marcus Hale
+  team: Platform Engineering
+  interest: Release 1 approved and funded; support model staffed
+  involvement: approver
+  status: engaged
+
+- id: STK-02
+  title: Platform architect
+  name: Lena Brandt
+  team: Platform Engineering
+  interest: Design integrity and the boundary with consumers
+  involvement: contributor
+  status: engaged
+
+- id: STK-03
+  title: Security architect
+  team: Cyber Security
+  interest: Identity, secrets and audit controls
+  involvement: approver
+  status: engaged
+
+- id: STK-04
+  title: Service management lead
+  name: 'TBC: Head of Platform'
+  team: Technology Operations
+  interest: Configuration records, incident routing and change models
+  involvement: reviewer
+  status: identified
+
+- id: STK-05
+  title: Consumer team leads
+  team: Parcel, depot and billing delivery teams
+  interest: Onboarding effort, published interfaces and support hours
+  involvement: reviewer
+  status: engaged
+
+- id: STK-06
+  title: Network lead
+  team: Infrastructure
+  interest: Zone connectivity and private access paths
+  involvement: contributor
+  status: engaged
+
+- id: STK-07
+  title: Finance business partner
+  team: Finance
+  interest: Run cost and show-back
+  involvement: informed
+  status: identified

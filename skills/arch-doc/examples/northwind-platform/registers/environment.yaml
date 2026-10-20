@@ -1,0 +1,49 @@
+# Environment register (environment). One record per item; ids are ENV-nn.
+# Fields: id, title, status
+#   purpose: text
+#   hosting: text
+#   classification: public | internal | confidential | restricted
+#   access: text
+#   refresh: text
+#   owner: text
+# Status: planned (not-started), provisioning (partial), ready (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ENV-01
+  title: Development
+  purpose: Consumer and platform development
+  hosting: Development zone, primary region
+  classification: internal
+  access: Consumer engineers through workload identity; no production data
+  refresh: Synthetic data only
+  owner: Platform engineering lead
+  status: ready
+
+- id: ENV-02
+  title: Test
+  purpose: Integration and contract testing between consumers
+  hosting: Test zone, primary region
+  classification: internal
+  access: Consumer engineers and testers
+  refresh: Synthetic data only
+  owner: Platform engineering lead
+  status: ready
+
+- id: ENV-03
+  title: Pre-production
+  purpose: Performance, failover and readiness testing at production scale
+  hosting: Pre-production zone, primary region and pair
+  classification: confidential
+  access: Platform engineers; consumers by request
+  refresh: Masked copies on request, deleted after 14 days
+  owner: Platform engineering lead
+  status: provisioning
+
+- id: ENV-04
+  title: Production
+  purpose: Live consumer traffic
+  hosting: Production zone, primary region and pair
+  classification: restricted
+  access: Pipelines only; engineers through just-in-time elevation
+  refresh: Not applicable
+  owner: Head of Platform
+  status: planned

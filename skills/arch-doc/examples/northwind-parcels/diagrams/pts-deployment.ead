@@ -1,0 +1,20 @@
+# Where the solution runs in production. ArchiMate Technology viewpoint.
+model "model.json"
+
+view pts-deployment "Parcel Tracking Solution: production deployment" {
+  width 1000
+  viewpoint "Technology"
+  NET-PTS
+  LOC-PRI {
+    NODE-PRD {
+      SSW-CRT
+      SSW-DB
+    }
+  }
+  LOC-PAIR {
+    NODE-PAIR {
+      SSW-DBR w=340
+    }
+  }
+  key "Box in a box: aggregation (region) or composition (zone)"
+}

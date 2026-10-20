@@ -1,0 +1,76 @@
+# Readiness item register (readiness-item). One record per item; ids are RDY-nn.
+# Fields: id, title, status
+#   area: service-ownership | support | configuration-records | monitoring | processes | runbooks | knowledge | access | hypercare | handover
+#   evidence: text
+#   owner: text
+# Status: not-ready (not-started), in-progress (partial), ready (done), accepted (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RDY-01
+  area: service-ownership
+  title: Service owner appointed
+  evidence: Appointment by the Head of Parcels
+  owner: Head of Parcels
+  status: not-ready
+
+- id: RDY-02
+  area: support
+  title: Assignment groups and on-call roster
+  evidence: Groups in ServiceNow; roster published
+  owner: Service owner
+  status: not-ready
+
+- id: RDY-03
+  area: configuration-records
+  title: Configuration items for the service
+  evidence: CMDB records and relationships
+  owner: Service owner
+  status: not-ready
+
+- id: RDY-04
+  area: monitoring
+  title: Monitors and dashboards live and tested
+  evidence: Alert test log
+  owner: Service owner
+  status: in-progress
+
+- id: RDY-05
+  area: runbooks
+  title: Runbooks tested for every critical and high alert
+  evidence: Runbook register
+  owner: Integration lead
+  status: in-progress
+
+- id: RDY-06
+  area: knowledge
+  title: Knowledge articles for agents and the service desk
+  evidence: Published articles
+  owner: Customer service manager
+  status: in-progress
+
+- id: RDY-07
+  area: access
+  title: Staff roles and agent access in place
+  evidence: Group membership and lookup log
+  owner: Security architect
+  status: not-ready
+
+- id: RDY-08
+  area: hypercare
+  title: Hypercare team and daily report agreed
+  evidence: Hypercare plan
+  owner: Product owner
+  status: in-progress
+
+- id: RDY-09
+  area: handover
+  title: Support accepts the service from the build team
+  evidence: Signed handover checklist
+  owner: Service owner
+  status: not-ready
+
+- id: RDY-10
+  area: handover
+  title: Customer service accepts the retirement of the legacy lookup
+  evidence: Sign-off by the customer service manager
+  owner: Customer service manager
+  status: not-ready

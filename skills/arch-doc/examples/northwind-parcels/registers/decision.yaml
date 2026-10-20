@@ -1,0 +1,98 @@
+# Architecture decision register (decision). One record per item; ids are ADR-nn.
+# Fields: id, title, status
+#   context: text
+#   options: text
+#   rationale: text
+#   consequence: text
+#   debt: none | accepted | to-repay
+#   date: date
+#   owner: text
+# Status: proposed (not-started), accepted (done), superseded (done), rejected (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ADR-01
+  title: Scan events are pushed as events, not polled
+  context: Depots scan around two million parcels a day with sharp peaks
+  options: Poll depot systems every few minutes; push each scan as an event
+  rationale: Events give near-real-time tracking and absorb peaks through the queue
+  consequence: The tracking service depends on the platform messaging service
+  debt: none
+  date: '2026-10-08'
+  owner: Solution architect
+  status: accepted
+
+- id: ADR-02
+  title: Parcel history is kept online for eighteen months
+  context: Customer service looks parcels up long after delivery
+  options: Twelve months online then archive; eighteen months online
+  rationale: TBC
+  consequence: Storage grows by about a third against the twelve-month option
+  debt: none
+  date: '2026-10-15'
+  owner: Data owner
+  status: proposed
+
+- id: ADR-03
+  title: Carriers push updates by webhook; we poll only where a carrier cannot
+  context: Carriers A and C offer webhooks; carrier B does not
+  options: Poll every carrier; webhooks where offered, polling otherwise
+  rationale: Webhooks are faster and cost no rate limit; polling carrier B is the only option before 2028
+  consequence: Two carrier paths to run; EXC-01 for carrier B
+  debt: accepted
+  date: '2026-10-08'
+  owner: Integration lead
+  status: accepted
+
+- id: ADR-04
+  title: A public lookup needs the parcel number and the destination postcode
+  context: Parcel numbers are guessable (RSK-04)
+  options: Number only; number and postcode; signed tracking links only
+  rationale: Postcode stops guessing without needing customers to keep a link; signed links stay possible later
+  consequence: Customers who mistype a postcode see nothing; the website explains why
+  debt: none
+  date: '2026-10-13'
+  owner: Security architect
+  status: accepted
+
+- id: ADR-05
+  title: We send notifications ourselves, not through the carriers
+  context: Carriers notify differently, and some not at all
+  options: Carrier notifications; our own notifications through a messaging provider
+  rationale: One voice and one preference for the customer, whoever carries the parcel
+  consequence: We contract a messaging provider (DEP-03) and own the content
+  debt: none
+  date: '2026-10-13'
+  owner: Product owner
+  status: accepted
+
+- id: ADR-06
+  title: Datadog raises ServiceNow incidents through its native integration, one per monitor
+  context: Alerts from many replicas would flood the service desk
+  options: Event management rules in ServiceNow; the native integration with grouping in Datadog
+  rationale: Grouping where the alert is raised keeps one incident per fault; no custom code
+  consequence: Monitors must carry the configuration item and the assignment group
+  debt: none
+  date: '2026-10-16'
+  owner: Service owner
+  status: accepted
+
+- id: ADR-07
+  title: Legacy scan history is not migrated
+  context: The legacy lookup holds 90 days of flat scan files
+  options: Migrate 90 days into timelines; keep the legacy lookup read-only for 90 days
+  rationale: Old files lack scan times to the second and carrier events; converting them would build wrong timelines
+  consequence: Agents use the read-only lookup for parcels manifested before cutover
+  debt: none
+  date: '2026-10-16'
+  owner: Solution architect
+  status: accepted
+
+- id: ADR-08
+  title: One document per parcel holds its timeline
+  context: Lookups are by parcel number; writes append events
+  options: Relational tables of events; one document per parcel
+  rationale: A lookup is one read; appends stay within the document size limit for any parcel we carry
+  consequence: Reporting across parcels reads from the analytics export, not the store
+  debt: none
+  date: '2026-10-16'
+  owner: Solution architect
+  status: accepted

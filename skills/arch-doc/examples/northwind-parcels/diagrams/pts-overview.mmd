@@ -1,0 +1,41 @@
+flowchart TB
+  subgraph IN["Where tracking events come from"]
+    HH["Depot handheld app<br/>scans"]
+    DOS["Depot operations system<br/>manifests"]
+    CA["Carriers A and C<br/>webhooks"]
+    CB["Carrier B<br/>tracking API"]
+  end
+  subgraph PTS["Parcel Tracking Solution"]
+    ING["Scan ingest"]
+    HOOK["Carrier webhook receiver"]
+    POLL["Carrier poller"]
+    TRK["Tracking service<br/>timeline and status"]
+    DB[("Tracking store")]
+    API["Tracking API"]
+    NOTE["Customer notification service"]
+    WFX["Exception workflows"]
+    OPS["Ops dashboard"]
+  end
+  subgraph OUT["Who sees it"]
+    WEB["Customer website"]
+    SN["ServiceNow<br/>agents and incidents"]
+    MSG["Messaging provider<br/>email and SMS"]
+    DD["Datadog"]
+  end
+  HH -->|"via platform"| ING
+  DOS -->|"via platform"| TRK
+  CA -->|"via platform"| HOOK
+  CB -->|"polled every 5 min"| POLL
+  ING --> TRK
+  HOOK --> TRK
+  POLL --> TRK
+  TRK <--> DB
+  DB --> API
+  TRK -->|"status changes"| NOTE
+  TRK --> WFX
+  WFX --> OPS
+  API --> WEB
+  API --> SN
+  NOTE --> MSG
+  PTS -. "telemetry" .-> DD
+  DD -->|"incidents"| SN

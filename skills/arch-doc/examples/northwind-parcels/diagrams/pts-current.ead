@@ -1,0 +1,18 @@
+# Tracking today: a nightly file feeds a lookup page, and agents check
+# carrier portals by hand.
+model "model.json"
+
+view pts-current "Tracking today: application landscape" {
+  width 1200
+  viewpoint "Application Usage"
+  BACT-AGENT
+  BACT-DEPOT
+  BACT-CUST
+  ACMP-CARR
+  ACMP-HH
+  ACMP-DOS
+  ACMP-LEG
+  ACMP-WEB
+  same BACT-AGENT BACT-DEPOT BACT-CUST
+  same ACMP-CARR ACMP-HH ACMP-DOS ACMP-LEG ACMP-WEB
+}

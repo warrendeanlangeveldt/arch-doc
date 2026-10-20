@@ -1,0 +1,111 @@
+# Functional requirement register (functional-requirement). One record per item; ids are FR-nn.
+# Fields: id, title, status
+#   traces_to: refs:business-requirement
+#   priority: must | should | could | wont
+#   response: text
+#   acceptance: text
+#   satisfied_by: list
+#   owner: text
+# Status: proposed (not-started), agreed (partial), designed (partial), verified (done), deferred (not-started), withdrawn (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: FR-01
+  title: Accept depot scans as events and order them by scan time
+  traces_to:
+  - BR-01
+  priority: must
+  response: Scan ingest orders by the handheld's scan time, not arrival time
+  satisfied_by:
+  - CMP-01
+  owner: Integration lead
+  status: designed
+
+- id: FR-02
+  title: Accept carrier status by webhook, and poll only where a carrier has none
+  traces_to:
+  - BR-01
+  - BR-03
+  priority: must
+  response: Webhooks for carriers A and C; polling for carrier B (ADR-03)
+  satisfied_by:
+  - CMP-02
+  - CMP-03
+  owner: Integration lead
+  status: designed
+
+- id: FR-03
+  title: Keep one timeline per parcel and derive its status from it
+  traces_to:
+  - BR-01
+  - BR-03
+  priority: must
+  response: Tracking service applies the status rules to every new event
+  satisfied_by:
+  - CMP-04
+  owner: Product owner
+  status: designed
+
+- id: FR-04
+  title: Look a parcel up by its number and destination postcode
+  traces_to:
+  - BR-01
+  priority: must
+  response: Public route requires both; a wrong postcode returns nothing (ADR-04)
+  satisfied_by:
+  - CMP-06
+  owner: Product owner
+  status: designed
+
+- id: FR-05
+  title: Give customer service the full timeline from their workspace
+  traces_to:
+  - BR-03
+  priority: must
+  response: Internal route returns the timeline with carrier detail
+  satisfied_by:
+  - CMP-06
+  owner: Customer service manager
+  status: designed
+
+- id: FR-06
+  title: Notify the customer by email or SMS when the status changes
+  traces_to:
+  - BR-02
+  priority: must
+  response: Notification service reads the preference and sends through the messaging provider
+  satisfied_by:
+  - CMP-07
+  owner: Product owner
+  status: designed
+
+- id: FR-07
+  title: Flag a parcel with no scan for 48 hours
+  traces_to:
+  - BR-04
+  priority: must
+  response: A timer per parcel on the platform's workflow interface
+  satisfied_by:
+  - CMP-09
+  owner: Depot operations manager
+  status: designed
+
+- id: FR-08
+  title: Show exceptions by depot to operations staff
+  traces_to:
+  - BR-04
+  priority: should
+  response: Ops dashboard with stalled parcels, missed scans and depot lag
+  satisfied_by:
+  - CMP-08
+  owner: Depot operations manager
+  status: agreed
+
+- id: FR-09
+  title: Raise an incident automatically when the service is unwell
+  traces_to:
+  - BR-01
+  priority: must
+  response: Datadog monitors raise incidents in ServiceNow (ADR-06)
+  satisfied_by:
+  - CMP-10
+  owner: Service owner
+  status: designed

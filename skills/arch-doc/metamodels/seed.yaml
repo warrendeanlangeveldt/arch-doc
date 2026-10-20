@@ -1,0 +1,1545 @@
+# arch-doc seed metamodel.
+#
+# The default chapter structure for capability and solution designs: 22
+# chapters, the sections each carries, the registers each section draws on,
+# and the views each chapter is drawn from. It names no organisation, product
+# or forum. Anything that depends on the organisation's systems is either a
+# profile value ({p:...}) or a section included only when the profile says so
+# (when:). references/metamodel.md describes the format.
+#
+# when: forms
+#   when: systems.itsm                        the profile value is set and not "none"
+#   when: {systems.itsm.framework: itil}      the value equals (or is one of a list)
+#   when: {not: ...} / {all: [...]} / {any: [...]}
+#
+# artefacts: entries are a register type, optionally filtered:
+#   "risk where category=architecture"
+#
+# picture: the generated picture for the chapter's picture slide when the
+# chapter has no usable figure. kind is one of layers, timeline, traceability,
+# heatmap, matrix, swimlane, flow, bars, map. from names the register type
+# (or depends_on) it is drawn from; by names the field that groups it.
+#
+# covers: a register type a section answers per record without showing the
+# register ("for each integration, the failure that matters"). When the
+# section answers with a table, the empty check wants every record of that
+# type the chapter shows to appear in it.
+
+name: seed
+version: 1
+
+document_kinds:
+  capability:
+    purpose: a platform or zone other designs build on
+    excludes:
+      - application/channels
+      - data/migration
+  solution:
+    purpose: one solution, on the platforms it depends on
+
+deck:
+  runs:
+    1: Why and what
+    2: The design
+    3: Running it
+    4: Delivering and governing
+
+chapters:
+
+  # ---------------------------------------------------------------- run 1
+  - key: summary
+    title: Executive Architecture Summary
+    question: What is being approved, and why now?
+    story: the decision sought and the state of the design in one view
+    picture: {kind: layers, from: depends_on}
+    deck: {run: 1}
+    viewpoints: [solution-context]
+    sections:
+      - key: scope
+        title: Delivery Scope
+        guidance: >-
+          Name what this design covers in two or three sentences: the solution
+          or platform, the release or phase, and the boundary. Point to
+          {sec:context/in-scope} for the itemised scope rather than repeating it.
+        artefacts: []
+      - key: decision-sought
+        title: Decision Sought
+        guidance: >-
+          State each decision the reviewers are asked to make, who makes it and
+          by when. One row per decision; conditions go in the request, not in
+          prose.
+        artefacts: [decision-request]
+      - key: overview
+        title: Executive Summary
+        guidance: >-
+          Draft this section after the rest. Say what the design is, what it depends on,
+          what is still open and the risks a reviewer must weigh. Cite counts
+          from the registers ({count:risk where rating=high} high risks), never
+          type them by hand.
+        artefacts: []
+
+  - key: context
+    title: Solution Context & Reference Architecture Alignment
+    question: Where does this sit, and what does it inherit?
+    story: the boundary of the design and the parent architecture it conforms to
+    picture: {kind: map, from: integration}
+    deck: {run: 1}
+    viewpoints: [solution-context, application-context]
+    sections:
+      - key: in-scope
+        title: In Scope
+        guidance: >-
+          List the items inside the boundary as a two-column table: the item and
+          a one-line description. Include the people and systems that use it.
+        artefacts: []
+      - key: out-of-scope
+        title: Out of Scope
+        guidance: >-
+          List what a reader might expect here but will not find, why it is
+          excluded, and where or when it will be dealt with.
+        artefacts: []
+      - key: parent-alignment
+        title: Parent Architecture Alignment
+        guidance: >-
+          Name the parent or reference architecture this design realises, its
+          version and status, and the parts of it this design implements. Any
+          departure belongs in {sec:decisions/deviations}, not here.
+        artefacts: []
+      - key: repository
+        title: "{p:systems.ea_repository.name} Repository"
+        when: systems.ea_repository
+        guidance: >-
+          Say which content is held in {p:systems.ea_repository.name} and which
+          only in this document, and the rule for when the two disagree. Keep
+          it to the rules a reviewer needs to trust the views.
+        artefacts: []
+      - key: view-register
+        title: Architecture View Register
+        when: systems.ea_metamodel
+        guidance: >-
+          List every view this document relies on: the section it supports, the
+          viewpoint, the object types it shows and whether it is mandatory for
+          approval. Each view appears in the document as a VIEW directive.
+        artefacts: []
+      - key: repository-source
+        title: "{p:systems.ea_repository.name} Source Reference"
+        when: systems.ea_repository
+        guidance: >-
+          Give the repository workspace, model or package the views come from,
+          the date of the extract and who maintains it.
+        artefacts: []
+      - key: traceability
+        title: Architecture Traceability
+        guidance: >-
+          Trace each parent requirement, decision and constraint to the section
+          that answers it and the evidence that will show it is met. Requirements
+          that have no answer yet are open items, not omissions.
+        artefacts: [business-requirement, constraint]
+
+  - key: governance
+    title: Stakeholders, Governance & Decision Rights
+    question: Who decides, and when?
+    story: the people who approve, the forums they sit in and the checkpoints ahead
+    picture: {kind: timeline, from: checkpoint}
+    deck: {run: 1}
+    viewpoints: [operational-support]
+    sections:
+      - key: stakeholders
+        title: Key Stakeholders
+        guidance: >-
+          Record each stakeholder's role, team, concern and whether they approve,
+          review, contribute or are informed. Name roles where people are not
+          yet confirmed, and mark the name TBC with an owner.
+        artefacts: [stakeholder]
+      - key: forums
+        title: Governance Forums
+        guidance: >-
+          List the forums this design goes through, the decision or input each
+          gives, and the outcome so far. The design authority is
+          {p:forums.design_authority.name} ({p:forums.design_authority.short}).
+        artefacts: [forum]
+      - key: checkpoints
+        title: Architecture Checkpoints
+        guidance: >-
+          List the review points from first draft to post-implementation review,
+          when each happens, which forum holds it and the evidence it needs.
+        artefacts: [checkpoint]
+
+  - key: requirements
+    title: Requirements & Design Drivers
+    question: What must the design satisfy?
+    story: the requirements, assumptions and constraints that shape the design
+    picture: {kind: traceability, from: functional-requirement}
+    deck: {run: 1}
+    viewpoints: [project-traceability, business-outcome, capability-map]
+    sections:
+      - key: business-requirements
+        title: Business Requirements
+        guidance: >-
+          State the outcomes, obligations and process changes the business needs,
+          in business language, with their source and priority. Each one says how
+          the design responds and how acceptance will be judged.
+        artefacts: [business-requirement]
+      - key: functional-requirements
+        title: Functional Requirements
+        guidance: >-
+          State what the solution must do: behaviours, transactions, validations,
+          reports and integrations. Trace each to the business requirement it
+          serves.
+        artefacts: [functional-requirement]
+      - key: nfrs
+        title: Non-Functional Requirements
+        guidance: >-
+          State the quality attributes with a measurable target each: availability,
+          performance, scalability, resilience, security, privacy, supportability,
+          observability, maintainability and compliance. How each is realised is
+          {ch:nfr}; here we state the target.
+        artefacts: [nfr]
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the requirement traceability and capability alignment views for
+          this chapter with VIEW directives.
+        artefacts: []
+      - key: assumptions
+        title: Assumptions
+        guidance: >-
+          Record what the design takes as true without proof, what changes if it
+          is false, who confirms it and by when.
+        artefacts: [assumption]
+      - key: constraints
+        title: Constraints
+        guidance: >-
+          Record the limits the design must work within: time, cost, vendor,
+          regulation, technology or organisation, and how the design responds.
+        artefacts: [constraint]
+      - key: dependencies
+        title: Dependencies
+        guidance: >-
+          Record the dependencies that shape the design. Their delivery status is
+          tracked in {sec:risks/dependencies}; cite the register rather than
+          restating it.
+        optional: true
+        artefacts: [dependency]
+
+  # ---------------------------------------------------------------- run 2
+  - key: current-state
+    title: Current State Architecture
+    question: What exists today, and what is wrong with it?
+    story: the landscape we start from and the gaps that justify the change
+    picture: {kind: bars, from: application, by: lifecycle}
+    deck: {run: 2}
+    viewpoints: [application-landscape, integration-flows]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the current application landscape and integration views with VIEW
+          directives, drawn from objects that already exist in the model.
+        artefacts: []
+      - key: business-context
+        title: Current Business Process & Capability Context
+        guidance: >-
+          Summarise the current processes and capabilities this design changes,
+          the gap or pain point in each, and its impact. Say plainly what does
+          not work.
+        artefacts: ["capability where state=current|both"]
+      - key: application-landscape
+        title: Current Application Landscape
+        guidance: >-
+          List the applications in play today, their purpose, owner, hosting,
+          role in integration and lifecycle position.
+        artefacts: ["application where state=current|both"]
+      - key: integration-landscape
+        title: Current Integration Landscape
+        guidance: >-
+          List today's integrations between those applications: source, target,
+          data, pattern, frequency and the known issue with each.
+        artefacts: ["integration where state=current"]
+      - key: support-model
+        title: Current Support Model
+        guidance: >-
+          Describe who owns and supports the current service, and the gaps in
+          ownership, support hours, knowledge or monitoring.
+        artefacts: []
+
+  - key: target
+    title: Target Solution Overview
+    question: What are we building?
+    story: the target design in one picture and the principles it follows
+    picture: {kind: layers, from: component, by: layer}
+    deck: {run: 2}
+    viewpoints: [application-context, solution-context]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the target solution context view with a VIEW directive.
+        artefacts: []
+      - key: description
+        title: Target Solution Description
+        guidance: >-
+          Describe the target design at the level a reviewer needs to approve it:
+          the main parts, how users reach it, what it depends on and what changes
+          for whom. Detail belongs in the chapters that follow.
+        artefacts: ["capability where state=target|both"]
+      - key: diagram
+        title: Target Solution Diagram
+        guidance: >-
+          Give the one diagram that shows the whole target design, with a FIGURE
+          directive, and a sentence on how to read it.
+        artefacts: []
+      - key: principles
+        title: Design Principles
+        guidance: >-
+          List the principles the design follows, where each comes from and what
+          it means for this design in particular. Leave out principles that
+          change nothing here.
+        artefacts: []
+      - key: operating-model
+        title: Operating Model Impact
+        guidance: >-
+          State what changes for people, roles, processes, suppliers and support
+          teams, and what has to change to absorb it.
+        artefacts: []
+
+  - key: application
+    title: Application & Component Architecture
+    question: What are the parts, and what does each do?
+    story: the applications and components in scope and the environments they run in
+    picture: {kind: map, from: application}
+    deck: {run: 2}
+    viewpoints: [application-context, application-components]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the application context and component views with VIEW directives.
+        artefacts: []
+      - key: scope
+        title: Application Scope
+        guidance: >-
+          List each application and component the design adds, changes or
+          retires, with its purpose, owner and criticality.
+        artefacts: ["application where state=target|both"]
+      - key: components
+        title: Component Design
+        guidance: >-
+          Describe each component: what it does, where it runs, what data it
+          holds, the interfaces it exposes or calls, and who owns it.
+        artefacts: [component]
+      - key: environments
+        title: Environments
+        guidance: >-
+          List the environments, their purpose, the data classification each
+          may hold, how access is controlled and how data is refreshed or masked.
+        artefacts: [environment]
+      - key: channels
+        title: User Experience & Channels
+        guidance: >-
+          List each user group, the channel they use, how they sign in, how
+          their access is decided and the journeys that matter most.
+        artefacts: []
+
+  - key: integration
+    title: Integration & API Architecture
+    question: How does it talk to everything else?
+    story: every integration, its contract and what happens when it fails
+    picture: {kind: map, from: integration}
+    deck: {run: 2}
+    viewpoints: [integration-flows]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the integration flow view with a VIEW directive.
+        artefacts: []
+      - key: overview
+        title: Integration Overview
+        guidance: >-
+          List every integration: source, target, interface, data, pattern,
+          protocol, trigger and criticality. The register is the source of truth;
+          prose describes the shape, not the rows.
+        artefacts: ["integration where state=target"]
+      - key: contracts
+        title: Interface Contracts
+        guidance: >-
+          For each interface that is new or changed, give the contract a builder
+          needs at design level: operations, payload, authentication, versioning
+          and error behaviour. Field-level detail can sit in a linked specification.
+        artefacts: []
+      - key: failure-handling
+        title: Integration Failure Handling
+        guidance: >-
+          For each integration, name the failure that matters, its business
+          impact, how we detect it, how we recover and who acts.
+        covers: integration
+        artefacts: []
+      - key: acceptance
+        title: Integration Acceptance Criteria
+        guidance: >-
+          State what must be true before the integrations are accepted and the
+          evidence for each.
+        artefacts: ["acceptance-item where stage=integration"]
+
+  - key: data
+    title: Data & Information Architecture
+    question: What data moves, and who is accountable for it?
+    story: the data in scope, how it flows, how it is classified and kept
+    picture: {kind: flow, from: data-flow}
+    deck: {run: 2}
+    viewpoints: [logical-data, crud]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the logical data view and the data access matrix with VIEW
+          directives.
+        artefacts: []
+      - key: scope
+        title: Data Scope
+        guidance: >-
+          List the data objects in scope with their category, source of truth,
+          system of record, owner and classification.
+        artefacts: [data-object]
+      - key: flows
+        title: Data Flows
+        guidance: >-
+          List each flow of data between applications: what moves, from where to
+          where, over which interface, how it is transformed and how often.
+        artefacts: [data-flow]
+      - key: classification
+        title: Data Classification & Privacy
+        guidance: >-
+          State the classification of each data category, whether it holds
+          personal or sensitive data, the privacy impact and the controls that
+          answer it.
+        artefacts: []
+      - key: retention
+        title: Retention, Archiving & Disposal
+        guidance: >-
+          State how long each data object is kept, when and how it is archived,
+          how it is disposed of, and who is accountable.
+        covers: data-object
+        artefacts: []
+      - key: migration
+        title: Data Migration & Conversion
+        optional: true
+        guidance: >-
+          Where data moves from an old system, describe each migration item:
+          source, target, method, volume, how it is validated and how it is
+          rolled back. Say so in one line if there is no migration.
+        artefacts: []
+      - key: quality
+        title: Data Quality & Reconciliation
+        guidance: >-
+          List the data quality rules, how each is checked, who owns it and what
+          counts as passing.
+        artefacts: []
+
+  - key: infrastructure
+    title: Infrastructure, Hosting & Deployment
+    question: Where does it run, and how does it get there?
+    story: the hosting, network and deployment model across environments
+    picture: {kind: layers, from: environment}
+    deck: {run: 2}
+    viewpoints: [infrastructure]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the infrastructure view with a VIEW directive.
+        artefacts: []
+      - key: hosting
+        title: Hosting Model
+        guidance: >-
+          State how each component is hosted, on which platform and in which
+          region or location, per environment, and who owns the hosting.
+        artefacts: []
+      - key: network
+        title: Network Architecture
+        guidance: >-
+          Describe the network paths the design needs: source, destination,
+          protocol, direction, purpose and the control on each path.
+        artefacts: []
+      - key: deployment
+        title: Deployment Model
+        guidance: >-
+          Describe how each deployable item reaches each environment, the
+          pipeline that does it ({p:systems.cicd.name}), who owns it and how a
+          release is rolled back.
+        artefacts: []
+      - key: environment-config
+        title: Environment Configuration
+        guidance: >-
+          State how the environments listed in {sec:application/environments}
+          differ in configuration, data and security.
+        artefacts: []
+
+  - key: security
+    title: Security & Controls
+    question: How is it protected, and what risk remains?
+    story: the controls the design relies on and the residual risk we accept
+    picture: {kind: matrix, from: control, by: area}
+    deck: {run: 2}
+    viewpoints: [control-traceability]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the control traceability view with a VIEW directive.
+        artefacts: []
+      - key: identity
+        title: Identity & Access Management
+        guidance: >-
+          State how each actor authenticates ({p:systems.identity.name}), how
+          their access is decided, who approves it and how often it is
+          recertified.
+        artefacts: ["control where area=identity"]
+      - key: privileged-access
+        title: Privileged Access
+        guidance: >-
+          List the privileged roles, how they gain access, who approves it, how
+          it is logged and the break-glass procedure.
+        artefacts: ["control where area=privileged-access"]
+      - key: data-protection
+        title: Data Protection
+        guidance: >-
+          State the controls for data at rest, in transit and in use: encryption,
+          key ownership, masking and backup protection.
+        artefacts: ["control where area=data-protection"]
+      - key: network-security
+        title: Network Security
+        guidance: >-
+          State the control at each network boundary and how the design uses it.
+        artefacts: ["control where area=network"]
+      - key: monitoring
+        title: Security Monitoring
+        guidance: >-
+          List the security events we detect, their source, how they are
+          detected, who is alerted and the response procedure.
+        artefacts: ["control where area=monitoring"]
+      - key: residual-risk
+        title: Security Risks & Residual Risk
+        guidance: >-
+          List the security risks with their inherent rating, the control that
+          treats each, the residual rating and who accepts it.
+        artefacts: ["risk where category=security"]
+
+  - key: nfr
+    title: Non-Functional Requirements Realisation
+    question: How does the design meet its quality targets?
+    story: each quality target, the design response and how we will prove it
+    picture: {kind: matrix, from: nfr, by: category}
+    deck: {run: 2}
+    viewpoints: [project-traceability]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the NFR traceability view with a VIEW directive.
+        artefacts: []
+      - key: availability
+        title: Availability
+        guidance: >-
+          State the availability target, the design that achieves it, how it is
+          tested and the evidence.
+        artefacts: ["nfr where category=availability"]
+      - key: performance
+        title: Performance
+        guidance: >-
+          State the latency and throughput targets under expected load, the
+          design response and the test.
+        artefacts: ["nfr where category=performance"]
+      - key: scalability
+        title: Scalability
+        guidance: >-
+          State the growth the design must absorb, how it scales and where the
+          limit is.
+        artefacts: ["nfr where category=scalability"]
+      - key: resilience
+        title: Resilience & Disaster Recovery
+        guidance: >-
+          State the recovery time and recovery point objectives, the failure
+          modes designed for, and how recovery is tested.
+        artefacts: ["nfr where category=resilience"]
+      - key: supportability
+        title: Supportability
+        guidance: >-
+          State what makes the service supportable: ownership, configuration
+          records, diagnostics and knowledge, with evidence.
+        artefacts: ["nfr where category=supportability"]
+      - key: observability
+        title: Observability
+        guidance: >-
+          State what we observe, from which source, in which tool
+          ({p:systems.monitoring.name}), at what threshold, and which alerts lead
+          to a runbook.
+        artefacts: ["nfr where category=observability"]
+
+  # ---------------------------------------------------------------- run 3
+  - key: decisions
+    title: Local Architecture Decisions, Deviations & Exceptions
+    question: What did we decide, and where do we depart from the standard?
+    story: the decisions taken in this design and every departure needing approval
+    picture: {kind: bars, from: decision, by: status}
+    deck: {run: 3}
+    viewpoints: []
+    sections:
+      - key: decisions
+        title: Local Architecture Decisions
+        guidance: >-
+          Record each decision this design takes: the context, the options
+          considered, the choice, why, and what follows from it, including any
+          technical debt taken on.
+        artefacts: [decision]
+      - key: deviations
+        title: Parent Architecture Deviations
+        guidance: >-
+          Record each departure from the parent or reference architecture: what
+          it required, what we do instead, why, the impact and whether approval
+          is needed.
+        artefacts: ["exception where kind=deviation"]
+      - key: exceptions
+        title: Standard Exceptions
+        guidance: >-
+          Record each exception to an organisation standard: the standard, the
+          exception, the reason, the risk, the compensating control and when it
+          expires.
+        artefacts: ["exception where kind=standard"]
+      - key: view-exceptions
+        title: View Exceptions
+        when: systems.ea_metamodel
+        guidance: >-
+          Record each required view that was not produced, why, the impact and
+          what compensates for it.
+        artefacts: ["exception where kind=view"]
+
+  - key: operations
+    title: Operational Readiness & Service Transition
+    question: Who runs it, and are they ready?
+    story: ownership, support and readiness to take the service into operation
+    picture: {kind: matrix, from: readiness-item, by: area}
+    deck: {run: 3}
+    viewpoints: [operational-support]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the operational support view with a VIEW directive.
+        artefacts: []
+      - key: readiness
+        title: Operational Readiness Summary
+        guidance: >-
+          List each readiness area, its status, the evidence and its owner.
+          Anything not ready is an open item with an owner.
+        artefacts: [readiness-item]
+      - key: support-model
+        title: Service Ownership & Support Model
+        guidance: >-
+          Name the business, service, application and technical owners, the
+          support tiers and vendors, support and service hours, service levels,
+          escalation and the major incident path.
+        artefacts: []
+      - key: raci
+        title: Support RACI
+        guidance: >-
+          Give a responsible / accountable / consulted / informed matrix for the
+          support activities: triage, major incidents, problems, change, release,
+          access, runbooks, configuration records, monitoring and security
+          incidents.
+        artefacts: []
+      - key: service-records
+        title: "{p:systems.itsm.cmdb_title}"
+        when: systems.itsm.has_cmdb
+        guidance_on: systems.itsm.name
+        guidance: >-
+          Identify the configuration records the service needs in
+          {p:systems.itsm.name}: the services, applications, technical
+          components, integrations, locations and support groups, and who keeps
+          each current.
+        guidance_by:
+          servicenow: >-
+            Identify the records the service needs in the CMDB, following CSDM:
+            the business application, the application service, technical
+            services and their CIs, the relationships Service Mapping or
+            Discovery will populate, and the support and change groups on each.
+            Say which records Discovery creates and which are maintained by hand.
+          jira-service-management: >-
+            Identify the Assets objects the service needs: the object schema and
+            types for services, applications, components and locations, the
+            relationships between them, and the teams that own each. Say which
+            objects are imported and which are maintained by hand.
+        artefacts: []
+      - key: model-mapping
+        title: "Architecture Model to {p:systems.itsm.name} Mapping"
+        when: {all: [systems.itsm.has_cmdb, systems.ea_metamodel]}
+        guidance_on: systems.itsm.name
+        guidance: >-
+          Map each architecture model object type to the configuration record it
+          informs, and say how the two are kept in step.
+        guidance_by:
+          servicenow: >-
+            Map each architecture model object type to its CSDM interpretation
+            (business application, application service, technical service,
+            CI class), and say how the model and the CMDB are kept in step.
+          jira-service-management: >-
+            Map each architecture model object type to the Assets object type it
+            informs, and say how the model and Assets are kept in step.
+        artefacts: []
+
+  - key: monitoring
+    title: Monitoring & Event Management
+    question: How will we know it is unwell?
+    story: what we monitor, what alerts, and who it reaches
+    picture: {kind: bars, from: alert, by: severity}
+    deck: {run: 3}
+    viewpoints: [application-context]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the monitoring coverage view with a VIEW directive.
+        artefacts: []
+      - key: coverage
+        title: Monitoring Coverage
+        guidance: >-
+          List what is monitored ({p:systems.monitoring.name}): the area, source,
+          metric or event, threshold, who is alerted and the runbook.
+        artefacts: [alert]
+      - key: correlation
+        title: Event Correlation
+        guidance: >-
+          State how events are grouped, deduplicated and tied to the service
+          they affect, so one fault raises one incident.
+        artefacts: []
+      - key: event-mapping
+        title: Event to Configuration Record Mapping
+        when: systems.itsm.has_cmdb
+        guidance_on: systems.itsm.name
+        guidance: >-
+          Map each event source and type to the configuration record or service
+          it binds to in {p:systems.itsm.name}, the correlation rule and the
+          group alerted.
+        guidance_by:
+          servicenow: >-
+            Map each event source and type to the CI or application service it
+            binds to, the event rule or alert correlation rule, and the
+            assignment group. Events that bind to no CI are a gap.
+          jira-service-management: >-
+            Map each alert source to the Assets object and service it raises
+            against, the alert rule and the responder team. Alerts that reach no
+            service are a gap.
+        artefacts: []
+      - key: acceptance
+        title: Monitoring Acceptance Criteria
+        guidance: >-
+          State what must be true before monitoring is accepted: critical
+          journeys covered, alerts tested end to end, runbooks linked.
+        artefacts: ["acceptance-item where stage=monitoring"]
+
+  - key: service-processes
+    title: Service Management Process Readiness
+    question: Do the service processes know about it?
+    story: incident, change, request and knowledge processes ready for go-live
+    picture: {kind: swimlane, from: process-readiness}
+    deck: {run: 3}
+    viewpoints: [operational-support]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the views that support each process with VIEW directives.
+        artefacts: []
+      - key: itil-readiness
+        title: ITIL Practice Readiness
+        when: {systems.itsm.framework: itil}
+        guidance: >-
+          For each ITIL practice the service touches, state the design detail it
+          needs, the evidence required before go-live, the owner and the status.
+        artefacts: [process-readiness]
+      - key: process-readiness
+        title: Process Readiness
+        when: {not: {systems.itsm.framework: itil}}
+        guidance: >-
+          For each service process the service touches, state the design detail
+          it needs, the evidence required before go-live, the owner and the
+          status.
+        artefacts: [process-readiness]
+      - key: incident
+        title: Incident Management Design
+        guidance_on: systems.itsm.name
+        guidance: >-
+          State how incidents for this service are raised, categorised,
+          prioritised, assigned and escalated, and what makes one major.
+        guidance_by:
+          servicenow: >-
+            State the assignment groups, category and subcategory, the priority
+            matrix, the CI the incident is raised against, and the major incident
+            trigger and process.
+          jira-service-management: >-
+            State the service project and request types, the components and
+            Assets fields an incident carries, the priority and SLA goals, the
+            responder teams and the major incident trigger.
+        artefacts: ["process-readiness where process=incident"]
+      - key: change
+        title: Change Enablement Design
+        guidance_on: systems.itsm.name
+        guidance: >-
+          List the types of change this service will see, which need approval
+          from {p:forums.change.short}, their risk and lead time, and which are
+          candidates for standard change.
+        guidance_by:
+          servicenow: >-
+            List the change models this service uses (standard, normal,
+            emergency), the approval each needs from {p:forums.change.short},
+            the risk assessment, lead time and the standard change templates to
+            create.
+          jira-service-management: >-
+            List the change request types and workflows, the approvals each
+            needs from {p:forums.change.short}, how deployment gating links to
+            the pipeline, and which changes are pre-approved.
+        artefacts: ["process-readiness where process=change"]
+      - key: request
+        title: Request Fulfilment Design
+        when: systems.itsm
+        guidance_on: systems.itsm.name
+        guidance: >-
+          List the requests users can raise for this service, who may raise
+          them, the approval, who fulfils them and the service level.
+        guidance_by:
+          servicenow: >-
+            List the catalogue items, who may order them, the approval flow, the
+            fulfilment group and the service level, and which must exist at
+            go-live.
+          jira-service-management: >-
+            List the request types on the portal, who may raise them, the
+            approval step, the team that fulfils them and the SLA goal, and
+            which must exist at go-live.
+        artefacts: ["process-readiness where process=request"]
+      - key: knowledge
+        title: Knowledge Management
+        guidance_on: systems.itsm.name
+        guidance: >-
+          List the knowledge articles support needs on day one, who writes and
+          owns each, and who reads it.
+        guidance_by:
+          servicenow: >-
+            List the knowledge articles in the knowledge base the service desk
+            needs on day one, the knowledge base and audience of each, the owner,
+            and which support first-call resolution.
+          jira-service-management: >-
+            List the articles in the linked knowledge space that agents and the
+            portal need on day one, their audience and owner, and which deflect
+            requests.
+        artefacts: ["process-readiness where process=knowledge"]
+
+  - key: runbooks
+    title: Runbooks & Operational Procedures
+    question: Can support act without the build team?
+    story: the runbooks support needs and whether each has been tested
+    picture: {kind: matrix, from: runbook}
+    deck: {run: 3, min_slides: 2}
+    viewpoints: []
+    sections:
+      - key: required
+        title: Required Runbooks
+        guidance: >-
+          List the runbooks support needs, when each applies, its owner, where
+          it lives and its status.
+        artefacts: [runbook]
+      - key: acceptance
+        title: Operational Procedure Acceptance
+        guidance: >-
+          Record which procedures have been tested, when, by whom and with what
+          outcome. An untested runbook is an open item.
+        artefacts: ["runbook where tested=yes"]
+
+  # ---------------------------------------------------------------- run 4
+  - key: transition
+    title: Cutover, Release, Hypercare & Handover
+    question: How do we go live, and how do we back out?
+    story: the cutover path, the way back, and the handover to operations
+    picture: {kind: flow, from: cutover-step}
+    deck: {run: 4}
+    viewpoints: [release-scope]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the release scope view with a VIEW directive.
+        artefacts: []
+      - key: cutover
+        title: Cutover Plan
+        guidance: >-
+          List the cutover steps in order with owner, timing, dependency and the
+          points at which we can still roll back.
+        artefacts: [cutover-step]
+      - key: rollback
+        title: Rollback Plan
+        guidance: >-
+          For each failure that would stop the release, state the trigger, the
+          rollback action, the owner and the longest it may take.
+        artefacts: []
+      - key: hypercare
+        title: Hypercare Model
+        guidance: >-
+          State when hypercare starts and ends, who staffs it, how issues reach
+          it and how often it reports.
+        artefacts: []
+      - key: hypercare-exit
+        title: Hypercare Exit Criteria
+        guidance: >-
+          State the measurable conditions for leaving hypercare and the
+          evidence for each.
+        artefacts: ["acceptance-item where stage=hypercare-exit"]
+      - key: handover
+        title: Handover to Operations
+        guidance: >-
+          List what operations must accept before the build team steps back, the
+          owner of each acceptance and the evidence.
+        artefacts: ["readiness-item where area=handover"]
+
+  - key: risks
+    title: Risks, Issues & Dependencies
+    question: What could go wrong, and what already has?
+    story: the risks, issues and dependencies a reviewer must weigh
+    picture: {kind: heatmap, from: risk}
+    deck: {run: 4}
+    viewpoints: [control-traceability]
+    sections:
+      - key: architecture-risks
+        title: Architecture Risks
+        guidance: >-
+          Record each design risk: the cause, the consequence, likelihood,
+          impact, rating, mitigation and owner.
+        artefacts: ["risk where category=architecture"]
+      - key: operational-risks
+        title: Operational Risks
+        guidance: >-
+          Record each risk to running the service, its mitigation, the residual
+          rating and owner.
+        artefacts: ["risk where category=operational"]
+      - key: issues
+        title: Issues
+        guidance: >-
+          Record what has already gone wrong or is blocking, its impact, owner
+          and due date.
+        artefacts: [issue]
+      - key: dependencies
+        title: Dependencies
+        guidance: >-
+          Track each dependency: owner, date required, impact if late, and
+          status.
+        artefacts: [dependency]
+
+  - key: assurance
+    title: Architecture Assurance & Acceptance Evidence
+    question: What proves the design is ready for approval?
+    story: the acceptance checklist and the evidence behind each item
+    picture: {kind: matrix, from: acceptance-item, by: stage}
+    deck: {run: 4}
+    viewpoints: []
+    sections:
+      - key: checklist
+        title: Architecture Acceptance Checklist
+        guidance: >-
+          List what must be true for the design to be accepted, whether each is
+          required, the evidence, owner and status.
+        artefacts: ["acceptance-item where stage=design"]
+      - key: view-acceptance
+        title: View Acceptance Criteria
+        when: systems.ea_metamodel
+        guidance: >-
+          State what makes the required views acceptable: produced, linked,
+          consistent with the registers, and reviewed.
+        artefacts: ["acceptance-item where stage=views"]
+      - key: approval-criteria
+        title: Definition of Done for Approval
+        guidance: >-
+          State the conditions under which this document is complete enough to
+          approve, and the evidence for each.
+        artefacts: ["acceptance-item where stage=approval"]
+
+  - key: lifecycle
+    title: Decommissioning & Lifecycle Management
+    question: What retires, and when?
+    story: what this design replaces and how it is taken out of service
+    picture: {kind: timeline, from: retired-component}
+    deck: {run: 4, min_slides: 2}
+    viewpoints: [retirement-impact]
+    sections:
+      - key: views
+        title: Architecture Views
+        when: systems.ea_metamodel
+        guidance: >-
+          Show the retirement impact view with a VIEW directive.
+        artefacts: []
+      - key: retired
+        title: Retired & Replaced Components
+        guidance: >-
+          List each component retired or replaced, its owner, its replacement,
+          the date, what happens to its data and what changes in the
+          configuration records.
+        artefacts: [retired-component]
+      - key: decommissioning
+        title: Decommissioning Requirements
+        guidance: >-
+          List what must be done to take the old components out of service:
+          integrations removed, access revoked, data retained or destroyed,
+          licences ended, with owner, date and evidence.
+        artefacts: []
+
+  - key: appendix
+    title: Appendix
+    question: What does a reader need to look things up?
+    story: the glossary and the reference material behind the views
+    picture: {kind: bars, from: registers}
+    deck: {run: 4, min_slides: 2}
+    viewpoints: []
+    sections:
+      - key: glossary
+        title: Glossary
+        guidance: >-
+          Define the terms and acronyms a reviewer outside the team would not
+          know.
+        artefacts: [glossary-term]
+      - key: required-views
+        title: Required Diagrams & Views
+        guidance: >-
+          List every diagram and view the document needs, whether it is
+          required, its purpose and its source.
+        artefacts: []
+      - key: object-guide
+        title: Architecture Model Object Guide
+        when: systems.ea_metamodel
+        guidance: >-
+          Summarise the model behind the views with a CATALOGUE directive, and
+          say how each object type is used in this document.
+        artefacts: []
+      - key: repository-views
+        title: "{p:systems.ea_repository.name} Views"
+        when: systems.ea_repository
+        guidance: >-
+          List the views held in {p:systems.ea_repository.name}, what each is
+          required for and the object types it shows.
+        artefacts: []
+
+# -------------------------------------------------------------- artefacts
+#
+# Field types: a list is an enum; text, date, number; list (of text);
+# ref:<type> / refs:<type> (one or several ids of that type).
+# id, title and status are always present. status maps each value to a chip:
+# done, partial, not-started, tbc.
+
+artefact_types:
+
+  business-requirement:
+    label: Business requirement
+    prefix: BR
+    fields:
+      source: text
+      priority: [must, should, could, wont]
+      response: text
+      acceptance: text
+      satisfied_by: list
+      owner: text
+    labels: {title: Requirement, response: Design response}
+    columns: [id, title, source, priority, response, status]
+    status: {proposed: not-started, agreed: partial, designed: partial, verified: done, deferred: not-started, withdrawn: done}
+
+  functional-requirement:
+    label: Functional requirement
+    prefix: FR
+    fields:
+      traces_to: refs:business-requirement
+      priority: [must, should, could, wont]
+      response: text
+      acceptance: text
+      satisfied_by: list
+      owner: text
+    labels: {title: Requirement, traces_to: Traces to, response: Design response}
+    aliases: {traces_to: [source]}
+    columns: [id, title, traces_to, priority, response, status]
+    status: {proposed: not-started, agreed: partial, designed: partial, verified: done, deferred: not-started, withdrawn: done}
+
+  nfr:
+    label: Non-functional requirement
+    prefix: NFR
+    fields:
+      category: [availability, performance, scalability, resilience, security, privacy, supportability, observability, maintainability, compliance]
+      target: text
+      response: text
+      test: text
+      evidence: text
+      owner: text
+    labels: {title: Requirement, response: Design response, test: Test method}
+    columns: [id, category, title, target, response, status]
+    status: {proposed: not-started, agreed: partial, designed: partial, verified: done, deferred: not-started, withdrawn: done}
+
+  stakeholder:
+    label: Stakeholder
+    prefix: STK
+    fields:
+      name: text
+      team: text
+      interest: text
+      involvement: [approver, reviewer, contributor, informed]
+    labels: {title: Role, interest: Interest or concern}
+    aliases: {name: [stakeholder]}
+    columns: [id, title, name, team, interest, involvement]
+    status: {identified: not-started, engaged: partial, signed-off: done}
+
+  forum:
+    label: Governance forum
+    prefix: FOR
+    fields:
+      short: text
+      role: [design-authority, change, security, data, service-transition, steering, other]
+      purpose: text
+      decision: text
+      cadence: text
+      owner: text
+    labels: {title: Forum, decision: Decision or input}
+    columns: [id, title, purpose, decision, status]
+    status: {pending: not-started, scheduled: partial, conditional: partial, approved: done, rejected: not-started}
+
+  checkpoint:
+    label: Architecture checkpoint
+    prefix: CHK
+    fields:
+      stage: [initial, detailed, pre-production, post-implementation, other]
+      timing: text
+      date: date
+      forum: ref:forum
+      purpose: text
+      evidence: text
+      owner: text
+    labels: {title: Checkpoint}
+    columns: [id, title, timing, forum, evidence, status]
+    status: {planned: not-started, ready: partial, passed: done, failed: not-started}
+
+  decision:
+    label: Architecture decision
+    prefix: ADR
+    fields:
+      context: text
+      options: text
+      rationale: text
+      consequence: text
+      debt: [none, accepted, to-repay]
+      date: date
+      owner: text
+    labels: {title: Decision, debt: Technical debt}
+    columns: [id, title, rationale, consequence, owner, status]
+    status: {proposed: not-started, accepted: done, superseded: done, rejected: done}
+
+  decision-request:
+    label: Decision request
+    prefix: DRQ
+    fields:
+      area: text
+      ask: [approve, endorse, accept-risk, note]
+      forum: ref:forum
+      due: date
+      conditions: text
+      owner: text
+    labels: {title: Decision required, area: Decision area}
+    columns: [id, area, title, forum, due, status]
+    status: {draft: not-started, submitted: partial, conditional: partial, approved: done, declined: not-started}
+
+  assumption:
+    label: Assumption
+    prefix: ASM
+    fields:
+      impact: text
+      confidence: [low, medium, high]
+      validate_by: date
+      owner: text
+    labels: {title: Assumption, impact: Impact if false, validate_by: Validate by}
+    aliases: {validate_by: [validation date]}
+    columns: [id, title, impact, owner, validate_by, status]
+    status: {open: not-started, validated: done, invalid: partial}
+
+  constraint:
+    label: Constraint
+    prefix: CON
+    fields:
+      type: [time, cost, vendor, regulatory, technology, organisational]
+      impact: text
+      response: text
+      owner: text
+    labels: {title: Constraint, response: Design response}
+    columns: [id, title, type, impact, response, status]
+    status: {active: done, under-review: partial, lifted: done}
+
+  dependency:
+    label: Dependency
+    prefix: DEP
+    fields:
+      type: [business, technology, vendor, data, integration, security, platform]
+      provider: text
+      required_by: date
+      impact: text
+      owner: text
+    labels: {title: Dependency, provider: Depends on, required_by: Required by, impact: Impact if late}
+    columns: [id, title, type, owner, required_by, impact, status]
+    status: {open: not-started, in-progress: partial, at-risk: partial, met: done}
+
+  capability:
+    label: Capability
+    prefix: CAP
+    fields:
+      description: text
+      state: [current, target, both]
+      parent: ref:capability
+      realised_by: list
+      owner: text
+    labels: {title: Capability, realised_by: Realised by}
+    columns: [id, title, description, state, realised_by, status]
+    status: {identified: not-started, designed: partial, realised: done}
+
+  application:
+    label: Application
+    prefix: APP
+    fields:
+      purpose: text
+      state: [current, target, both]
+      change: [new, changed, unchanged, retired]
+      hosting: [saas, cloud, on-prem, hybrid]
+      role: [source, target, both, none]
+      lifecycle: [strategic, invest, tolerate, migrate, retire]
+      criticality: [high, medium, low]
+      repository: text
+      owner: text
+    labels: {title: Application, role: Integration role}
+    value_labels: {saas: SaaS, on-prem: On-premises}
+    columns: [id, title, purpose, change, owner, criticality, status]
+    status: {planned: not-started, in-build: partial, live: done, retired: done}
+
+  component:
+    label: Component
+    prefix: CMP
+    fields:
+      description: text
+      application: ref:application
+      layer: [experience, application, integration, data, platform]
+      runtime: text
+      data: text
+      interfaces: list
+      owner: text
+    labels: {title: Component, runtime: Hosting or runtime, data: Data held}
+    columns: [id, title, description, runtime, interfaces, owner, status]
+    status: {planned: not-started, in-build: partial, built: done, retired: done}
+
+  environment:
+    label: Environment
+    prefix: ENV
+    fields:
+      purpose: text
+      hosting: text
+      classification: [public, internal, confidential, restricted]
+      access: text
+      refresh: text
+      owner: text
+    labels: {title: Environment, classification: Data classification, access: Access controls, refresh: Refresh or masking}
+    columns: [id, title, purpose, classification, access, refresh, status]
+    status: {planned: not-started, provisioning: partial, ready: done, retired: done}
+
+  integration:
+    label: Integration
+    prefix: INT
+    fields:
+      source: text
+      target: text
+      interface: text
+      data: text
+      pattern: [api, event, file, etl, message, manual]
+      protocol: text
+      trigger: text
+      criticality: [high, medium, low]
+      state: [current, target]
+      failure: text
+      owner: text
+    labels: {title: Integration, trigger: Frequency or trigger, failure: Failure handling}
+    value_labels: {api: API, etl: ETL}
+    columns: [id, title, source, target, data, pattern, trigger, criticality, status]
+    status: {planned: not-started, in-build: partial, tested: partial, live: done, retired: done}
+
+  data-object:
+    label: Data object
+    prefix: DAT
+    fields:
+      description: text
+      category: text
+      source_of_truth: text
+      system_of_record: text
+      classification: [public, internal, confidential, restricted]
+      retention: text
+      owner: text
+    labels: {title: Data object, source_of_truth: Source of truth, system_of_record: System of record}
+    columns: [id, title, category, system_of_record, owner, classification, status]
+    status: {identified: not-started, modelled: partial, agreed: done}
+
+  data-flow:
+    label: Data flow
+    prefix: DF
+    fields:
+      data: ref:data-object
+      source: text
+      target: text
+      interface: ref:integration
+      classification: [public, internal, confidential, restricted]
+      transformation: text
+      frequency: text
+    labels: {title: Flow}
+    columns: [id, title, data, source, target, interface, frequency, status]
+    status: {planned: not-started, built: partial, verified: done}
+
+  control:
+    label: Control
+    prefix: CTL
+    fields:
+      area: [identity, privileged-access, data-protection, network, monitoring, application, compliance]
+      response: text
+      mitigates: refs:risk
+      evidence: text
+      owner: text
+    labels: {title: Control, response: Design response}
+    columns: [id, area, title, response, owner, status]
+    status: {planned: not-started, implemented: partial, verified: done}
+
+  risk:
+    label: Risk
+    prefix: RSK
+    fields:
+      category: [architecture, operational, security, delivery]
+      cause: text
+      consequence: text
+      likelihood: [low, medium, high]
+      impact: [low, medium, high]
+      rating: [low, medium, high, extreme]
+      mitigation: text
+      residual: [low, medium, high]
+      owner: text
+    labels: {title: Risk}
+    aliases: {rating: [inherent risk], mitigation: [control]}
+    columns: [id, title, likelihood, impact, rating, owner, status]
+    status: {open: not-started, mitigating: partial, mitigated: done, accepted: done, closed: done}
+
+  issue:
+    label: Issue
+    prefix: ISS
+    fields:
+      severity: [low, medium, high, critical]
+      impact: text
+      raised: date
+      due: date
+      owner: text
+    labels: {title: Issue}
+    columns: [id, title, severity, impact, owner, due, status]
+    status: {open: not-started, in-progress: partial, resolved: done, closed: done}
+
+  exception:
+    label: Deviation or exception
+    prefix: EXC
+    fields:
+      kind: [deviation, standard, view]
+      standard: text
+      reason: text
+      impact: text
+      risk: text
+      control: text
+      approval: [required, not-required]
+      expiry: date
+      owner: text
+    labels: {title: Exception, standard: Standard or requirement, control: Compensating control, expiry: Expiry or review}
+    columns: [id, title, standard, reason, impact, approval, status]
+    status: {draft: not-started, requested: partial, approved: done, declined: not-started, expired: not-started}
+
+  runbook:
+    label: Runbook
+    prefix: RBK
+    fields:
+      required_when: text
+      location: text
+      tested: ["yes", "no"]
+      test_date: date
+      tester: text
+      outcome: [pass, fail, not-run]
+      owner: text
+    labels: {title: Runbook, required_when: Required when, test_date: Test date}
+    columns: [id, title, required_when, owner, tested, status]
+    status: {required: not-started, draft: partial, published: partial, tested: done}
+
+  readiness-item:
+    label: Readiness item
+    prefix: RDY
+    fields:
+      area: [service-ownership, support, configuration-records, monitoring, processes, runbooks, knowledge, access, hypercare, handover]
+      evidence: text
+      owner: text
+    labels: {title: Readiness item}
+    columns: [id, area, title, evidence, owner, status]
+    status: {not-ready: not-started, in-progress: partial, ready: done, accepted: done}
+
+  process-readiness:
+    label: Process readiness
+    prefix: PRC
+    fields:
+      process: [incident, major-incident, problem, change, release, request, knowledge, event, configuration, availability, capacity, continuity, service-level]
+      design: text
+      evidence: text
+      owner: text
+    labels: {title: Readiness item, design: Design detail, evidence: Evidence before go-live}
+    columns: [id, process, design, evidence, owner, status]
+    status: {not-started: not-started, in-progress: partial, ready: done}
+
+  alert:
+    label: Alert
+    prefix: ALT
+    fields:
+      area: [availability, performance, capacity, errors, integration, security, data, cost]
+      source: text
+      metric: text
+      threshold: text
+      severity: [critical, high, medium, low]
+      target: text
+      runbook: ref:runbook
+      owner: text
+    labels: {title: Alert, metric: Metric or event, target: Alert target}
+    columns: [id, area, title, threshold, severity, target, runbook, status]
+    status: {planned: not-started, configured: partial, tested: done}
+
+  cutover-step:
+    label: Cutover step
+    prefix: CUT
+    fields:
+      order: number
+      start: text
+      finish: text
+      after: refs:cutover-step
+      rollback_point: ["yes", "no"]
+      owner: text
+    labels: {title: Activity, after: Depends on, rollback_point: Rollback point}
+    aliases: {order: [step], after: [dependency]}
+    columns: [id, title, owner, start, finish, after, rollback_point, status]
+    status: {planned: not-started, rehearsed: partial, done: done}
+
+  acceptance-item:
+    label: Acceptance item
+    prefix: ACC
+    fields:
+      stage: [design, integration, monitoring, views, approval, go-live, hypercare-exit]
+      required: ["yes", "no"]
+      target: text
+      evidence: text
+      owner: text
+    labels: {title: Acceptance item}
+    columns: [id, title, required, evidence, owner, status]
+    status: {open: not-started, in-progress: partial, met: done, waived: done}
+
+  retired-component:
+    label: Retired component
+    prefix: RET
+    fields:
+      object_type: [application, component, integration, technology, data]
+      replacement: text
+      date: date
+      data_retention: text
+      records_action: text
+      owner: text
+    labels: {title: Component, object_type: Object type, date: Decommission date, data_retention: Data retention, records_action: Configuration record action}
+    columns: [id, title, owner, replacement, date, data_retention, status]
+    status: {planned: not-started, in-progress: partial, retired: done}
+
+  glossary-term:
+    label: Glossary term
+    prefix: GLO
+    fields:
+      definition: text
+      domain: text
+      source: text
+    labels: {title: Term}
+    columns: [title, definition, domain]
+    status: {draft: partial, agreed: done}
+
+# ------------------------------------------------------------- viewpoints
+#
+# Each viewpoint names its equivalent in each EA metamodel arch-diagram
+# supports. null means the metamodel has no direct equivalent.
+
+viewpoints:
+  solution-context:
+    title: Solution Context
+    purpose: the solution among its requirements, capabilities, applications, data and technology
+    ea: {coreea: Core EA Master Diagram, archimate: Layered, togaf: Solution Concept, essential: Application Provider Summary}
+  project-traceability:
+    title: Requirement Traceability
+    purpose: requirements traced to what satisfies or realises them
+    ea: {coreea: Project Context, archimate: Requirements Realization, togaf: Project Context, essential: null}
+  business-outcome:
+    title: Business Outcome Alignment
+    purpose: drivers, goals and objectives traced to capabilities and requirements
+    ea: {coreea: Business Strategy Diagram, archimate: Goal Realization, togaf: Business Footprint, essential: null}
+  capability-map:
+    title: Capability Alignment
+    purpose: capabilities and the applications that realise them
+    ea: {coreea: Capability Diagram, archimate: Capability Map, togaf: Business Capability Map, essential: Business Capability to Application}
+  application-landscape:
+    title: Application Landscape
+    purpose: the applications in play, grouped by category and owner
+    ea: {coreea: Application Landscape Diagram, archimate: Application Structure, togaf: Application Portfolio catalog, essential: Application Portfolio catalog}
+  application-context:
+    title: Application Context
+    purpose: the subject application, its users, interfaces and neighbours
+    ea: {coreea: Application Context Diagram, archimate: Application Usage, togaf: Application Communication, essential: Application Provider Summary}
+  application-components:
+    title: Application Components
+    purpose: the components of the solution and what hosts them
+    ea: {coreea: Application Reference Model, archimate: Application Structure, togaf: Processes/Application Realization, essential: Application Provider Summary}
+  integration-flows:
+    title: Integration Flows
+    purpose: applications, interfaces and the data that crosses them
+    ea: {coreea: Application Integration Diagram, archimate: Application Cooperation, togaf: Application Communication, essential: Application Information Dependency}
+  logical-data:
+    title: Logical Data
+    purpose: data objects by category and how they relate
+    ea: {coreea: Logical Data Diagram, archimate: Information Structure, togaf: Logical Data, essential: Information Model}
+  crud:
+    title: Data Access Matrix
+    purpose: which application or role creates, reads, updates or deletes which data
+    ea: {coreea: CRUD matrix, archimate: null, togaf: Application/Data matrix, essential: Application to Information CRUD matrix}
+  infrastructure:
+    title: Infrastructure
+    purpose: technology by location and what is hosted on it
+    ea: {coreea: Infrastructure Diagram, archimate: Implementation and Deployment, togaf: Environments and Locations, essential: Technology Platform}
+  control-traceability:
+    title: Control Traceability
+    purpose: risks, the controls that treat them and the requirements behind them
+    ea: {coreea: Risk Catalogue, archimate: Motivation, togaf: Requirements catalog, essential: null}
+  operational-support:
+    title: Operational Support
+    purpose: the organisations and roles that own and support each part
+    ea: {coreea: Organization Diagram, archimate: Organization, togaf: Organization Decomposition, essential: Organisation Summary}
+  release-scope:
+    title: Release Scope
+    purpose: what each release delivers and what it moves from and to
+    ea: {coreea: Project Context, archimate: Implementation and Migration, togaf: Project Context, essential: Strategic Plan Roadmap}
+  retirement-impact:
+    title: Retirement Impact
+    purpose: what is retired and everything connected to it
+    ea: {coreea: Application Landscape Diagram, archimate: Migration, togaf: Application Portfolio catalog, essential: Application Portfolio catalog}

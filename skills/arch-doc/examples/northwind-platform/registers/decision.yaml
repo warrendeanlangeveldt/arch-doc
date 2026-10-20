@@ -1,0 +1,87 @@
+# Architecture decision register (decision). One record per item; ids are ADR-nn.
+# Fields: id, title, status
+#   context: text
+#   options: text
+#   rationale: text
+#   consequence: text
+#   debt: none | accepted | to-repay
+#   date: date
+#   owner: text
+# Status: proposed (not-started), accepted (done), superseded (done), rejected (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ADR-01
+  title: Each environment runs in its own zone
+  context: Consumers need production isolated from test without building their own networks
+  options: One shared zone with policy separation; one zone per environment
+  rationale: Separate zones keep a test change from reaching production and make access reviews per environment
+  consequence: Consumers deploy once per zone; the platform provides its services in each
+  debt: none
+  date: '2026-09-14'
+  owner: Platform architect
+  status: accepted
+
+- id: ADR-02
+  title: Consumers reach platform services only through published interfaces
+  context: Early consumers integrated directly with broker internals
+  options: Allow direct access with review; publish interfaces and close direct paths
+  rationale: Published interfaces let the platform change its internals without breaking consumers
+  consequence: Two early consumers move to the published interfaces before go-live (ISS-02)
+  debt: to-repay
+  date: '2026-10-02'
+  owner: Platform architect
+  status: accepted
+
+- id: ADR-03
+  title: Events are delivered at least once and consumers discard duplicates
+  context: Exactly-once delivery costs latency and ties consumers to one broker feature
+  options: Exactly-once delivery; at-least-once with idempotent consumers
+  rationale: At-least-once keeps latency under target and is what most consumers already handle (ASM-01)
+  consequence: Every consumer keys its processing on the event id; onboarding tests it
+  debt: none
+  date: '2026-09-28'
+  owner: Platform architect
+  status: accepted
+
+- id: ADR-04
+  title: The producing team owns each topic and its schema
+  context: A central team approving every topic would slow every change
+  options: Central topic ownership; ownership by the producing team
+  rationale: The producer knows the data and answers for it; the platform enforces the envelope only
+  consequence: Each topic has a named owner in the catalogue, who approves subscribers (CTL-02)
+  debt: none
+  date: '2026-09-28'
+  owner: Platform architect
+  status: accepted
+
+- id: ADR-05
+  title: A schema registry checks events at publish, after release 1
+  context: Schema changes have broken readers before; a registry adds build effort release 1 cannot absorb
+  options: Registry in release 1; registry in release 2 with manual review until then
+  rationale: Release 1 date holds; review by the platform team covers the gap
+  consequence: RSK-04 stays high until FR-08 is built
+  debt: accepted
+  date: '2026-10-09'
+  owner: Platform architect
+  status: proposed
+
+- id: ADR-06
+  title: Workloads read secrets at runtime; pipelines hold none
+  context: Team-run queues keep connection strings in pipeline variables
+  options: Secrets injected by the pipeline; secrets read at runtime with workload identity
+  rationale: Nothing to leak from a pipeline; rotation needs no redeployment
+  consequence: Workloads must handle the rotation notice and reload (RBK-04)
+  debt: none
+  date: '2026-10-02'
+  owner: Security architect
+  status: accepted
+
+- id: ADR-07
+  title: The workflow runtime is a managed service
+  context: Self-hosting a workflow engine needs skills the team does not have
+  options: Self-hosted open-source engine; managed workflow service
+  rationale: The managed service removes patching and scaling work from a team of six
+  consequence: Workflow definitions follow the managed service's model; moving later means rewriting them
+  debt: none
+  date: '2026-10-12'
+  owner: Platform architect
+  status: accepted

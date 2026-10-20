@@ -1,0 +1,31 @@
+# Assumption register (assumption). One record per item; ids are ASM-nn.
+# Fields: id, title, status
+#   impact: text
+#   confidence: low | medium | high
+#   validate_by: date
+#   owner: text
+# Status: open (not-started), validated (done), invalid (partial)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ASM-01
+  title: Carriers A and C keep their webhook payloads stable
+  impact: Webhook receiver changes on the carriers' timetable, not ours
+  confidence: medium
+  validate_by: '2027-01-31'
+  owner: Integration lead
+  status: open
+
+- id: ASM-02
+  title: Peak weeks carry three times the normal daily scans
+  impact: Scaling limits would need a new test before November 2027
+  confidence: medium
+  validate_by: '2027-09-30'
+  owner: Depot operations manager
+  status: open
+
+- id: ASM-03
+  title: Depot handhelds buffer at least eight hours of scans offline
+  impact: Scans are lost in long outages at the two regional depots
+  confidence: high
+  validate_by: '2026-11-30'
+  owner: Depot operations manager
+  status: validated

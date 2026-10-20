@@ -1,0 +1,72 @@
+# Stakeholder register (stakeholder). One record per item; ids are STK-nn.
+# Fields: id, title, status
+#   name: text
+#   team: text
+#   interest: text
+#   involvement: approver | reviewer | contributor | informed
+# Status: identified (not-started), engaged (partial), signed-off (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: STK-01
+  title: Head of Parcels
+  name: Tom Okafor
+  team: Parcels
+  interest: Customer experience and the business case
+  involvement: approver
+  status: engaged
+
+- id: STK-02
+  title: Product owner, tracking
+  team: Parcels digital
+  interest: Scope, priorities and the customer journeys
+  involvement: contributor
+  status: engaged
+
+- id: STK-03
+  title: Depot operations manager
+  team: Depot operations
+  interest: Handheld behaviour, depot connectivity and the dashboard
+  involvement: reviewer
+  status: engaged
+
+- id: STK-04
+  title: Customer service manager
+  team: Customer service
+  interest: Agent lookups and fewer carrier calls
+  involvement: reviewer
+  status: engaged
+
+- id: STK-05
+  title: Integration lead
+  team: Parcels digital
+  interest: Carrier, depot and platform integrations
+  involvement: contributor
+  status: engaged
+
+- id: STK-06
+  title: Service owner
+  name: 'TBC: Head of Parcels'
+  team: Technology Operations
+  interest: Support model, incidents and service levels
+  involvement: approver
+  status: identified
+
+- id: STK-07
+  title: Security architect
+  team: Cyber Security
+  interest: Public lookup, webhooks and staff access
+  involvement: approver
+  status: engaged
+
+- id: STK-08
+  title: Privacy officer
+  team: Legal and Privacy
+  interest: Customer contact data
+  involvement: reviewer
+  status: engaged
+
+- id: STK-09
+  title: Platform product manager
+  team: Platform Engineering
+  interest: Onboarding the tracking solution as a consumer
+  involvement: informed
+  status: engaged

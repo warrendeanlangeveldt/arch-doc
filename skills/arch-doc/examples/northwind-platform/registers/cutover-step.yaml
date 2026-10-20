@@ -1,0 +1,73 @@
+# Cutover step register (cutover-step). One record per item; ids are CUT-nn.
+# Fields: id, title, status
+#   order: number
+#   start: text
+#   finish: text
+#   after: refs:cutover-step
+#   rollback_point: yes | no
+#   owner: text
+# Status: planned (not-started), rehearsed (partial), done (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CUT-01
+  order: 1
+  title: Production zone provisioned and network connected
+  start: '2027-01-11'
+  finish: '2027-01-13'
+  rollback_point: 'no'
+  owner: Platform engineering lead
+  status: planned
+
+- id: CUT-02
+  order: 2
+  title: Security sign-off and go-live change approved
+  start: '2027-01-13'
+  finish: '2027-01-14'
+  after:
+  - CUT-01
+  rollback_point: 'no'
+  owner: Platform support lead
+  status: planned
+
+- id: CUT-03
+  order: 3
+  title: Gateway, broker, secrets store and workflow runtime deployed
+  start: '2027-01-18'
+  finish: '2027-01-18'
+  after:
+  - CUT-02
+  rollback_point: 'yes'
+  owner: Platform engineering lead
+  status: rehearsed
+
+- id: CUT-04
+  order: 4
+  title: Telemetry and incident forwarding switched on
+  start: '2027-01-18'
+  finish: '2027-01-19'
+  after:
+  - CUT-03
+  rollback_point: 'yes'
+  owner: Platform engineering lead
+  status: planned
+
+- id: CUT-05
+  order: 5
+  title: Pilot consumer onboarded in production
+  start: '2027-01-20'
+  finish: '2027-01-21'
+  after:
+  - CUT-04
+  rollback_point: 'yes'
+  owner: Platform product manager
+  status: planned
+
+- id: CUT-06
+  order: 6
+  title: Platform open to all registered consumers; hypercare starts
+  start: '2027-01-25'
+  finish: '2027-01-25'
+  after:
+  - CUT-05
+  rollback_point: 'no'
+  owner: Head of Platform
+  status: planned

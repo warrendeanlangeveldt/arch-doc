@@ -1,0 +1,49 @@
+# Decision request register (decision-request). One record per item; ids are DRQ-nn.
+# Fields: id, title, status
+#   area: text
+#   ask: approve | endorse | accept-risk | note
+#   forum: ref:forum
+#   due: date
+#   conditions: text
+#   owner: text
+# Status: draft (not-started), submitted (partial), conditional (partial), approved (done), declined (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DRQ-01
+  area: Design
+  title: Approve the parcel tracking design for build
+  ask: approve
+  forum: FOR-01
+  due: '2026-12-03'
+  conditions: Privacy and security reviews passed
+  owner: Solution architect
+  status: draft
+
+- id: DRQ-02
+  area: Parent architecture
+  title: Approve polling carrier B until it offers webhooks
+  ask: approve
+  forum: FOR-01
+  due: '2026-12-03'
+  conditions: Review when carrier B's contract renews
+  owner: Integration lead
+  status: draft
+
+- id: DRQ-03
+  area: Data
+  title: Approve keeping parcel history online for eighteen months
+  ask: approve
+  forum: FOR-03
+  due: '2026-11-19'
+  conditions: Contact data excluded and deleted after 30 days
+  owner: Data owner
+  status: submitted
+
+- id: DRQ-04
+  area: Delivery
+  title: Accept the risk that the platform reaches production late
+  ask: accept-risk
+  forum: FOR-05
+  due: '2026-12-10'
+  conditions: Go/no-go on 1 February against DEP-01
+  owner: Head of Parcels
+  status: draft

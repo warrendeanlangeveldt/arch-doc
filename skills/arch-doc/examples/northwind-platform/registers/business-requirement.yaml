@@ -1,0 +1,68 @@
+# Business requirement register (business-requirement). One record per item; ids are BR-nn.
+# Fields: id, title, status
+#   source: text
+#   priority: must | should | could | wont
+#   response: text
+#   acceptance: text
+#   satisfied_by: list
+#   owner: text
+# Status: proposed (not-started), agreed (partial), designed (partial), verified (done), deferred (not-started), withdrawn (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: BR-01
+  title: Teams integrate through shared platform services instead of building their own
+  source: Technology strategy 2026-2028
+  priority: must
+  response: The platform offers the gateway, event broker, workflow runtime and secrets store as shared services in every environment
+  acceptance: Two consumer teams in production on shared services with no team-run broker or gateway
+  satisfied_by:
+  - CMP-01
+  - CMP-02
+  - CMP-03
+  - CMP-04
+  owner: Head of Platform
+  status: designed
+
+- id: BR-02
+  title: A new consumer is onboarded within ten working days
+  source: Consumer team survey, August 2026
+  priority: must
+  response: Self-service onboarding through the platform portal, with templated environments and access requests
+  acceptance: Median onboarding time measured over the first five consumers
+  satisfied_by:
+  - CMP-07
+  - CMP-08
+  owner: Platform product manager
+  status: designed
+
+- id: BR-03
+  title: Integration failures are visible to the owning team within minutes
+  source: Post-incident review of the June 2026 manifest outage
+  priority: must
+  response: Per-consumer telemetry, dead-letter alerts routed to the owning team
+  acceptance: Injected failure reaches the owning team's alert channel within five minutes
+  satisfied_by:
+  - CMP-06
+  owner: Platform engineering lead
+  status: designed
+
+- id: BR-04
+  title: Every access to shared integration data is auditable
+  source: Internal audit finding IA-2026-07
+  priority: must
+  response: All management and data-plane access is logged to a write-once audit store
+  acceptance: Audit sample traces ten accesses to a named identity
+  satisfied_by:
+  - CTL-10
+  owner: Security architect
+  status: agreed
+
+- id: BR-05
+  title: Platform costs are shown back to each consuming team
+  source: Finance operating model
+  priority: should
+  response: Usage tagged by consumer and reported monthly
+  acceptance: 'TBC: Platform product manager'
+  satisfied_by:
+  - CMP-06
+  owner: Platform product manager
+  status: proposed

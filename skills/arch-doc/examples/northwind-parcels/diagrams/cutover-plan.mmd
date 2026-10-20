@@ -1,0 +1,18 @@
+gantt
+  title Parcel tracking cutover, 2027
+  dateFormat YYYY-MM-DD
+  axisFormat %d %b
+  todayMarker off
+  section Gate
+  Platform go or no-go (CUT-01)          :milestone, c1, 2027-02-01, 0d
+  section Cutover
+  Deploy dark (CUT-02)                   :c2, 2027-03-01, 1d
+  Pilot depot (CUT-03)                   :c3, 2027-03-02, 4d
+  Carrier webhooks and polling (CUT-04)  :c4, 2027-03-08, 2d
+  All depots (CUT-05)                    :c5, 2027-03-10, 8d
+  Website and agents (CUT-06)            :c6, 2027-03-18, 1d
+  Notifications on (CUT-07)              :c7, 2027-03-22, 1d
+  Legacy lookup read-only (CUT-08)       :milestone, c8, 2027-03-26, 0d
+  section After go-live
+  Hypercare                              :h1, 2027-03-26, 2027-04-23
+  Legacy lookup read-only period         :h2, 2027-03-26, 2027-06-30

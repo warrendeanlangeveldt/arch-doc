@@ -1,0 +1,4 @@
+- {id: DF-01, title: Booking captured, data: DAT-01, source: Customer Portal, target: Booking Service, interface: INT-01, frequency: Per booking, status: built}
+- {id: DF-02, title: Booking sent, data: DAT-01, source: Booking Service, target: Carrier Gateway, interface: INT-02, frequency: Per booking, status: built}
+- {id: DF-03, title: Reference returned, data: DAT-02, source: Carrier Gateway, target: Booking Service, interface: INT-03, frequency: Per booking, status: planned}
+- {id: DF-04, title: Charges posted, data: DAT-03, source: Booking Service, target: Finance Ledger, interface: INT-04, frequency: Daily, status: planned}

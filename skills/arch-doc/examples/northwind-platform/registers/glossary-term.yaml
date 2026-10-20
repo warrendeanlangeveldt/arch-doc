@@ -1,0 +1,60 @@
+# Glossary term register (glossary-term). One record per item; ids are GLO-nn.
+# Fields: id, title, status
+#   definition: text
+#   domain: text
+#   source: text
+# Status: draft (partial), agreed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: GLO-01
+  title: At-least-once delivery
+  definition: Every event reaches each subscriber one or more times; subscribers discard duplicates
+  domain: Messaging
+  status: agreed
+
+- id: GLO-02
+  title: Consumer
+  definition: A team, and its services, that uses the platform
+  domain: Platform
+  status: agreed
+
+- id: GLO-03
+  title: Dead-letter queue
+  definition: Where an event goes after delivery retries are exhausted
+  domain: Messaging
+  status: agreed
+
+- id: GLO-04
+  title: Event envelope
+  definition: The platform's standard metadata wrapped around every event
+  domain: Messaging
+  status: agreed
+
+- id: GLO-05
+  title: Idempotent
+  definition: 'Safe to repeat: doing it twice has the same effect as once'
+  domain: Messaging
+  status: agreed
+
+- id: GLO-06
+  title: Partition key
+  definition: The value that decides which events stay in order with each other
+  domain: Messaging
+  status: agreed
+
+- id: GLO-07
+  title: RPO and RTO
+  definition: Recovery point objective (data we may lose) and recovery time objective (time to restore)
+  domain: Resilience
+  status: agreed
+
+- id: GLO-08
+  title: Workload identity
+  definition: An identity issued to a running service rather than a person
+  domain: Security
+  status: agreed
+
+- id: GLO-09
+  title: Zone
+  definition: An isolated set of cloud resources and network for one environment
+  domain: Platform
+  status: agreed

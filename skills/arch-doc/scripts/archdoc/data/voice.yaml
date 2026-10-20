@@ -1,0 +1,77 @@
+# Phrases the `voice` check warns about (SPEC 1, Writing). A design is written
+# declaratively and briefly, in the first person plural, with no marketing
+# words and no padding. Each entry is matched case-insensitively on word
+# boundaries; entries under `patterns` are regular expressions.
+#
+# Text inside `code` or "double quotes" is not checked, so a sentence can
+# quote a banned phrase.
+
+marketing:
+  - seamless
+  - seamlessly
+  - robust
+  - cutting-edge
+  - cutting edge
+  - world-class
+  - best-in-class
+  - best of breed
+  - state-of-the-art
+  - next-generation
+  - next-gen
+  - game-changer
+  - game-changing
+  - revolutionary
+  - revolutionise
+  - revolutionize
+  - leverage
+  - leverages
+  - leveraging
+  - synergy
+  - synergies
+  - unlock
+  - unlocks
+  - empower
+  - empowers
+  - empowering
+  - transformative
+  - holistic
+  - turnkey
+  - paradigm
+  - frictionless
+  - effortless
+  - effortlessly
+  - innovative
+  - unparalleled
+  - future-proof
+  - industry-leading
+  - supercharge
+  - delve
+  - plethora
+  - myriad
+
+padding:
+  - it is important to note
+  - it is worth noting
+  - it's worth noting
+  - needless to say
+  - at the end of the day
+  - in today's
+  - rest assured
+
+self-reference:
+  - this section
+  - this slide
+  - this chapter
+  - this deck
+  - in the following section
+  - as mentioned above
+  - as discussed above
+  - as described above
+
+patterns:
+  # "It's not X, it's Y" and its relatives.
+  reversal: '\b(?:it|this|that)(?:''s| is|’s) not (?:just |only |merely |about )?[^.;:!?]{1,60}?[,;—–-]+\s*(?:it|this|that)(?:''s| is|’s)\b'
+  reversal-sentence: '\b(?:it|this|that) is not (?:a|an|the|about)\b[^.!?]{0,60}\.\s*(?:it|this|that) is\b'
+  not-just-but: '\bnot (?:just|only|merely) [^.;:!?]{1,60}?,? but (?:also )?\b'
+  less-about-more-about: '\bless about [^.;:!?]{1,60}? and more about\b'
+  isnt-about: '\bisn[''’]t (?:about|just) [^.;:!?]{1,60}?[,;—–-]+\s*it[''’]s\b'

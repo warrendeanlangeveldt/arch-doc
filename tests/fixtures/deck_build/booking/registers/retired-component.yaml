@@ -1,0 +1,2 @@
+- {id: RET-01, title: Booking Spreadsheet, object_type: application, replacement: Booking Service, date: 2027-01-15, owner: Depot manager, status: planned}
+- {id: RET-02, title: Fax confirmations, object_type: integration, replacement: Carrier Gateway, date: 2027-03-01, owner: Integration lead, status: planned}

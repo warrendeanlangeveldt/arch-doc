@@ -1,0 +1,1320 @@
+# The seed metamodel trimmed to five chapters for the checks fixtures.
+# test_checks.py asserts these chapters still match the seed's.
+name: checks-fixture
+version: 1
+document_kinds:
+  capability:
+    purpose: a platform or zone other designs build on
+    excludes:
+    - application/channels
+  solution:
+    purpose: one solution, on the platforms it depends on
+deck:
+  runs:
+    1: Why and what
+    2: The design
+    3: Running it
+    4: Delivering and governing
+chapters:
+- key: application
+  title: Application & Component Architecture
+  question: What are the parts, and what does each do?
+  story: the applications and components in scope and the environments they run in
+  picture:
+    kind: map
+    from: application
+  deck:
+    run: 2
+  viewpoints:
+  - application-context
+  - application-components
+  sections:
+  - key: views
+    title: Architecture Views
+    when: systems.ea_metamodel
+    guidance: Show the application context and component views with VIEW directives.
+    artefacts: []
+  - key: scope
+    title: Application Scope
+    guidance: List each application and component the design adds, changes or retires, with its purpose,
+      owner and criticality.
+    artefacts:
+    - application where state=target|both
+  - key: components
+    title: Component Design
+    guidance: 'Describe each component: what it does, where it runs, what data it holds, the interfaces
+      it exposes or calls, and who owns it.'
+    artefacts:
+    - component
+  - key: environments
+    title: Environments
+    guidance: List the environments, their purpose, the data classification each may hold, how access
+      is controlled and how data is refreshed or masked.
+    artefacts:
+    - environment
+  - key: channels
+    title: User Experience & Channels
+    guidance: List each user group, the channel they use, how they sign in, how their access is decided
+      and the journeys that matter most.
+    artefacts: []
+- key: integration
+  title: Integration & API Architecture
+  question: How does it talk to everything else?
+  story: every integration, its contract and what happens when it fails
+  picture:
+    kind: map
+    from: integration
+  deck:
+    run: 2
+  viewpoints:
+  - integration-flows
+  sections:
+  - key: views
+    title: Architecture Views
+    when: systems.ea_metamodel
+    guidance: Show the integration flow view with a VIEW directive.
+    artefacts: []
+  - key: overview
+    title: Integration Overview
+    guidance: 'List every integration: source, target, interface, data, pattern, protocol, trigger and
+      criticality. The register is the source of truth; prose describes the shape, not the rows.'
+    artefacts:
+    - integration where state=target
+  - key: contracts
+    title: Interface Contracts
+    guidance: 'For each interface that is new or changed, give the contract a builder needs at design
+      level: operations, payload, authentication, versioning and error behaviour. Field-level detail can
+      sit in a linked specification.'
+    artefacts: []
+  - key: failure-handling
+    title: Integration Failure Handling
+    guidance: For each integration, name the failure that matters, its business impact, how we detect
+      it, how we recover and who acts.
+    covers: integration
+    artefacts: []
+  - key: acceptance
+    title: Integration Acceptance Criteria
+    guidance: State what must be true before the integrations are accepted and the evidence for each.
+    artefacts:
+    - acceptance-item where stage=integration
+- key: decisions
+  title: Local Architecture Decisions, Deviations & Exceptions
+  question: What did we decide, and where do we depart from the standard?
+  story: the decisions taken in this design and every departure needing approval
+  picture:
+    kind: bars
+    from: decision
+    by: status
+  deck:
+    run: 3
+  viewpoints: []
+  sections:
+  - key: decisions
+    title: Local Architecture Decisions
+    guidance: 'Record each decision this design takes: the context, the options considered, the choice,
+      why, and what follows from it, including any technical debt taken on.'
+    artefacts:
+    - decision
+  - key: deviations
+    title: Parent Architecture Deviations
+    guidance: 'Record each departure from the parent or reference architecture: what it required, what
+      we do instead, why, the impact and whether approval is needed.'
+    artefacts:
+    - exception where kind=deviation
+  - key: exceptions
+    title: Standard Exceptions
+    guidance: 'Record each exception to an organisation standard: the standard, the exception, the reason,
+      the risk, the compensating control and when it expires.'
+    artefacts:
+    - exception where kind=standard
+  - key: view-exceptions
+    title: View Exceptions
+    when: systems.ea_metamodel
+    guidance: Record each required view that was not produced, why, the impact and what compensates for
+      it.
+    artefacts:
+    - exception where kind=view
+- key: risks
+  title: Risks, Issues & Dependencies
+  question: What could go wrong, and what already has?
+  story: the risks, issues and dependencies a reviewer must weigh
+  picture:
+    kind: heatmap
+    from: risk
+  deck:
+    run: 4
+  viewpoints:
+  - control-traceability
+  sections:
+  - key: architecture-risks
+    title: Architecture Risks
+    guidance: 'Record each design risk: the cause, the consequence, likelihood, impact, rating, mitigation
+      and owner.'
+    artefacts:
+    - risk where category=architecture
+  - key: operational-risks
+    title: Operational Risks
+    guidance: Record each risk to running the service, its mitigation, the residual rating and owner.
+    artefacts:
+    - risk where category=operational
+  - key: issues
+    title: Issues
+    guidance: Record what has already gone wrong or is blocking, its impact, owner and due date.
+    artefacts:
+    - issue
+  - key: dependencies
+    title: Dependencies
+    guidance: 'Track each dependency: owner, date required, impact if late, and status.'
+    artefacts:
+    - dependency
+- key: appendix
+  title: Appendix
+  question: What does a reader need to look things up?
+  story: the glossary and the reference material behind the views
+  picture:
+    kind: bars
+    from: registers
+  deck:
+    run: 4
+    min_slides: 2
+  viewpoints: []
+  sections:
+  - key: glossary
+    title: Glossary
+    guidance: Define the terms and acronyms a reviewer outside the team would not know.
+    artefacts:
+    - glossary-term
+  - key: required-views
+    title: Required Diagrams & Views
+    guidance: List every diagram and view the document needs, whether it is required, its purpose and
+      its source.
+    artefacts: []
+  - key: object-guide
+    title: Architecture Model Object Guide
+    when: systems.ea_metamodel
+    guidance: Summarise the model behind the views with a CATALOGUE directive, and say how each object
+      type is used in this document.
+    artefacts: []
+  - key: repository-views
+    title: '{p:systems.ea_repository.name} Views'
+    when: systems.ea_repository
+    guidance: List the views held in {p:systems.ea_repository.name}, what each is required for and the
+      object types it shows.
+    artefacts: []
+artefact_types:
+  business-requirement:
+    label: Business requirement
+    prefix: BR
+    fields:
+      source: text
+      priority:
+      - must
+      - should
+      - could
+      - wont
+      response: text
+      acceptance: text
+      satisfied_by: list
+      owner: text
+    labels:
+      title: Requirement
+      response: Design response
+    columns:
+    - id
+    - title
+    - source
+    - priority
+    - response
+    - status
+    status:
+      proposed: not-started
+      agreed: partial
+      designed: partial
+      verified: done
+      deferred: not-started
+      withdrawn: done
+  functional-requirement:
+    label: Functional requirement
+    prefix: FR
+    fields:
+      traces_to: refs:business-requirement
+      priority:
+      - must
+      - should
+      - could
+      - wont
+      response: text
+      acceptance: text
+      satisfied_by: list
+      owner: text
+    labels:
+      title: Requirement
+      traces_to: Traces to
+      response: Design response
+    aliases:
+      traces_to: [source]
+    columns:
+    - id
+    - title
+    - traces_to
+    - priority
+    - response
+    - status
+    status:
+      proposed: not-started
+      agreed: partial
+      designed: partial
+      verified: done
+      deferred: not-started
+      withdrawn: done
+  nfr:
+    label: Non-functional requirement
+    prefix: NFR
+    fields:
+      category:
+      - availability
+      - performance
+      - scalability
+      - resilience
+      - security
+      - privacy
+      - supportability
+      - observability
+      - maintainability
+      - compliance
+      target: text
+      response: text
+      test: text
+      evidence: text
+      owner: text
+    labels:
+      title: Requirement
+      response: Design response
+      test: Test method
+    columns:
+    - id
+    - category
+    - title
+    - target
+    - response
+    - status
+    status:
+      proposed: not-started
+      agreed: partial
+      designed: partial
+      verified: done
+      deferred: not-started
+      withdrawn: done
+  stakeholder:
+    label: Stakeholder
+    prefix: STK
+    fields:
+      name: text
+      team: text
+      interest: text
+      involvement:
+      - approver
+      - reviewer
+      - contributor
+      - informed
+    labels:
+      title: Role
+      interest: Interest or concern
+    aliases:
+      name: [stakeholder]
+    columns:
+    - id
+    - title
+    - name
+    - team
+    - interest
+    - involvement
+    status:
+      identified: not-started
+      engaged: partial
+      signed-off: done
+  forum:
+    label: Governance forum
+    prefix: FOR
+    fields:
+      short: text
+      role:
+      - design-authority
+      - change
+      - security
+      - data
+      - service-transition
+      - steering
+      - other
+      purpose: text
+      decision: text
+      cadence: text
+      owner: text
+    labels:
+      title: Forum
+      decision: Decision or input
+    columns:
+    - id
+    - title
+    - purpose
+    - decision
+    - status
+    status:
+      pending: not-started
+      scheduled: partial
+      conditional: partial
+      approved: done
+      rejected: not-started
+  checkpoint:
+    label: Architecture checkpoint
+    prefix: CHK
+    fields:
+      stage:
+      - initial
+      - detailed
+      - pre-production
+      - post-implementation
+      - other
+      timing: text
+      date: date
+      forum: ref:forum
+      purpose: text
+      evidence: text
+      owner: text
+    labels:
+      title: Checkpoint
+    columns:
+    - id
+    - title
+    - timing
+    - forum
+    - evidence
+    - status
+    status:
+      planned: not-started
+      ready: partial
+      passed: done
+      failed: not-started
+  decision:
+    label: Architecture decision
+    prefix: ADR
+    fields:
+      context: text
+      options: text
+      rationale: text
+      consequence: text
+      debt:
+      - none
+      - accepted
+      - to-repay
+      date: date
+      owner: text
+    labels:
+      title: Decision
+      debt: Technical debt
+    columns:
+    - id
+    - title
+    - rationale
+    - consequence
+    - owner
+    - status
+    status:
+      proposed: not-started
+      accepted: done
+      superseded: done
+      rejected: done
+  decision-request:
+    label: Decision request
+    prefix: DRQ
+    fields:
+      area: text
+      ask:
+      - approve
+      - endorse
+      - accept-risk
+      - note
+      forum: ref:forum
+      due: date
+      conditions: text
+      owner: text
+    labels:
+      title: Decision required
+      area: Decision area
+    columns:
+    - id
+    - area
+    - title
+    - forum
+    - due
+    - status
+    status:
+      draft: not-started
+      submitted: partial
+      conditional: partial
+      approved: done
+      declined: not-started
+  assumption:
+    label: Assumption
+    prefix: ASM
+    fields:
+      impact: text
+      confidence:
+      - low
+      - medium
+      - high
+      validate_by: date
+      owner: text
+    labels:
+      title: Assumption
+      impact: Impact if false
+      validate_by: Validate by
+    aliases:
+      validate_by: [validation date]
+    columns:
+    - id
+    - title
+    - impact
+    - owner
+    - validate_by
+    - status
+    status:
+      open: not-started
+      validated: done
+      invalid: partial
+  constraint:
+    label: Constraint
+    prefix: CON
+    fields:
+      type:
+      - time
+      - cost
+      - vendor
+      - regulatory
+      - technology
+      - organisational
+      impact: text
+      response: text
+      owner: text
+    labels:
+      title: Constraint
+      response: Design response
+    columns:
+    - id
+    - title
+    - type
+    - impact
+    - response
+    - status
+    status:
+      active: done
+      under-review: partial
+      lifted: done
+  dependency:
+    label: Dependency
+    prefix: DEP
+    fields:
+      type:
+      - business
+      - technology
+      - vendor
+      - data
+      - integration
+      - security
+      - platform
+      provider: text
+      required_by: date
+      impact: text
+      owner: text
+    labels:
+      title: Dependency
+      provider: Depends on
+      required_by: Required by
+      impact: Impact if late
+    columns:
+    - id
+    - title
+    - type
+    - owner
+    - required_by
+    - impact
+    - status
+    status:
+      open: not-started
+      in-progress: partial
+      at-risk: partial
+      met: done
+  capability:
+    label: Capability
+    prefix: CAP
+    fields:
+      description: text
+      state:
+      - current
+      - target
+      - both
+      parent: ref:capability
+      realised_by: list
+      owner: text
+    labels:
+      title: Capability
+      realised_by: Realised by
+    columns:
+    - id
+    - title
+    - description
+    - state
+    - realised_by
+    - status
+    status:
+      identified: not-started
+      designed: partial
+      realised: done
+  application:
+    label: Application
+    prefix: APP
+    fields:
+      purpose: text
+      state:
+      - current
+      - target
+      - both
+      change:
+      - new
+      - changed
+      - unchanged
+      - retired
+      hosting:
+      - saas
+      - cloud
+      - on-prem
+      - hybrid
+      role:
+      - source
+      - target
+      - both
+      - none
+      lifecycle:
+      - strategic
+      - invest
+      - tolerate
+      - migrate
+      - retire
+      criticality:
+      - high
+      - medium
+      - low
+      repository: text
+      owner: text
+    labels:
+      title: Application
+      role: Integration role
+    value_labels:
+      saas: SaaS
+      on-prem: On-premises
+    columns:
+    - id
+    - title
+    - purpose
+    - change
+    - owner
+    - criticality
+    - status
+    status:
+      planned: not-started
+      in-build: partial
+      live: done
+      retired: done
+  component:
+    label: Component
+    prefix: CMP
+    fields:
+      description: text
+      application: ref:application
+      layer:
+      - experience
+      - application
+      - integration
+      - data
+      - platform
+      runtime: text
+      data: text
+      interfaces: list
+      owner: text
+    labels:
+      title: Component
+      runtime: Hosting or runtime
+      data: Data held
+    columns:
+    - id
+    - title
+    - description
+    - runtime
+    - interfaces
+    - owner
+    - status
+    status:
+      planned: not-started
+      in-build: partial
+      built: done
+      retired: done
+  environment:
+    label: Environment
+    prefix: ENV
+    fields:
+      purpose: text
+      hosting: text
+      classification:
+      - public
+      - internal
+      - confidential
+      - restricted
+      access: text
+      refresh: text
+      owner: text
+    labels:
+      title: Environment
+      classification: Data classification
+      access: Access controls
+      refresh: Refresh or masking
+    columns:
+    - id
+    - title
+    - purpose
+    - classification
+    - access
+    - refresh
+    - status
+    status:
+      planned: not-started
+      provisioning: partial
+      ready: done
+      retired: done
+  integration:
+    label: Integration
+    prefix: INT
+    fields:
+      source: text
+      target: text
+      interface: text
+      data: text
+      pattern:
+      - api
+      - event
+      - file
+      - etl
+      - message
+      - manual
+      protocol: text
+      trigger: text
+      criticality:
+      - high
+      - medium
+      - low
+      state:
+      - current
+      - target
+      failure: text
+      owner: text
+    labels:
+      title: Integration
+      trigger: Frequency or trigger
+      failure: Failure handling
+    value_labels:
+      api: API
+      etl: ETL
+    columns:
+    - id
+    - title
+    - source
+    - target
+    - data
+    - pattern
+    - trigger
+    - criticality
+    - status
+    status:
+      planned: not-started
+      in-build: partial
+      tested: partial
+      live: done
+      retired: done
+  data-object:
+    label: Data object
+    prefix: DAT
+    fields:
+      description: text
+      category: text
+      source_of_truth: text
+      system_of_record: text
+      classification:
+      - public
+      - internal
+      - confidential
+      - restricted
+      retention: text
+      owner: text
+    labels:
+      title: Data object
+      source_of_truth: Source of truth
+      system_of_record: System of record
+    columns:
+    - id
+    - title
+    - category
+    - system_of_record
+    - owner
+    - classification
+    - status
+    status:
+      identified: not-started
+      modelled: partial
+      agreed: done
+  data-flow:
+    label: Data flow
+    prefix: DF
+    fields:
+      data: ref:data-object
+      source: text
+      target: text
+      interface: ref:integration
+      classification:
+      - public
+      - internal
+      - confidential
+      - restricted
+      transformation: text
+      frequency: text
+    labels:
+      title: Flow
+    columns:
+    - id
+    - title
+    - data
+    - source
+    - target
+    - interface
+    - frequency
+    - status
+    status:
+      planned: not-started
+      built: partial
+      verified: done
+  control:
+    label: Control
+    prefix: CTL
+    fields:
+      area:
+      - identity
+      - privileged-access
+      - data-protection
+      - network
+      - monitoring
+      - application
+      - compliance
+      response: text
+      mitigates: refs:risk
+      evidence: text
+      owner: text
+    labels:
+      title: Control
+      response: Design response
+    columns:
+    - id
+    - area
+    - title
+    - response
+    - owner
+    - status
+    status:
+      planned: not-started
+      implemented: partial
+      verified: done
+  risk:
+    label: Risk
+    prefix: RSK
+    fields:
+      category:
+      - architecture
+      - operational
+      - security
+      - delivery
+      cause: text
+      consequence: text
+      likelihood:
+      - low
+      - medium
+      - high
+      impact:
+      - low
+      - medium
+      - high
+      rating:
+      - low
+      - medium
+      - high
+      - extreme
+      mitigation: text
+      residual:
+      - low
+      - medium
+      - high
+      owner: text
+    labels:
+      title: Risk
+    aliases:
+      rating: [inherent risk]
+      mitigation: [control]
+    columns:
+    - id
+    - title
+    - likelihood
+    - impact
+    - rating
+    - owner
+    - status
+    status:
+      open: not-started
+      mitigating: partial
+      mitigated: done
+      accepted: done
+      closed: done
+  issue:
+    label: Issue
+    prefix: ISS
+    fields:
+      severity:
+      - low
+      - medium
+      - high
+      - critical
+      impact: text
+      raised: date
+      due: date
+      owner: text
+    labels:
+      title: Issue
+    columns:
+    - id
+    - title
+    - severity
+    - impact
+    - owner
+    - due
+    - status
+    status:
+      open: not-started
+      in-progress: partial
+      resolved: done
+      closed: done
+  exception:
+    label: Deviation or exception
+    prefix: EXC
+    fields:
+      kind:
+      - deviation
+      - standard
+      - view
+      standard: text
+      reason: text
+      impact: text
+      risk: text
+      control: text
+      approval:
+      - required
+      - not-required
+      expiry: date
+      owner: text
+    labels:
+      title: Exception
+      standard: Standard or requirement
+      control: Compensating control
+      expiry: Expiry or review
+    columns:
+    - id
+    - title
+    - standard
+    - reason
+    - impact
+    - approval
+    - status
+    status:
+      draft: not-started
+      requested: partial
+      approved: done
+      declined: not-started
+      expired: not-started
+  runbook:
+    label: Runbook
+    prefix: RBK
+    fields:
+      required_when: text
+      location: text
+      tested:
+      - 'yes'
+      - 'no'
+      test_date: date
+      tester: text
+      outcome:
+      - pass
+      - fail
+      - not-run
+      owner: text
+    labels:
+      title: Runbook
+      required_when: Required when
+      test_date: Test date
+    columns:
+    - id
+    - title
+    - required_when
+    - owner
+    - tested
+    - status
+    status:
+      required: not-started
+      draft: partial
+      published: partial
+      tested: done
+  readiness-item:
+    label: Readiness item
+    prefix: RDY
+    fields:
+      area:
+      - service-ownership
+      - support
+      - configuration-records
+      - monitoring
+      - processes
+      - runbooks
+      - knowledge
+      - access
+      - hypercare
+      - handover
+      evidence: text
+      owner: text
+    labels:
+      title: Readiness item
+    columns:
+    - id
+    - area
+    - title
+    - evidence
+    - owner
+    - status
+    status:
+      not-ready: not-started
+      in-progress: partial
+      ready: done
+      accepted: done
+  process-readiness:
+    label: Process readiness
+    prefix: PRC
+    fields:
+      process:
+      - incident
+      - major-incident
+      - problem
+      - change
+      - release
+      - request
+      - knowledge
+      - event
+      - configuration
+      - availability
+      - capacity
+      - continuity
+      - service-level
+      design: text
+      evidence: text
+      owner: text
+    labels:
+      title: Readiness item
+      design: Design detail
+      evidence: Evidence before go-live
+    columns:
+    - id
+    - process
+    - design
+    - evidence
+    - owner
+    - status
+    status:
+      not-started: not-started
+      in-progress: partial
+      ready: done
+  alert:
+    label: Alert
+    prefix: ALT
+    fields:
+      area:
+      - availability
+      - performance
+      - capacity
+      - errors
+      - integration
+      - security
+      - data
+      - cost
+      source: text
+      metric: text
+      threshold: text
+      severity:
+      - critical
+      - high
+      - medium
+      - low
+      target: text
+      runbook: ref:runbook
+      owner: text
+    labels:
+      title: Alert
+      metric: Metric or event
+      target: Alert target
+    columns:
+    - id
+    - area
+    - title
+    - threshold
+    - severity
+    - target
+    - runbook
+    - status
+    status:
+      planned: not-started
+      configured: partial
+      tested: done
+  cutover-step:
+    label: Cutover step
+    prefix: CUT
+    fields:
+      order: number
+      start: text
+      finish: text
+      after: refs:cutover-step
+      rollback_point:
+      - 'yes'
+      - 'no'
+      owner: text
+    labels:
+      title: Activity
+      after: Depends on
+      rollback_point: Rollback point
+    aliases:
+      order: [step]
+      after: [dependency]
+    columns:
+    - id
+    - title
+    - owner
+    - start
+    - finish
+    - after
+    - rollback_point
+    - status
+    status:
+      planned: not-started
+      rehearsed: partial
+      done: done
+  acceptance-item:
+    label: Acceptance item
+    prefix: ACC
+    fields:
+      stage:
+      - design
+      - integration
+      - monitoring
+      - views
+      - approval
+      - go-live
+      - hypercare-exit
+      required:
+      - 'yes'
+      - 'no'
+      target: text
+      evidence: text
+      owner: text
+    labels:
+      title: Acceptance item
+    columns:
+    - id
+    - title
+    - required
+    - evidence
+    - owner
+    - status
+    status:
+      open: not-started
+      in-progress: partial
+      met: done
+      waived: done
+  retired-component:
+    label: Retired component
+    prefix: RET
+    fields:
+      object_type:
+      - application
+      - component
+      - integration
+      - technology
+      - data
+      replacement: text
+      date: date
+      data_retention: text
+      records_action: text
+      owner: text
+    labels:
+      title: Component
+      object_type: Object type
+      date: Decommission date
+      data_retention: Data retention
+      records_action: Configuration record action
+    columns:
+    - id
+    - title
+    - owner
+    - replacement
+    - date
+    - data_retention
+    - status
+    status:
+      planned: not-started
+      in-progress: partial
+      retired: done
+  glossary-term:
+    label: Glossary term
+    prefix: GLO
+    fields:
+      definition: text
+      domain: text
+      source: text
+    labels:
+      title: Term
+    columns:
+    - title
+    - definition
+    - domain
+    status:
+      draft: partial
+      agreed: done
+viewpoints:
+  solution-context:
+    title: Solution Context
+    purpose: the solution among its requirements, capabilities, applications, data and technology
+    ea:
+      coreea: Core EA Master Diagram
+      archimate: Layered
+      togaf: Solution Concept
+      essential: Application Provider Summary
+  project-traceability:
+    title: Requirement Traceability
+    purpose: requirements traced to what satisfies or realises them
+    ea:
+      coreea: Project Context
+      archimate: Requirements Realization
+      togaf: Project Context
+      essential: null
+  business-outcome:
+    title: Business Outcome Alignment
+    purpose: drivers, goals and objectives traced to capabilities and requirements
+    ea:
+      coreea: Business Strategy Diagram
+      archimate: Goal Realization
+      togaf: Business Footprint
+      essential: null
+  capability-map:
+    title: Capability Alignment
+    purpose: capabilities and the applications that realise them
+    ea:
+      coreea: Capability Diagram
+      archimate: Capability Map
+      togaf: Business Capability Map
+      essential: Business Capability to Application
+  application-landscape:
+    title: Application Landscape
+    purpose: the applications in play, grouped by category and owner
+    ea:
+      coreea: Application Landscape Diagram
+      archimate: Application Structure
+      togaf: Application Portfolio catalog
+      essential: Application Portfolio catalog
+  application-context:
+    title: Application Context
+    purpose: the subject application, its users, interfaces and neighbours
+    ea:
+      coreea: Application Context Diagram
+      archimate: Application Usage
+      togaf: Application Communication
+      essential: Application Provider Summary
+  application-components:
+    title: Application Components
+    purpose: the components of the solution and what hosts them
+    ea:
+      coreea: Application Reference Model
+      archimate: Application Structure
+      togaf: Processes/Application Realization
+      essential: Application Provider Summary
+  integration-flows:
+    title: Integration Flows
+    purpose: applications, interfaces and the data that crosses them
+    ea:
+      coreea: Application Integration Diagram
+      archimate: Application Cooperation
+      togaf: Application Communication
+      essential: Application Information Dependency
+  logical-data:
+    title: Logical Data
+    purpose: data objects by category and how they relate
+    ea:
+      coreea: Logical Data Diagram
+      archimate: Information Structure
+      togaf: Logical Data
+      essential: Information Model
+  crud:
+    title: Data Access Matrix
+    purpose: which application or role creates, reads, updates or deletes which data
+    ea:
+      coreea: CRUD matrix
+      archimate: null
+      togaf: Application/Data matrix
+      essential: Application to Information CRUD matrix
+  infrastructure:
+    title: Infrastructure
+    purpose: technology by location and what is hosted on it
+    ea:
+      coreea: Infrastructure Diagram
+      archimate: Implementation and Deployment
+      togaf: Environments and Locations
+      essential: Technology Platform
+  control-traceability:
+    title: Control Traceability
+    purpose: risks, the controls that treat them and the requirements behind them
+    ea:
+      coreea: Risk Catalogue
+      archimate: Motivation
+      togaf: Requirements catalog
+      essential: null
+  operational-support:
+    title: Operational Support
+    purpose: the organisations and roles that own and support each part
+    ea:
+      coreea: Organization Diagram
+      archimate: Organization
+      togaf: Organization Decomposition
+      essential: Organisation Summary
+  release-scope:
+    title: Release Scope
+    purpose: what each release delivers and what it moves from and to
+    ea:
+      coreea: Project Context
+      archimate: Implementation and Migration
+      togaf: Project Context
+      essential: Strategic Plan Roadmap
+  retirement-impact:
+    title: Retirement Impact
+    purpose: what is retired and everything connected to it
+    ea:
+      coreea: Application Landscape Diagram
+      archimate: Migration
+      togaf: Application Portfolio catalog
+      essential: Application Portfolio catalog

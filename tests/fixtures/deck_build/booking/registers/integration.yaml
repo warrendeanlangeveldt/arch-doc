@@ -1,0 +1,6 @@
+- {id: INT-01, title: Portal books freight, source: Customer Portal, target: Booking Service, pattern: api, data: Booking request, criticality: high, state: target, status: in-build}
+- {id: INT-02, title: Booking to carrier, source: Booking Service, target: Carrier Gateway, pattern: event, data: Confirmed booking, criticality: high, state: target, status: in-build}
+- {id: INT-03, title: Carrier confirms, source: Carrier Gateway, target: Booking Service, pattern: event, data: Carrier reference, criticality: high, state: target, status: planned}
+- {id: INT-04, title: Invoice on dispatch, source: Booking Service, target: Finance Ledger, pattern: file, data: Charges, criticality: medium, state: target, status: planned}
+- {id: INT-05, title: Address lookup, source: Booking Service, target: Address Service, pattern: api, data: Address, criticality: medium, state: target, status: tested}
+- {id: INT-06, title: Spreadsheet export, source: Booking Spreadsheet, target: Finance Ledger, pattern: manual, data: Charges, criticality: low, state: current, status: live}

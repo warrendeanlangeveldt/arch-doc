@@ -1,0 +1,136 @@
+# Component register (component). One record per item; ids are CMP-nn.
+# Fields: id, title, status
+#   description: text
+#   application: ref:application
+#   layer: experience | application | integration | data | platform
+#   runtime: text
+#   data: text
+#   interfaces: list
+#   owner: text
+# Status: planned (not-started), in-build (partial), built (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CMP-01
+  title: Scan ingest
+  description: Takes depot scans from the platform, validates them and orders them by scan time
+  application: APP-01
+  layer: integration
+  runtime: Container pts-scan-ingest, 2 to 12 replicas
+  data: None held
+  interfaces:
+  - INT-01
+  owner: Integration lead
+  status: in-build
+
+- id: CMP-02
+  title: Carrier webhook receiver
+  description: Receives carrier A and C status webhooks and checks each signature
+  application: APP-01
+  layer: integration
+  runtime: Container pts-webhooks, 2 to 6 replicas
+  data: None held
+  interfaces:
+  - INT-04
+  owner: Integration lead
+  status: in-build
+
+- id: CMP-03
+  title: Carrier poller
+  description: Polls carrier B's tracking API every five minutes within its rate limit
+  application: APP-01
+  layer: integration
+  runtime: Scheduled workflow pts-carrier-b-poll
+  data: Last poll position
+  interfaces:
+  - INT-02
+  owner: Integration lead
+  status: planned
+
+- id: CMP-04
+  title: Tracking service
+  description: Builds each parcel's timeline, derives its status and publishes status changes
+  application: APP-01
+  layer: application
+  runtime: Container pts-tracking, 3 to 20 replicas
+  data: Timelines (in the store)
+  interfaces:
+  - INT-01
+  - INT-02
+  - INT-03
+  - INT-04
+  - INT-07
+  owner: Solution architect
+  status: in-build
+
+- id: CMP-05
+  title: Tracking store
+  description: Document database of parcels, timelines, contacts and notifications
+  application: APP-01
+  layer: data
+  runtime: Managed document database pts-prd-tracking-db, zone-redundant, replica in the paired region
+  data: Parcels and timelines for 18 months; contacts for 30 days after delivery
+  interfaces: []
+  owner: Data owner
+  status: in-build
+
+- id: CMP-06
+  title: Tracking API
+  description: Customer and agent lookups by parcel number
+  application: APP-01
+  layer: application
+  runtime: Container pts-tracking-api, 3 to 30 replicas
+  data: 30-second response cache
+  interfaces:
+  - INT-05
+  - INT-10
+  owner: Integration lead
+  status: in-build
+
+- id: CMP-07
+  title: Customer notification service
+  description: Sends email or SMS on each status change, by the customer's preference
+  application: APP-01
+  layer: application
+  runtime: Container pts-notify, 2 to 10 replicas
+  data: Notification records
+  interfaces:
+  - INT-03
+  - INT-06
+  owner: Product owner
+  status: planned
+
+- id: CMP-08
+  title: Ops dashboard
+  description: Stalled parcels, missed scans and depot lag for operations staff
+  application: APP-01
+  layer: experience
+  runtime: Container pts-ops, 2 replicas
+  data: None held
+  interfaces:
+  - INT-11
+  owner: Depot operations manager
+  status: planned
+
+- id: CMP-09
+  title: Exception workflows
+  description: One timer per parcel; flags the parcel when 48 hours pass with no scan
+  application: APP-01
+  layer: application
+  runtime: Workflows pts-stalled-parcel on the platform
+  data: Timer state
+  interfaces:
+  - INT-03
+  owner: Solution architect
+  status: planned
+
+- id: CMP-10
+  title: Monitoring configuration
+  description: Datadog monitors and dashboards, and the ServiceNow incident integration, kept as code
+  application: APP-01
+  layer: platform
+  runtime: pts repository, applied by GitHub Actions
+  data: None held
+  interfaces:
+  - INT-08
+  - INT-09
+  owner: Service owner
+  status: in-build

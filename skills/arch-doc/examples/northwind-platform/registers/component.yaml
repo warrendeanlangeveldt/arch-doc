@@ -1,0 +1,107 @@
+# Component register (component). One record per item; ids are CMP-nn.
+# Fields: id, title, status
+#   description: text
+#   application: ref:application
+#   layer: experience | application | integration | data | platform
+#   runtime: text
+#   data: text
+#   interfaces: list
+#   owner: text
+# Status: planned (not-started), in-build (partial), built (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CMP-01
+  title: API gateway
+  description: Publishes internal and partner APIs; authenticates callers and applies rate limits
+  application: APP-01
+  layer: integration
+  runtime: Managed gateway service, zone-redundant
+  data: Route and policy configuration
+  interfaces:
+  - INT-03
+  owner: Platform engineering lead
+  status: in-build
+
+- id: CMP-02
+  title: Event broker
+  description: Durable topics and subscriptions, ordering per key, dead-letter and replay
+  application: APP-01
+  layer: integration
+  runtime: Managed broker service, zone-redundant
+  data: Events for seven days
+  interfaces:
+  - INT-04
+  owner: Platform engineering lead
+  status: in-build
+
+- id: CMP-03
+  title: Workflow runtime
+  description: Durable workflows with timers, retries and compensation
+  application: APP-01
+  layer: application
+  runtime: Managed workflow service
+  data: Workflow state and history for 30 days
+  interfaces:
+  - INT-05
+  owner: Platform engineering lead
+  status: planned
+
+- id: CMP-04
+  title: Secrets store
+  description: One vault per consumer per environment; rotation and access logging
+  application: APP-01
+  layer: platform
+  runtime: Managed secrets service with hardware-backed keys
+  data: Secrets, keys and certificates
+  interfaces:
+  - INT-06
+  owner: Security architect
+  status: in-build
+
+- id: CMP-05
+  title: Workload identity
+  description: Issues each consumer workload its own identity, federated with the identity provider
+  application: APP-01
+  layer: platform
+  runtime: Identity provider federation
+  data: None held
+  interfaces:
+  - INT-01
+  owner: Security architect
+  status: built
+
+- id: CMP-06
+  title: Telemetry pipeline
+  description: Collects metrics, logs and traces, tags them by consumer and forwards them
+  application: APP-01
+  layer: platform
+  runtime: Collector agents in each zone
+  data: Telemetry in transit only
+  interfaces:
+  - INT-02
+  - INT-08
+  owner: Platform engineering lead
+  status: in-build
+
+- id: CMP-07
+  title: Platform portal
+  description: Self-service onboarding, the API and topic catalogue, and access requests
+  application: APP-01
+  layer: experience
+  runtime: Managed container runtime
+  data: Consumer registrations and catalogue entries
+  interfaces:
+  - INT-03
+  owner: Platform product manager
+  status: planned
+
+- id: CMP-08
+  title: Environment templates
+  description: Templates that create a consumer's resources in each zone through the delivery pipeline
+  application: APP-01
+  layer: platform
+  runtime: Delivery pipeline
+  data: Template versions
+  interfaces:
+  - INT-07
+  owner: Platform engineering lead
+  status: in-build

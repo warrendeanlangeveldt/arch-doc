@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 222" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>Integration today: application landscape</title>
+<rect x="0" y="0" width="960" height="222" fill="#ffffff"/>
+<defs><marker id="arr-currentlandscape" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker><marker id="arrow-open-currentlandscape" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#475569" stroke-width="1.2"/></marker><marker id="arrow-filled-currentlandscape" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker></defs>
+<rect x="526.9" y="16.0" width="153.1" height="36.0" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1.2"/>
+<g transform="translate(659.9 20.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="4"/><circle cx="10" cy="6" r="4"/></g>
+<text x="603.4" y="39.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Consumer services</text>
+<text x="674.9" y="48.0" font-size="7" fill="#94a3b8" text-anchor="end">ACOL-CONS</text>
+<rect x="31.0" y="112.0" width="175.1" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(186.1 116.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="118.5" y="135.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Nightly batch scheduler</text>
+<text x="201.1" y="144.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-BATCH</text>
+<rect x="297.3" y="112.0" width="164.6" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(441.9 116.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="379.6" y="135.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Legacy file exchange</text>
+<text x="456.9" y="144.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-FILE</text>
+<rect x="501.9" y="112.0" width="193.3" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(675.2 116.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="598.6" y="135.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Team-run message queues</text>
+<text x="690.2" y="144.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-TQ</text>
+<rect x="735.2" y="112.0" width="193.8" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(909.0 116.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="832.1" y="135.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Point-to-point API adapters</text>
+<text x="924.0" y="144.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-ADAPT</text>
+<polyline points="412.5,112.0 412.5,34.0 524.9,34.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-currentlandscape)"/>
+<polyline points="603.5,112.0 603.5,54.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-currentlandscape)"/>
+<polyline points="735.2,130.0 703.2,130.0 703.2,34.0 681.9,34.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-currentlandscape)"/>
+<polyline points="206.1,130.0 295.3,130.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-currentlandscape)"/>
+<text x="250.7" y="125.0" font-size="8.5" fill="#64748b" text-anchor="middle" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">nightly extracts</text>
+<line x1="16" y1="168.0" x2="944" y2="168.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="16.0" y="188.5" font-size="7.5" fill="#2b7c8c" font-weight="700" letter-spacing="0.6">APPLICATION</text>
+<rect x="83.229" y="179.0" width="22" height="14" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1"/>
+<g transform="translate(86.229 180.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g></g>
+<text x="110.2" y="188.5" font-size="8.5" fill="#475569">Application Component</text>
+<rect x="208.969" y="179.0" width="22" height="14" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1"/>
+<g transform="translate(211.969 180.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="4"/><circle cx="10" cy="6" r="4"/></g></g>
+<text x="236.0" y="188.5" font-size="8.5" fill="#475569">Application Collaboration</text>
+<line x1="16" y1="205.0" x2="42" y2="205.0" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-currentlandscape)"/>
+<text x="47.0" y="208.5" font-size="8.5" fill="#475569">Serving</text>
+<line x1="86.07" y1="205.0" x2="112.07" y2="205.0" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-currentlandscape)"/>
+<text x="117.1" y="208.5" font-size="8.5" fill="#475569">Flow</text>
+</svg>

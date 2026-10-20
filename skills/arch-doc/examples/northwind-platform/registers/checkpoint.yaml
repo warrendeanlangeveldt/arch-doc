@@ -1,0 +1,65 @@
+# Architecture checkpoint register (checkpoint). One record per item; ids are CHK-nn.
+# Fields: id, title, status
+#   stage: initial | detailed | pre-production | post-implementation | other
+#   timing: text
+#   date: date
+#   forum: ref:forum
+#   purpose: text
+#   evidence: text
+#   owner: text
+# Status: planned (not-started), ready (partial), passed (done), failed (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CHK-01
+  title: Initial architecture review
+  stage: initial
+  timing: Concept agreed
+  date: '2026-09-30'
+  forum: FOR-01
+  purpose: Agree scope and the event-led approach
+  evidence: Concept paper and option analysis
+  owner: Platform architect
+  status: passed
+
+- id: CHK-02
+  title: Security design review
+  stage: detailed
+  timing: Before detailed review
+  date: '2026-11-05'
+  forum: FOR-02
+  purpose: Review the control set
+  evidence: Chapter 11 and the control register
+  owner: Security architect
+  status: ready
+
+- id: CHK-03
+  title: Detailed design review
+  stage: detailed
+  timing: Design complete
+  date: '2026-11-12'
+  forum: FOR-01
+  purpose: Approve the design for build
+  evidence: This document and its acceptance checklist
+  owner: Platform architect
+  status: ready
+
+- id: CHK-04
+  title: Pre-production readiness
+  stage: pre-production
+  timing: Before go-live
+  date: '2027-01-12'
+  forum: FOR-03
+  purpose: Confirm operational readiness
+  evidence: Readiness register, tested runbooks, monitoring acceptance
+  owner: Platform support lead
+  status: planned
+
+- id: CHK-05
+  title: Post-implementation review
+  stage: post-implementation
+  timing: Eight weeks after go-live
+  date: '2027-03-19'
+  forum: FOR-01
+  purpose: Compare outcomes with the design
+  evidence: Service reports and consumer feedback
+  owner: Platform architect
+  status: planned

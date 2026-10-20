@@ -1,0 +1,24 @@
+# The platform's components and the interfaces they publish.
+# ArchiMate Application Structure viewpoint.
+model "model.json"
+
+view platform-components "Northwind Platform: components" {
+  width 1100
+  viewpoint "Application Structure"
+  ACMP-NP {
+    ACMP-GW
+    ACMP-BRK
+    ACMP-WF
+    ACMP-SEC
+    ACMP-WID
+    ACMP-PORTAL
+    ACMP-TPL
+    ACMP-TEL
+  }
+  AIF-API on ACMP-GW
+  AIF-EVT on ACMP-BRK
+  AIF-WF on ACMP-WF
+  AIF-SEC on ACMP-SEC
+  AIF-TEL on ACMP-TEL
+  key "Box in a box: composition" "Pill on a component: the interface it publishes"
+}

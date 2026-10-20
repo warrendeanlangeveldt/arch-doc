@@ -1,0 +1,3 @@
+- {id: ENV-01, title: Development, purpose: Build and unit test, classification: internal, access: Developers, refresh: Synthetic data, status: ready}
+- {id: ENV-02, title: Test, purpose: Integration test, classification: confidential, access: Test team, refresh: Masked weekly, status: ready}
+- {id: ENV-03, title: Production, purpose: Live service, classification: confidential, access: Operations, refresh: None, status: provisioning}

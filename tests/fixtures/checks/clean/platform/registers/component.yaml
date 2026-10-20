@@ -1,0 +1,2 @@
+- {id: CMP-01, title: Event broker, description: Carries events between services, interfaces: [Event broker topics], owner: Platform lead, status: built}
+- {id: CMP-02, title: Partition manager, description: Balances topic partitions across brokers, interfaces: [], owner: Platform lead, status: built}

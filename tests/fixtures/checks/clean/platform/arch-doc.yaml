@@ -1,0 +1,12 @@
+title: Northwind Platform
+short: NP
+kind: capability
+layer: logical
+version: "0.2"
+date: 2026-10-20
+author: {name: Platform Architect, role: Architect, team: Platform}
+owner: {name: Head of Platform, role: Platform owner}
+metamodel: seed
+profile: ../profile.yaml
+depends_on: []
+history: []

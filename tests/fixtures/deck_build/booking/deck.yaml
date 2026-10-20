@@ -1,0 +1,22 @@
+cover:
+  line: We ask the {p:forums.design_authority.short} to approve the booking design on 30 October.
+runs:
+  1: Why we are building a booking service and what it covers.
+  2: The parts, the data and how they connect.
+chapters:
+  risks:
+    claim: The carrier API limits are the risk that matters most.
+    points:
+      - "{count:risk} risks are recorded; {count:risk where rating=high|extreme} are rated high or extreme."
+      - The carrier contract is unsigned, so RSK-09 has no rating yet.
+      - Two issues are open and one blocks integration testing.
+    callouts:
+      - {text: "RSK-01: queue and back-off", x: 0.70, y: 0.86}
+    notes: The carrier API limits matter most. We queue bookings and retry. The contract is the open item.
+  governance:
+    cards:
+      - {title: Design authority, text: The ARB approves the design at the detailed design review.}
+      - {title: Change, text: The CAB approves the go-live change in December.}
+      - {title: Security, text: Security Review accepts the residual risk before production.}
+  not-a-chapter:
+    claim: This key is reported.

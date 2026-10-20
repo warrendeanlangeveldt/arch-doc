@@ -1,0 +1,102 @@
+# Functional requirement register (functional-requirement). One record per item; ids are FR-nn.
+# Fields: id, title, status
+#   traces_to: refs:business-requirement
+#   priority: must | should | could | wont
+#   response: text
+#   acceptance: text
+#   satisfied_by: list
+#   owner: text
+# Status: proposed (not-started), agreed (partial), designed (partial), verified (done), deferred (not-started), withdrawn (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: FR-01
+  title: Publish and subscribe to events with ordering per key
+  traces_to:
+  - BR-01
+  priority: must
+  response: Topics partitioned by key; order kept within a key
+  satisfied_by:
+  - CMP-02
+  owner: Platform architect
+  status: designed
+
+- id: FR-02
+  title: Hold undeliverable events and replay them for seven days
+  traces_to:
+  - BR-01
+  - BR-03
+  priority: must
+  response: Dead-letter queue per subscription and a replay window of seven days
+  satisfied_by:
+  - CMP-02
+  owner: Platform architect
+  status: designed
+
+- id: FR-03
+  title: Publish internal and partner APIs with authentication and rate limits
+  traces_to:
+  - BR-01
+  priority: must
+  response: Gateway routes published from the catalogue; tokens from the identity provider; limits per client
+  satisfied_by:
+  - CMP-01
+  owner: Platform architect
+  status: designed
+
+- id: FR-04
+  title: Run long-running workflows with timers, retries and compensation
+  traces_to:
+  - BR-01
+  priority: must
+  response: Managed workflow runtime with durable state
+  satisfied_by:
+  - CMP-03
+  owner: Platform architect
+  status: designed
+
+- id: FR-05
+  title: Issue secrets per consumer and rotate them without redeployment
+  traces_to:
+  - BR-01
+  - BR-04
+  priority: must
+  response: Secrets store with one vault per consumer per environment, read through workload identity
+  satisfied_by:
+  - CMP-04
+  - CMP-05
+  owner: Security architect
+  status: designed
+
+- id: FR-06
+  title: Onboard a consumer through a self-service request
+  traces_to:
+  - BR-02
+  priority: must
+  response: Portal request creates the consumer registration, vaults, topics and pipeline template
+  satisfied_by:
+  - CMP-07
+  - CMP-08
+  owner: Platform product manager
+  status: agreed
+
+- id: FR-07
+  title: Forward each consumer's telemetry with its consumer tag
+  traces_to:
+  - BR-03
+  - BR-05
+  priority: must
+  response: Telemetry pipeline adds the consumer tag at collection
+  satisfied_by:
+  - CMP-06
+  owner: Platform engineering lead
+  status: designed
+
+- id: FR-08
+  title: Reject events that break the registered schema
+  traces_to:
+  - BR-01
+  priority: should
+  response: Schema check at publish against the registry
+  satisfied_by:
+  - CMP-02
+  owner: Platform architect
+  status: proposed

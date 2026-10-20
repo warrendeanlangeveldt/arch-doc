@@ -1,0 +1,99 @@
+# Non-functional requirement register (nfr). One record per item; ids are NFR-nn.
+# Fields: id, title, status
+#   category: availability | performance | scalability | resilience | security | privacy | supportability | observability | maintainability | compliance
+#   target: text
+#   response: text
+#   test: text
+#   evidence: text
+#   owner: text
+# Status: proposed (not-started), agreed (partial), designed (partial), verified (done), deferred (not-started), withdrawn (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: NFR-01
+  category: availability
+  title: Gateway and event broker availability
+  target: 99.9% monthly, excluding announced maintenance
+  response: Zone-redundant instances in the primary region
+  test: Monthly availability report from synthetic probes
+  evidence: Pre-production probe report
+  owner: Platform engineering lead
+  status: designed
+
+- id: NFR-02
+  category: availability
+  title: Workflow runtime availability
+  target: 99.5% monthly
+  response: Managed runtime with zone redundancy; workflows resume from durable state
+  test: Synthetic workflow every five minutes
+  evidence: Pre-production probe report
+  owner: Platform engineering lead
+  status: designed
+
+- id: NFR-03
+  category: performance
+  title: Event delivery latency
+  target: 95th percentile publish to delivery under 500 ms
+  response: Consumers in the same region as the broker; no synchronous fan-out
+  test: Load test at 2,000 events per second
+  evidence: 'TBC: Platform engineering lead'
+  owner: Platform engineering lead
+  status: designed
+
+- id: NFR-04
+  category: performance
+  title: Gateway overhead
+  target: 95th percentile added latency under 50 ms
+  response: Policy evaluation cached per token; no request body inspection on internal routes
+  test: Load test against an echo service
+  evidence: 'TBC: Platform engineering lead'
+  owner: Platform engineering lead
+  status: designed
+
+- id: NFR-05
+  category: scalability
+  title: Event throughput
+  target: 2,000 events per second sustained, 5,000 for fifteen minutes
+  response: Partitions sized for the peak; throughput units scale on a schedule before known peaks
+  test: Soak test for four hours at the sustained rate
+  evidence: 'TBC: Platform engineering lead'
+  owner: Platform engineering lead
+  status: designed
+
+- id: NFR-06
+  category: resilience
+  title: Broker recovery
+  target: Recovery time 4 hours, recovery point 15 minutes
+  response: Geo-replicated metadata and asynchronous event replication to the paired region
+  test: Zone failover test in pre-production
+  evidence: 'TBC: Platform engineering lead'
+  owner: Platform architect
+  status: designed
+
+- id: NFR-07
+  category: supportability
+  title: Every platform service is supportable before production
+  target: Configuration record, runbook and support group in place for each service
+  response: Readiness gate in the pre-production checkpoint
+  test: Readiness review
+  evidence: Readiness register
+  owner: Platform support lead
+  status: agreed
+
+- id: NFR-08
+  category: observability
+  title: Consumers see their own telemetry
+  target: Within two minutes of emission, filtered to the consumer
+  response: Consumer tag added at collection; per-consumer dashboards
+  test: Emit a tagged event and time its arrival
+  evidence: 'TBC: Platform engineering lead'
+  owner: Platform engineering lead
+  status: designed
+
+- id: NFR-09
+  category: security
+  title: No shared credentials between consumers
+  target: Zero shared keys or connection strings
+  response: Workload identity per consumer; secrets scoped per vault
+  test: Access review of every role assignment
+  evidence: Security review pack
+  owner: Security architect
+  status: designed

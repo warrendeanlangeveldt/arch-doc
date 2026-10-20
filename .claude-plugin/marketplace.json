@@ -1,0 +1,25 @@
+{
+  "name": "arch-doc",
+  "description": "arch-doc: architecture design documents for review boards, as Word, a review site and a TL;DR deck from one project",
+  "owner": {
+    "name": "Warren Langeveldt"
+  },
+  "plugins": [
+    {
+      "name": "arch-doc",
+      "source": "./",
+      "description": "Architecture design documents for review boards: capability and solution designs built from typed registers and a metamodel into a Word document, a review site with anchored comments, and a TL;DR slide deck",
+      "version": "0.1.0",
+      "category": "documentation",
+      "tags": [
+        "architecture",
+        "sad",
+        "docx",
+        "review",
+        "slides",
+        "enterprise-architecture"
+      ],
+      "license": "MIT"
+    }
+  ]
+}

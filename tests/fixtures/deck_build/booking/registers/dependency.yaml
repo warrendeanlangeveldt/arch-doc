@@ -1,0 +1,3 @@
+- {id: DEP-01, title: Hosting base landing zone ready, type: platform, owner: Platform lead, required_by: 2026-11-01, impact: No environment to deploy to, status: in-progress}
+- {id: DEP-02, title: Carrier API credentials issued, type: vendor, owner: Integration lead, required_by: 2026-11-10, impact: No live bookings, status: open}
+- {id: DEP-03, title: Address service contract, type: data, owner: Data steward, required_by: 2026-12-01, impact: Manual address checks continue, status: met}

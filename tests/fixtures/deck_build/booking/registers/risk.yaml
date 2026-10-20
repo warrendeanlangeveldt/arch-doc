@@ -1,0 +1,9 @@
+- {id: RSK-01, title: Carrier booking API rejects bursts at month end, category: architecture, likelihood: high, impact: high, rating: extreme, owner: Integration lead, mitigation: Queue bookings and retry with back-off, status: mitigating}
+- {id: RSK-02, title: Depot staff keep using the old spreadsheet, category: operational, likelihood: medium, impact: medium, rating: medium, owner: Depot manager, mitigation: TBC, status: open}
+- {id: RSK-03, title: Rate tables arrive late from two carriers, category: architecture, likelihood: medium, impact: high, rating: high, owner: Commercial lead, status: open}
+- {id: RSK-04, title: Single region hosting, category: architecture, likelihood: low, impact: high, rating: medium, owner: Platform lead, status: accepted}
+- {id: RSK-05, title: Label printer drivers differ by depot, category: operational, likelihood: high, impact: low, rating: medium, owner: Depot manager, status: mitigated}
+- {id: RSK-06, title: Customer addresses fail validation, category: operational, likelihood: high, impact: medium, rating: high, owner: Data steward, status: open}
+- {id: RSK-07, title: Key person dependency on the booking engine, category: delivery, likelihood: medium, impact: medium, rating: medium, owner: Delivery lead, status: open}
+- {id: RSK-08, title: Unclear retention for booking history, category: security, likelihood: low, impact: low, rating: low, owner: Privacy officer, status: closed}
+- {id: RSK-09, title: Carrier contract renewal not yet signed, category: delivery, likelihood: TBC, impact: high, rating: TBC, owner: Commercial lead, status: open}

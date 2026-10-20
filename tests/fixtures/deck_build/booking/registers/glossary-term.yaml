@@ -1,0 +1,3 @@
+- {id: GLO-01, title: Booking, definition: A customer's request to move freight, domain: Freight, status: agreed}
+- {id: GLO-02, title: Carrier reference, definition: The carrier's id for a booking, domain: Freight, status: agreed}
+- {id: GLO-03, title: Depot, definition: A site that receives and dispatches freight, domain: Operations, status: agreed}

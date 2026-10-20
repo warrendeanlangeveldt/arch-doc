@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 279" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>Northwind Platform: data access</title>
+<rect x="0" y="0" width="740" height="279" fill="#ffffff"/>
+<defs><marker id="arr-platformdata" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker></defs>
+<text x="16.0" y="26.0" font-size="8" fill="#64748b" font-weight="700" letter-spacing="0.5">DATA OBJECT BY COMPONENT</text>
+<rect x="16.0" y="34.0" width="680.0" height="29.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+<text x="264.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Event broker</text>
+<text x="264.0" y="58.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-BRK</text>
+<line x1="216.0" y1="34.0" x2="216.0" y2="63.0" stroke="#e2e8f0"/>
+<text x="360.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Workflow runtime</text>
+<text x="360.0" y="58.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-WF</text>
+<line x1="312.0" y1="34.0" x2="312.0" y2="63.0" stroke="#e2e8f0"/>
+<text x="456.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Secrets store</text>
+<text x="456.0" y="58.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-SEC</text>
+<line x1="408.0" y1="34.0" x2="408.0" y2="63.0" stroke="#e2e8f0"/>
+<text x="552.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Telemetry pipeline</text>
+<text x="552.0" y="58.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-TEL</text>
+<line x1="504.0" y1="34.0" x2="504.0" y2="63.0" stroke="#e2e8f0"/>
+<text x="648.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Platform portal</text>
+<text x="648.0" y="58.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-PORTAL</text>
+<line x1="600.0" y1="34.0" x2="600.0" y2="63.0" stroke="#e2e8f0"/>
+<text x="24.0" y="78.0" font-size="9" fill="#0f172a" font-weight="600">Event envelope</text>
+<text x="208.0" y="78.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-ENV</text>
+<text x="264.0" y="78.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="86.0" x2="696.0" y2="86.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="86.0" width="680.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="101.0" font-size="9" fill="#0f172a" font-weight="600">Event payload</text>
+<text x="208.0" y="101.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-PAY</text>
+<text x="264.0" y="101.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">RW</text>
+<line x1="16.0" y1="109.0" x2="696.0" y2="109.0" stroke="#e2e8f0"/>
+<text x="24.0" y="124.0" font-size="9" fill="#0f172a" font-weight="600">Workflow state</text>
+<text x="208.0" y="124.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-WFS</text>
+<text x="360.0" y="124.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">RW</text>
+<line x1="16.0" y1="132.0" x2="696.0" y2="132.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="132.0" width="680.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="147.0" font-size="9" fill="#0f172a" font-weight="600">Secret</text>
+<text x="208.0" y="147.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-SECRET</text>
+<text x="456.0" y="147.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">RW</text>
+<line x1="16.0" y1="155.0" x2="696.0" y2="155.0" stroke="#e2e8f0"/>
+<text x="24.0" y="170.0" font-size="9" fill="#0f172a" font-weight="600">Audit record</text>
+<text x="208.0" y="170.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-AUDIT</text>
+<text x="552.0" y="170.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="178.0" x2="696.0" y2="178.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="178.0" width="680.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="193.0" font-size="9" fill="#0f172a" font-weight="600">Telemetry</text>
+<text x="208.0" y="193.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-TEL</text>
+<text x="552.0" y="193.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="201.0" x2="696.0" y2="201.0" stroke="#e2e8f0"/>
+<text x="24.0" y="216.0" font-size="9" fill="#0f172a" font-weight="600">Catalogue entry</text>
+<text x="208.0" y="216.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-CAT</text>
+<text x="648.0" y="216.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">RW</text>
+<line x1="16.0" y1="224.0" x2="696.0" y2="224.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="224.0" width="680.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="239.0" font-size="9" fill="#0f172a" font-weight="600">Consumer registration</text>
+<text x="208.0" y="239.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-REG</text>
+<text x="648.0" y="239.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">RW</text>
+<line x1="16.0" y1="247.0" x2="696.0" y2="247.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="34.0" width="680.0" height="213.0" fill="none" stroke="#94a3b8" stroke-width="1"/>
+<line x1="216.0" y1="34.0" x2="216.0" y2="247.0" stroke="#e2e8f0"/>
+<text x="16.0" y="265.5" font-size="8.5" fill="#475569">W: writes. RW: reads and writes. From the access relationships in the model</text>
+</svg>

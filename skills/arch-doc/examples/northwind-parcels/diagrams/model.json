@@ -1,0 +1,694 @@
+{
+ "metamodel": "archimate",
+ "name": "Parcel Tracking Solution",
+ "description": "Parcel tracking on the Northwind Platform.",
+ "objects": [
+  {
+   "id": "BACT-CUST",
+   "type": "Business Actor",
+   "name": "Customer"
+  },
+  {
+   "id": "BACT-DEPOT",
+   "type": "Business Actor",
+   "name": "Depot staff"
+  },
+  {
+   "id": "BACT-AGENT",
+   "type": "Business Actor",
+   "name": "Customer service agent"
+  },
+  {
+   "id": "BACT-OPS",
+   "type": "Business Actor",
+   "name": "Operations lead"
+  },
+  {
+   "id": "ACMP-PTS",
+   "type": "Application Component",
+   "name": "Parcel Tracking Solution",
+   "status": "Designed",
+   "ref": "APP-01"
+  },
+  {
+   "id": "ACMP-HH",
+   "type": "Application Component",
+   "name": "Depot handheld app",
+   "status": "Built",
+   "ref": "APP-02"
+  },
+  {
+   "id": "ACMP-LEG",
+   "type": "Application Component",
+   "name": "Legacy tracking lookup",
+   "status": "Built",
+   "ref": "APP-03"
+  },
+  {
+   "id": "ACMP-WEB",
+   "type": "Application Component",
+   "name": "Customer website",
+   "status": "Built",
+   "ref": "APP-04"
+  },
+  {
+   "id": "ACMP-DOS",
+   "type": "Application Component",
+   "name": "Depot operations system",
+   "status": "Built",
+   "ref": "APP-05"
+  },
+  {
+   "id": "ACMP-SN",
+   "type": "Application Component",
+   "name": "ServiceNow",
+   "status": "Built",
+   "ref": "APP-06"
+  },
+  {
+   "id": "ACMP-DD",
+   "type": "Application Component",
+   "name": "Datadog",
+   "status": "Built",
+   "ref": "APP-07"
+  },
+  {
+   "id": "ACMP-MSG",
+   "type": "Application Component",
+   "name": "Messaging provider",
+   "status": "Proposed",
+   "ref": "APP-08"
+  },
+  {
+   "id": "ACMP-CARR",
+   "type": "Application Component",
+   "name": "Carrier systems",
+   "status": "Built",
+   "ref": "APP-09"
+  },
+  {
+   "id": "ACMP-INGEST",
+   "type": "Application Component",
+   "name": "Scan ingest",
+   "status": "Designed",
+   "ref": "CMP-01"
+  },
+  {
+   "id": "ACMP-HOOK",
+   "type": "Application Component",
+   "name": "Carrier webhook receiver",
+   "status": "Designed",
+   "ref": "CMP-02"
+  },
+  {
+   "id": "ACMP-POLL",
+   "type": "Application Component",
+   "name": "Carrier poller",
+   "status": "Not started",
+   "ref": "CMP-03"
+  },
+  {
+   "id": "ACMP-TRK",
+   "type": "Application Component",
+   "name": "Tracking service",
+   "status": "Designed",
+   "ref": "CMP-04"
+  },
+  {
+   "id": "ACMP-STORE",
+   "type": "Application Component",
+   "name": "Tracking store",
+   "status": "Designed",
+   "ref": "CMP-05"
+  },
+  {
+   "id": "ACMP-API",
+   "type": "Application Component",
+   "name": "Tracking API",
+   "status": "Designed",
+   "ref": "CMP-06"
+  },
+  {
+   "id": "ACMP-NOTIFY",
+   "type": "Application Component",
+   "name": "Customer notification service",
+   "status": "Not started",
+   "ref": "CMP-07"
+  },
+  {
+   "id": "ACMP-OPS",
+   "type": "Application Component",
+   "name": "Ops dashboard",
+   "status": "Not started",
+   "ref": "CMP-08"
+  },
+  {
+   "id": "ACMP-WFX",
+   "type": "Application Component",
+   "name": "Exception workflows",
+   "status": "Not started",
+   "ref": "CMP-09"
+  },
+  {
+   "id": "ACMP-MONCFG",
+   "type": "Application Component",
+   "name": "Monitoring configuration",
+   "status": "Designed",
+   "ref": "CMP-10"
+  },
+  {
+   "id": "AIF-PAPI",
+   "type": "Application Interface",
+   "name": "Platform API publication interface",
+   "status": "Designed",
+   "description": "Published by the Northwind Platform; defined in its design"
+  },
+  {
+   "id": "AIF-PEVT",
+   "type": "Application Interface",
+   "name": "Platform event interface",
+   "status": "Designed",
+   "description": "Published by the Northwind Platform; defined in its design"
+  },
+  {
+   "id": "AIF-PWF",
+   "type": "Application Interface",
+   "name": "Platform workflow interface",
+   "status": "Designed",
+   "description": "Published by the Northwind Platform; defined in its design"
+  },
+  {
+   "id": "AIF-PTEL",
+   "type": "Application Interface",
+   "name": "Platform telemetry stream",
+   "status": "Designed",
+   "description": "Published by the Northwind Platform; defined in its design"
+  },
+  {
+   "id": "AIF-CB",
+   "type": "Application Interface",
+   "name": "Carrier B tracking API",
+   "status": "Built"
+  },
+  {
+   "id": "DOBJ-PCL",
+   "type": "Data Object",
+   "name": "Parcel",
+   "ref": "DAT-01"
+  },
+  {
+   "id": "DOBJ-SCAN",
+   "type": "Data Object",
+   "name": "Scan event",
+   "ref": "DAT-02"
+  },
+  {
+   "id": "DOBJ-CSU",
+   "type": "Data Object",
+   "name": "Carrier status update",
+   "ref": "DAT-03"
+  },
+  {
+   "id": "DOBJ-TL",
+   "type": "Data Object",
+   "name": "Tracking timeline",
+   "ref": "DAT-04"
+  },
+  {
+   "id": "DOBJ-CONT",
+   "type": "Data Object",
+   "name": "Customer contact",
+   "ref": "DAT-05"
+  },
+  {
+   "id": "DOBJ-NOTE",
+   "type": "Data Object",
+   "name": "Notification record",
+   "ref": "DAT-06"
+  },
+  {
+   "id": "DOBJ-EXC",
+   "type": "Data Object",
+   "name": "Delivery exception",
+   "ref": "DAT-07"
+  },
+  {
+   "id": "LOC-PRI",
+   "type": "Location",
+   "name": "Azure primary region"
+  },
+  {
+   "id": "LOC-PAIR",
+   "type": "Location",
+   "name": "Azure paired region"
+  },
+  {
+   "id": "NODE-PRD",
+   "type": "Node",
+   "name": "Platform production zone, rg-pts-prd",
+   "status": "Designed"
+  },
+  {
+   "id": "NODE-PAIR",
+   "type": "Node",
+   "name": "Platform production zone, paired region",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-CRT",
+   "type": "System Software",
+   "name": "Container runtime, pts workloads",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-DB",
+   "type": "System Software",
+   "name": "Document database pts-prd-tracking-db",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-DBR",
+   "type": "System Software",
+   "name": "Read replica of pts-prd-tracking-db",
+   "status": "Designed"
+  },
+  {
+   "id": "NET-PTS",
+   "type": "Communication Network",
+   "name": "Subnet snet-pts-prd, 10.42.16.0/24",
+   "status": "Designed"
+  }
+ ],
+ "relationships": [
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-INGEST"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-HOOK"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-POLL"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-TRK"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-STORE"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-API"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-NOTIFY"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-OPS"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-WFX"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "composition",
+   "to": "ACMP-MONCFG"
+  },
+  {
+   "from": "ACMP-CARR",
+   "type": "composition",
+   "to": "AIF-CB"
+  },
+  {
+   "from": "ACMP-WEB",
+   "type": "serving",
+   "to": "BACT-CUST"
+  },
+  {
+   "from": "ACMP-HH",
+   "type": "serving",
+   "to": "BACT-DEPOT"
+  },
+  {
+   "from": "ACMP-SN",
+   "type": "serving",
+   "to": "BACT-AGENT"
+  },
+  {
+   "from": "ACMP-OPS",
+   "type": "serving",
+   "to": "BACT-OPS"
+  },
+  {
+   "from": "ACMP-LEG",
+   "type": "serving",
+   "to": "BACT-AGENT"
+  },
+  {
+   "from": "ACMP-CARR",
+   "type": "serving",
+   "to": "BACT-AGENT"
+  },
+  {
+   "from": "ACMP-LEG",
+   "type": "serving",
+   "to": "ACMP-WEB"
+  },
+  {
+   "from": "ACMP-HH",
+   "type": "flow",
+   "to": "ACMP-DOS",
+   "name": "scans for depot planning"
+  },
+  {
+   "from": "ACMP-DOS",
+   "type": "flow",
+   "to": "ACMP-LEG",
+   "name": "nightly scan file"
+  },
+  {
+   "from": "ACMP-HH",
+   "type": "flow",
+   "to": "ACMP-INGEST",
+   "name": "scans"
+  },
+  {
+   "from": "ACMP-DOS",
+   "type": "flow",
+   "to": "ACMP-TRK",
+   "name": "manifests"
+  },
+  {
+   "from": "ACMP-CARR",
+   "type": "flow",
+   "to": "ACMP-HOOK",
+   "name": "status webhooks"
+  },
+  {
+   "from": "AIF-CB",
+   "type": "serving",
+   "to": "ACMP-POLL"
+  },
+  {
+   "from": "ACMP-INGEST",
+   "type": "flow",
+   "to": "ACMP-TRK",
+   "name": "ordered scans"
+  },
+  {
+   "from": "ACMP-HOOK",
+   "type": "flow",
+   "to": "ACMP-TRK",
+   "name": "carrier updates"
+  },
+  {
+   "from": "ACMP-POLL",
+   "type": "flow",
+   "to": "ACMP-TRK",
+   "name": "carrier B updates"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "flow",
+   "to": "ACMP-NOTIFY",
+   "name": "status changes"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "flow",
+   "to": "ACMP-WFX",
+   "name": "status changes"
+  },
+  {
+   "from": "ACMP-NOTIFY",
+   "type": "flow",
+   "to": "ACMP-MSG",
+   "name": "email and SMS"
+  },
+  {
+   "from": "ACMP-WFX",
+   "type": "flow",
+   "to": "ACMP-OPS",
+   "name": "stalled parcels"
+  },
+  {
+   "from": "ACMP-API",
+   "type": "serving",
+   "to": "ACMP-WEB"
+  },
+  {
+   "from": "ACMP-API",
+   "type": "serving",
+   "to": "ACMP-SN"
+  },
+  {
+   "from": "ACMP-STORE",
+   "type": "serving",
+   "to": "ACMP-TRK"
+  },
+  {
+   "from": "ACMP-STORE",
+   "type": "serving",
+   "to": "ACMP-API"
+  },
+  {
+   "from": "ACMP-PTS",
+   "type": "flow",
+   "to": "ACMP-DD",
+   "name": "telemetry"
+  },
+  {
+   "from": "ACMP-MONCFG",
+   "type": "serving",
+   "to": "ACMP-DD"
+  },
+  {
+   "from": "ACMP-DD",
+   "type": "flow",
+   "to": "ACMP-SN",
+   "name": "alerts as incidents"
+  },
+  {
+   "from": "AIF-PEVT",
+   "type": "serving",
+   "to": "ACMP-INGEST"
+  },
+  {
+   "from": "AIF-PEVT",
+   "type": "serving",
+   "to": "ACMP-TRK"
+  },
+  {
+   "from": "AIF-PEVT",
+   "type": "serving",
+   "to": "ACMP-NOTIFY"
+  },
+  {
+   "from": "AIF-PAPI",
+   "type": "serving",
+   "to": "ACMP-HH"
+  },
+  {
+   "from": "AIF-PAPI",
+   "type": "serving",
+   "to": "ACMP-HOOK"
+  },
+  {
+   "from": "AIF-PAPI",
+   "type": "serving",
+   "to": "ACMP-API"
+  },
+  {
+   "from": "AIF-PWF",
+   "type": "serving",
+   "to": "ACMP-WFX"
+  },
+  {
+   "from": "AIF-PWF",
+   "type": "serving",
+   "to": "ACMP-POLL"
+  },
+  {
+   "from": "AIF-PTEL",
+   "type": "serving",
+   "to": "ACMP-PTS"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "access",
+   "to": "DOBJ-PCL",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "access",
+   "to": "DOBJ-SCAN",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "access",
+   "to": "DOBJ-CSU",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "access",
+   "to": "DOBJ-TL",
+   "access": "readwrite"
+  },
+  {
+   "from": "ACMP-TRK",
+   "type": "access",
+   "to": "DOBJ-CONT",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-INGEST",
+   "type": "access",
+   "to": "DOBJ-SCAN",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-HOOK",
+   "type": "access",
+   "to": "DOBJ-CSU",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-POLL",
+   "type": "access",
+   "to": "DOBJ-CSU",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-API",
+   "type": "access",
+   "to": "DOBJ-TL",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-API",
+   "type": "access",
+   "to": "DOBJ-CONT",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-NOTIFY",
+   "type": "access",
+   "to": "DOBJ-CONT",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-NOTIFY",
+   "type": "access",
+   "to": "DOBJ-NOTE",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-WFX",
+   "type": "access",
+   "to": "DOBJ-EXC",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-OPS",
+   "type": "access",
+   "to": "DOBJ-EXC",
+   "access": "read"
+  },
+  {
+   "from": "ACMP-OPS",
+   "type": "access",
+   "to": "DOBJ-TL",
+   "access": "read"
+  },
+  {
+   "from": "LOC-PRI",
+   "type": "aggregation",
+   "to": "NODE-PRD"
+  },
+  {
+   "from": "LOC-PAIR",
+   "type": "aggregation",
+   "to": "NODE-PAIR"
+  },
+  {
+   "from": "NODE-PRD",
+   "type": "composition",
+   "to": "SSW-CRT"
+  },
+  {
+   "from": "NODE-PRD",
+   "type": "composition",
+   "to": "SSW-DB"
+  },
+  {
+   "from": "NODE-PAIR",
+   "type": "composition",
+   "to": "SSW-DBR"
+  },
+  {
+   "from": "NET-PTS",
+   "type": "association",
+   "to": "NODE-PRD"
+  },
+  {
+   "from": "SSW-DB",
+   "type": "flow",
+   "to": "SSW-DBR",
+   "name": "continuous replication"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-INGEST"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-HOOK"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-TRK"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-API"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-NOTIFY"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-OPS"
+  },
+  {
+   "from": "SSW-DB",
+   "type": "serving",
+   "to": "ACMP-STORE"
+  }
+ ]
+}

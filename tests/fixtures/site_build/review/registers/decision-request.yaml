@@ -1,0 +1,2 @@
+- {id: DRQ-01, title: Approve the logical design for build, area: Architecture, ask: approve, forum: FOR-01, due: 2026-11-04, owner: Solution Architect, status: submitted}
+- {id: DRQ-02, title: Accept the offline replay risk, area: Risk, ask: accept-risk, forum: FOR-01, due: TBC, owner: Head of Depot Operations, status: draft}

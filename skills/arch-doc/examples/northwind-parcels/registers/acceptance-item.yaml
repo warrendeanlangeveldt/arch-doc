@@ -1,0 +1,120 @@
+# Acceptance item register (acceptance-item). One record per item; ids are ACC-nn.
+# Fields: id, title, status
+#   stage: design | integration | monitoring | views | approval | go-live | hypercare-exit
+#   required: yes | no
+#   target: text
+#   evidence: text
+#   owner: text
+# Status: open (not-started), in-progress (partial), met (done), waived (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ACC-01
+  stage: design
+  title: Every component traces to a requirement
+  required: 'yes'
+  evidence: Requirement registers
+  owner: Solution architect
+  status: met
+
+- id: ACC-02
+  stage: design
+  title: Privacy impact assessment accepted
+  required: 'yes'
+  evidence: Privacy and data forum outcome
+  owner: Privacy officer
+  status: in-progress
+
+- id: ACC-03
+  stage: design
+  title: Security design reviewed
+  required: 'yes'
+  evidence: Security Review outcome
+  owner: Security architect
+  status: open
+
+- id: ACC-04
+  stage: design
+  title: Only published platform interfaces are used
+  required: 'yes'
+  evidence: Integration register against the platform design
+  owner: Integration lead
+  status: met
+
+- id: ACC-05
+  stage: integration
+  title: Scans, manifests and carrier updates pass end to end in test
+  required: 'yes'
+  evidence: Integration test report
+  owner: Integration lead
+  status: in-progress
+
+- id: ACC-06
+  stage: integration
+  title: A replay from dead-letter recovers every scan
+  required: 'yes'
+  evidence: Replay test
+  owner: Integration lead
+  status: met
+
+- id: ACC-07
+  stage: monitoring
+  title: Every critical and high alert raises an incident in the right group
+  required: 'yes'
+  evidence: Alert test log
+  owner: Service owner
+  status: open
+
+- id: ACC-08
+  stage: monitoring
+  title: Every alert links its runbook
+  required: 'yes'
+  evidence: Monitor definitions
+  owner: Service owner
+  status: in-progress
+
+- id: ACC-09
+  stage: views
+  title: Views drawn from one model and consistent with the registers
+  required: 'yes'
+  evidence: Model and view render
+  owner: Solution architect
+  status: met
+
+- id: ACC-10
+  stage: approval
+  title: All decision requests answered
+  required: 'yes'
+  evidence: Forum outcomes
+  owner: Solution architect
+  status: open
+
+- id: ACC-11
+  stage: approval
+  title: Every TBC has an owner
+  required: 'yes'
+  evidence: Open items list
+  owner: Solution architect
+  status: met
+
+- id: ACC-12
+  stage: hypercare-exit
+  title: Scan to visible within target for two consecutive weeks
+  required: 'yes'
+  evidence: Datadog service report
+  owner: Integration lead
+  status: open
+
+- id: ACC-13
+  stage: hypercare-exit
+  title: No priority 1 or 2 incident open
+  required: 'yes'
+  evidence: ServiceNow report
+  owner: Service owner
+  status: open
+
+- id: ACC-14
+  stage: hypercare-exit
+  title: Carrier calls for tracking enquiries down by half
+  required: 'no'
+  evidence: Customer service report
+  owner: Customer service manager
+  status: open

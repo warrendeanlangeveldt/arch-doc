@@ -1,0 +1,3 @@
+- {id: CMP-01, title: Scan intake, description: Receives scans from handhelds and writes the event log, runtime: Container app, interfaces: [scan.v2], owner: Parcels team, status: in-build}
+- {id: CMP-02, title: Replay worker, description: Orders buffered offline scans before release, runtime: TBC, interfaces: [scan.v2, replay.v1], owner: Parcels team, status: planned}
+- {id: CMP-03, title: Tracking feed, description: Publishes ordered events to parcel tracking, runtime: Container app, interfaces: [tracking.v3], owner: Tracking team, status: built}

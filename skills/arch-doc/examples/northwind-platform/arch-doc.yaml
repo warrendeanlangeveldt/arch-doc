@@ -1,0 +1,15 @@
+title: Northwind Platform
+short: NP
+kind: capability              # solution | capability
+layer: logical                # logical | logical-and-physical; logical bans product names
+version: "0.2"
+date: 2026-10-20
+author: {name: Lena Brandt, role: Platform Architect, team: Platform Engineering}
+owner: {name: Marcus Hale, role: Head of Platform}
+metamodel: seed
+profile: ../northwind-profile.yaml
+template: null
+depends_on: []
+history:
+  - {date: 2026-10-20, version: "0.2", author: Lena Brandt, change: First draft}
+banned_terms: []

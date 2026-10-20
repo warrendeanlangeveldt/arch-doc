@@ -1,0 +1,98 @@
+# Data flow register (data-flow). One record per item; ids are DF-nn.
+# Fields: id, title, status
+#   data: ref:data-object
+#   source: text
+#   target: text
+#   interface: ref:integration
+#   classification: public | internal | confidential | restricted
+#   transformation: text
+#   frequency: text
+# Status: planned (not-started), built (partial), verified (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DF-01
+  title: Manifests to the tracking store
+  data: DAT-01
+  source: Depot operations system
+  target: Tracking service
+  interface: INT-07
+  classification: internal
+  transformation: Contact split into its own record
+  frequency: On manifest close
+  status: built
+
+- id: DF-02
+  title: Contacts to the tracking store
+  data: DAT-05
+  source: Depot operations system
+  target: Tracking service
+  interface: INT-07
+  classification: confidential
+  transformation: Stored apart, with a 30-day expiry set on delivery
+  frequency: On manifest close
+  status: built
+
+- id: DF-03
+  title: Scans to timelines
+  data: DAT-02
+  source: Depot handheld app
+  target: Tracking service
+  interface: INT-01
+  classification: internal
+  transformation: Ordered by scan time; duplicates dropped by scan id
+  frequency: Each scan
+  status: built
+
+- id: DF-04
+  title: Carrier webhooks to timelines
+  data: DAT-03
+  source: Carrier systems
+  target: Tracking service
+  interface: INT-04
+  classification: internal
+  transformation: Carrier codes mapped to our status set
+  frequency: Each update
+  status: built
+
+- id: DF-05
+  title: Carrier B polls to timelines
+  data: DAT-03
+  source: Carrier systems
+  target: Tracking service
+  interface: INT-02
+  classification: internal
+  transformation: Carrier codes mapped to our status set
+  frequency: Every five minutes
+  status: planned
+
+- id: DF-06
+  title: Status changes to notifications
+  data: DAT-04
+  source: Tracking service
+  target: Customer notification service
+  interface: INT-03
+  classification: internal
+  transformation: Status change only; the service reads the contact itself
+  frequency: On status change
+  status: planned
+
+- id: DF-07
+  title: Timelines to the website
+  data: DAT-04
+  source: Tracking API
+  target: Customer website
+  interface: INT-05
+  classification: internal
+  transformation: 'Summary only: no addresses, no contact'
+  frequency: On lookup
+  status: built
+
+- id: DF-08
+  title: Notification requests to the provider
+  data: DAT-06
+  source: Customer notification service
+  target: Messaging provider
+  interface: INT-06
+  classification: confidential
+  transformation: Message rendered from a template
+  frequency: Per notification
+  status: planned

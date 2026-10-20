@@ -1,0 +1,602 @@
+{
+ "metamodel": "archimate",
+ "name": "Northwind Platform",
+ "description": "Shared integration and event platform for internal teams (logical).",
+ "objects": [
+  {
+   "id": "ACMP-NP",
+   "type": "Application Component",
+   "name": "Northwind Platform",
+   "status": "Designed",
+   "ref": "APP-01",
+   "owner": "Head of Platform"
+  },
+  {
+   "id": "ACMP-GW",
+   "type": "Application Component",
+   "name": "API gateway",
+   "status": "Designed",
+   "ref": "CMP-01"
+  },
+  {
+   "id": "ACMP-BRK",
+   "type": "Application Component",
+   "name": "Event broker",
+   "status": "Designed",
+   "ref": "CMP-02"
+  },
+  {
+   "id": "ACMP-WF",
+   "type": "Application Component",
+   "name": "Workflow runtime",
+   "status": "Not started",
+   "ref": "CMP-03"
+  },
+  {
+   "id": "ACMP-SEC",
+   "type": "Application Component",
+   "name": "Secrets store",
+   "status": "Designed",
+   "ref": "CMP-04"
+  },
+  {
+   "id": "ACMP-WID",
+   "type": "Application Component",
+   "name": "Workload identity",
+   "status": "Built",
+   "ref": "CMP-05"
+  },
+  {
+   "id": "ACMP-TEL",
+   "type": "Application Component",
+   "name": "Telemetry pipeline",
+   "status": "Designed",
+   "ref": "CMP-06"
+  },
+  {
+   "id": "ACMP-PORTAL",
+   "type": "Application Component",
+   "name": "Platform portal",
+   "status": "Not started",
+   "ref": "CMP-07"
+  },
+  {
+   "id": "ACMP-TPL",
+   "type": "Application Component",
+   "name": "Environment templates",
+   "status": "Designed",
+   "ref": "CMP-08"
+  },
+  {
+   "id": "ACMP-FILE",
+   "type": "Application Component",
+   "name": "Legacy file exchange",
+   "status": "Built",
+   "ref": "APP-02"
+  },
+  {
+   "id": "ACMP-BATCH",
+   "type": "Application Component",
+   "name": "Nightly batch scheduler",
+   "status": "Built",
+   "ref": "APP-03"
+  },
+  {
+   "id": "ACMP-TQ",
+   "type": "Application Component",
+   "name": "Team-run message queues",
+   "status": "Built",
+   "ref": "APP-04"
+  },
+  {
+   "id": "ACMP-ADAPT",
+   "type": "Application Component",
+   "name": "Point-to-point API adapters",
+   "status": "Built",
+   "ref": "APP-05"
+  },
+  {
+   "id": "ACMP-IDP",
+   "type": "Application Component",
+   "name": "Identity provider",
+   "status": "Built",
+   "ref": "APP-06"
+  },
+  {
+   "id": "ACMP-MON",
+   "type": "Application Component",
+   "name": "Monitoring platform",
+   "status": "Built",
+   "ref": "APP-07"
+  },
+  {
+   "id": "ACMP-ITSM",
+   "type": "Application Component",
+   "name": "Service Management Platform",
+   "status": "Built",
+   "ref": "APP-08"
+  },
+  {
+   "id": "ACOL-CONS",
+   "type": "Application Collaboration",
+   "name": "Consumer services",
+   "description": "Each consumer team's own services; defined in their own designs"
+  },
+  {
+   "id": "AIF-API",
+   "type": "Application Interface",
+   "name": "API publication interface",
+   "status": "Designed"
+  },
+  {
+   "id": "AIF-EVT",
+   "type": "Application Interface",
+   "name": "Event interface",
+   "status": "Designed"
+  },
+  {
+   "id": "AIF-WF",
+   "type": "Application Interface",
+   "name": "Workflow interface",
+   "status": "Designed"
+  },
+  {
+   "id": "AIF-SEC",
+   "type": "Application Interface",
+   "name": "Secret interface",
+   "status": "Designed"
+  },
+  {
+   "id": "AIF-TEL",
+   "type": "Application Interface",
+   "name": "Telemetry stream",
+   "status": "Designed"
+  },
+  {
+   "id": "AIF-INC",
+   "type": "Application Interface",
+   "name": "Incident interface",
+   "status": "Built"
+  },
+  {
+   "id": "DOBJ-ENV",
+   "type": "Data Object",
+   "name": "Event envelope",
+   "ref": "DAT-01"
+  },
+  {
+   "id": "DOBJ-PAY",
+   "type": "Data Object",
+   "name": "Event payload",
+   "ref": "DAT-02"
+  },
+  {
+   "id": "DOBJ-CAT",
+   "type": "Data Object",
+   "name": "Catalogue entry",
+   "ref": "DAT-03"
+  },
+  {
+   "id": "DOBJ-REG",
+   "type": "Data Object",
+   "name": "Consumer registration",
+   "ref": "DAT-04"
+  },
+  {
+   "id": "DOBJ-SECRET",
+   "type": "Data Object",
+   "name": "Secret",
+   "ref": "DAT-05"
+  },
+  {
+   "id": "DOBJ-AUDIT",
+   "type": "Data Object",
+   "name": "Audit record",
+   "ref": "DAT-06"
+  },
+  {
+   "id": "DOBJ-WFS",
+   "type": "Data Object",
+   "name": "Workflow state",
+   "ref": "DAT-07"
+  },
+  {
+   "id": "DOBJ-TEL",
+   "type": "Data Object",
+   "name": "Telemetry",
+   "ref": "DAT-08"
+  },
+  {
+   "id": "LOC-PRI",
+   "type": "Location",
+   "name": "Primary region"
+  },
+  {
+   "id": "LOC-PAIR",
+   "type": "Location",
+   "name": "Paired region"
+  },
+  {
+   "id": "NODE-DEV",
+   "type": "Node",
+   "name": "Development zone",
+   "status": "Built"
+  },
+  {
+   "id": "NODE-TEST",
+   "type": "Node",
+   "name": "Test zone",
+   "status": "Built"
+  },
+  {
+   "id": "NODE-PRE",
+   "type": "Node",
+   "name": "Pre-production zone",
+   "status": "Designed"
+  },
+  {
+   "id": "NODE-PROD",
+   "type": "Node",
+   "name": "Production zone",
+   "status": "Designed"
+  },
+  {
+   "id": "NODE-PAIR",
+   "type": "Node",
+   "name": "Production zone (paired)",
+   "status": "Designed"
+  },
+  {
+   "id": "NET-HUB",
+   "type": "Communication Network",
+   "name": "Shared network hub",
+   "status": "Built"
+  },
+  {
+   "id": "SSW-GWS",
+   "type": "System Software",
+   "name": "Managed gateway service",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-BRKS",
+   "type": "System Software",
+   "name": "Managed broker service",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-WFS",
+   "type": "System Software",
+   "name": "Managed workflow service",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-SECS",
+   "type": "System Software",
+   "name": "Managed secrets service",
+   "status": "Designed"
+  },
+  {
+   "id": "SSW-CRT",
+   "type": "System Software",
+   "name": "Managed container runtime",
+   "status": "Designed"
+  }
+ ],
+ "relationships": [
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-GW"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-BRK"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-WF"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-SEC"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-WID"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-TEL"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-PORTAL"
+  },
+  {
+   "from": "ACMP-NP",
+   "type": "composition",
+   "to": "ACMP-TPL"
+  },
+  {
+   "from": "ACMP-GW",
+   "type": "composition",
+   "to": "AIF-API"
+  },
+  {
+   "from": "ACMP-BRK",
+   "type": "composition",
+   "to": "AIF-EVT"
+  },
+  {
+   "from": "ACMP-WF",
+   "type": "composition",
+   "to": "AIF-WF"
+  },
+  {
+   "from": "ACMP-SEC",
+   "type": "composition",
+   "to": "AIF-SEC"
+  },
+  {
+   "from": "ACMP-TEL",
+   "type": "composition",
+   "to": "AIF-TEL"
+  },
+  {
+   "from": "ACMP-ITSM",
+   "type": "composition",
+   "to": "AIF-INC"
+  },
+  {
+   "from": "AIF-API",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "AIF-EVT",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "AIF-WF",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "AIF-SEC",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "ACMP-IDP",
+   "type": "serving",
+   "to": "ACMP-WID"
+  },
+  {
+   "from": "ACMP-WID",
+   "type": "serving",
+   "to": "ACMP-GW"
+  },
+  {
+   "from": "ACMP-WID",
+   "type": "serving",
+   "to": "ACMP-SEC"
+  },
+  {
+   "from": "AIF-TEL",
+   "type": "serving",
+   "to": "ACMP-MON"
+  },
+  {
+   "from": "ACMP-TEL",
+   "type": "flow",
+   "to": "ACMP-MON",
+   "name": "telemetry by consumer"
+  },
+  {
+   "from": "AIF-INC",
+   "type": "serving",
+   "to": "ACMP-MON"
+  },
+  {
+   "from": "ACMP-MON",
+   "type": "flow",
+   "to": "ACMP-ITSM",
+   "name": "alerts as incidents"
+  },
+  {
+   "from": "ACMP-PORTAL",
+   "type": "flow",
+   "to": "ACMP-TPL",
+   "name": "registrations"
+  },
+  {
+   "from": "ACMP-BRK",
+   "type": "flow",
+   "to": "ACMP-TEL",
+   "name": "envelopes"
+  },
+  {
+   "from": "ACMP-FILE",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "ACMP-TQ",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "ACMP-ADAPT",
+   "type": "serving",
+   "to": "ACOL-CONS"
+  },
+  {
+   "from": "ACMP-BATCH",
+   "type": "flow",
+   "to": "ACMP-FILE",
+   "name": "nightly extracts"
+  },
+  {
+   "from": "ACMP-BRK",
+   "type": "access",
+   "to": "DOBJ-ENV",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-BRK",
+   "type": "access",
+   "to": "DOBJ-PAY",
+   "access": "readwrite"
+  },
+  {
+   "from": "ACMP-PORTAL",
+   "type": "access",
+   "to": "DOBJ-CAT",
+   "access": "readwrite"
+  },
+  {
+   "from": "ACMP-PORTAL",
+   "type": "access",
+   "to": "DOBJ-REG",
+   "access": "readwrite"
+  },
+  {
+   "from": "ACMP-SEC",
+   "type": "access",
+   "to": "DOBJ-SECRET",
+   "access": "readwrite"
+  },
+  {
+   "from": "ACMP-TEL",
+   "type": "access",
+   "to": "DOBJ-AUDIT",
+   "access": "write"
+  },
+  {
+   "from": "ACMP-WF",
+   "type": "access",
+   "to": "DOBJ-WFS",
+   "access": "readwrite"
+  },
+  {
+   "from": "ACMP-TEL",
+   "type": "access",
+   "to": "DOBJ-TEL",
+   "access": "write"
+  },
+  {
+   "from": "LOC-PRI",
+   "type": "aggregation",
+   "to": "NODE-DEV"
+  },
+  {
+   "from": "LOC-PRI",
+   "type": "aggregation",
+   "to": "NODE-TEST"
+  },
+  {
+   "from": "LOC-PRI",
+   "type": "aggregation",
+   "to": "NODE-PRE"
+  },
+  {
+   "from": "LOC-PRI",
+   "type": "aggregation",
+   "to": "NODE-PROD"
+  },
+  {
+   "from": "LOC-PAIR",
+   "type": "aggregation",
+   "to": "NODE-PAIR"
+  },
+  {
+   "from": "NODE-PROD",
+   "type": "composition",
+   "to": "SSW-GWS"
+  },
+  {
+   "from": "SSW-GWS",
+   "type": "serving",
+   "to": "ACMP-GW"
+  },
+  {
+   "from": "NODE-PROD",
+   "type": "composition",
+   "to": "SSW-BRKS"
+  },
+  {
+   "from": "SSW-BRKS",
+   "type": "serving",
+   "to": "ACMP-BRK"
+  },
+  {
+   "from": "NODE-PROD",
+   "type": "composition",
+   "to": "SSW-WFS"
+  },
+  {
+   "from": "SSW-WFS",
+   "type": "serving",
+   "to": "ACMP-WF"
+  },
+  {
+   "from": "NODE-PROD",
+   "type": "composition",
+   "to": "SSW-SECS"
+  },
+  {
+   "from": "SSW-SECS",
+   "type": "serving",
+   "to": "ACMP-SEC"
+  },
+  {
+   "from": "NODE-PROD",
+   "type": "composition",
+   "to": "SSW-CRT"
+  },
+  {
+   "from": "SSW-CRT",
+   "type": "serving",
+   "to": "ACMP-PORTAL"
+  },
+  {
+   "from": "NODE-PROD",
+   "type": "flow",
+   "to": "NODE-PAIR",
+   "name": "asynchronous replication"
+  },
+  {
+   "from": "NET-HUB",
+   "type": "association",
+   "to": "NODE-DEV"
+  },
+  {
+   "from": "NET-HUB",
+   "type": "association",
+   "to": "NODE-TEST"
+  },
+  {
+   "from": "NET-HUB",
+   "type": "association",
+   "to": "NODE-PRE"
+  },
+  {
+   "from": "NET-HUB",
+   "type": "association",
+   "to": "NODE-PROD"
+  },
+  {
+   "from": "NET-HUB",
+   "type": "association",
+   "to": "NODE-PAIR"
+  }
+ ]
+}

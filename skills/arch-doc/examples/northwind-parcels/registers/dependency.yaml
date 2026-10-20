@@ -1,0 +1,53 @@
+# Dependency register (dependency). One record per item; ids are DEP-nn.
+# Fields: id, title, status
+#   type: business | technology | vendor | data | integration | security | platform
+#   provider: text
+#   required_by: date
+#   impact: text
+#   owner: text
+# Status: open (not-started), in-progress (partial), at-risk (partial), met (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DEP-01
+  title: Platform messaging service available in production
+  type: platform
+  provider: Northwind Platform
+  required_by: '2027-02-01'
+  impact: Scan events cannot reach the tracking service
+  owner: Integration lead
+  status: in-progress
+
+- id: DEP-02
+  title: Carriers A and C point their webhooks at the production endpoint
+  type: vendor
+  provider: Carriers A and C
+  required_by: '2027-03-08'
+  impact: Carrier updates arrive only by polling, if at all
+  owner: Integration lead
+  status: open
+
+- id: DEP-03
+  title: Messaging provider contract signed
+  type: vendor
+  provider: Procurement
+  required_by: '2027-02-15'
+  impact: No customer notifications at go-live
+  owner: Product owner
+  status: at-risk
+
+- id: DEP-04
+  title: ServiceNow configuration items and assignment groups created
+  type: business
+  provider: Service management team
+  required_by: '2027-02-15'
+  impact: Incidents cannot be raised against the service
+  owner: Service owner
+  status: open
+
+- id: DEP-05
+  title: Handheld firmware fix for scan time zones
+  type: vendor
+  provider: Handheld vendor
+  required_by: '2027-02-01'
+  impact: Scans from affected handhelds sort in the wrong order (ISS-02)
+  owner: Depot operations manager
+  status: in-progress

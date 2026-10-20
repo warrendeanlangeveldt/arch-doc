@@ -1,0 +1,39 @@
+# Decision request register (decision-request). One record per item; ids are DRQ-nn.
+# Fields: id, title, status
+#   area: text
+#   ask: approve | endorse | accept-risk | note
+#   forum: ref:forum
+#   due: date
+#   conditions: text
+#   owner: text
+# Status: draft (not-started), submitted (partial), conditional (partial), approved (done), declined (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DRQ-01
+  area: Design
+  title: Approve the platform capability design for the release 1 build
+  ask: approve
+  forum: FOR-01
+  due: '2026-11-12'
+  conditions: Security sign-off at CHK-02
+  owner: Platform architect
+  status: submitted
+
+- id: DRQ-02
+  area: Parent architecture
+  title: Approve the deviation from the enterprise service bus pattern
+  ask: approve
+  forum: FOR-01
+  due: '2026-11-12'
+  conditions: None
+  owner: Platform architect
+  status: submitted
+
+- id: DRQ-03
+  area: Operations
+  title: Accept the risk that the first consumers go live before support is fully staffed
+  ask: accept-risk
+  forum: FOR-04
+  due: '2026-11-26'
+  conditions: Interim on-call roster agreed
+  owner: Head of Platform
+  status: draft

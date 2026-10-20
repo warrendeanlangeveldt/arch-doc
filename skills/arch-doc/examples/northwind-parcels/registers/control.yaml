@@ -1,0 +1,100 @@
+# Control register (control). One record per item; ids are CTL-nn.
+# Fields: id, title, status
+#   area: identity | privileged-access | data-protection | network | monitoring | application | compliance
+#   response: text
+#   mitigates: refs:risk
+#   evidence: text
+#   owner: text
+# Status: planned (not-started), implemented (partial), verified (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CTL-01
+  area: identity
+  title: Staff sign in with Entra ID and get roles from groups
+  response: Ops viewer and ops lead roles from two security groups; reviewed quarterly by the depot operations manager
+  evidence: Group membership report
+  owner: Security architect
+  status: planned
+
+- id: CTL-02
+  area: identity
+  title: The website and ServiceNow call the API with their own client credentials
+  response: Client credentials through the platform gateway; one client per caller, scoped to its route
+  evidence: Gateway client list
+  owner: Integration lead
+  status: implemented
+
+- id: CTL-03
+  area: privileged-access
+  title: Production data access by just-in-time elevation only
+  response: Platform elevation for two hours, approved by the service owner, logged
+  evidence: Elevation log sample
+  owner: Service owner
+  status: planned
+
+- id: CTL-04
+  area: privileged-access
+  title: Agents see contact data only for the parcel they look up
+  response: Internal route returns contact data per lookup; every lookup logged with the agent
+  mitigates:
+  - RSK-05
+  evidence: Lookup log sample
+  owner: Customer service manager
+  status: planned
+
+- id: CTL-05
+  area: data-protection
+  title: Contact data is encrypted and deleted 30 days after delivery
+  response: Platform-managed keys; contacts in their own container with a 30-day expiry
+  mitigates:
+  - RSK-05
+  evidence: 'TBC: Privacy officer'
+  owner: Privacy officer
+  status: planned
+
+- id: CTL-06
+  area: data-protection
+  title: Non-production holds no real contacts
+  response: Contacts replaced with synthetic values in every refresh
+  evidence: Refresh job report
+  owner: Integration lead
+  status: planned
+
+- id: CTL-07
+  area: network
+  title: Webhooks are accepted only when signed by the carrier
+  response: Signature checked with each carrier's secret before anything is stored; source ranges allow-listed at the gateway
+  mitigates:
+  - RSK-04
+  evidence: Webhook test log
+  owner: Integration lead
+  status: implemented
+
+- id: CTL-08
+  area: network
+  title: Public lookups need the postcode and are rate limited
+  response: Number and postcode both required; 10 lookups a minute per client address at the gateway
+  mitigates:
+  - RSK-04
+  evidence: 'TBC: Security architect'
+  owner: Security architect
+  status: planned
+
+- id: CTL-09
+  area: monitoring
+  title: Signature failures and lookup sweeps raise security alerts
+  response: ALT-07 and ALT-08 route to security operations
+  mitigates:
+  - RSK-04
+  evidence: Alert test log
+  owner: Security architect
+  status: planned
+
+- id: CTL-10
+  area: application
+  title: Notifications go only to the contact on the manifest
+  response: The notification service reads the contact from the store, never from the event
+  mitigates:
+  - RSK-05
+  evidence: Code review and test
+  owner: Product owner
+  status: planned

@@ -1,0 +1,382 @@
+/* arch-doc TL;DR deck. The house tokens (--ink, --accent, ...) and the font
+   stacks (--heading, --body) are written into :root by deck_build.py from
+   the profile; nothing here names a colour of its own. Slides are laid out
+   at 1920 x 1080 and scaled to the viewport by deck.js. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--frame);
+  color: var(--ink);
+  font-family: var(--body);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  position: absolute; left: 0; top: 0;
+  width: 1920px; height: 1080px;
+  transform-origin: 0 0;
+}
+
+.slide {
+  position: absolute; left: 0; top: 0;
+  width: 1920px; height: 1080px;
+  overflow: hidden;
+  visibility: hidden;
+  background: var(--bg);
+  color: var(--ink);
+}
+.slide.active { visibility: visible; }
+.slide.bg-a { --bg: var(--paper); --card: var(--panel); }
+.slide.bg-b { --bg: var(--panel); --card: var(--paper); }
+.slide.bg-s { --bg: var(--accent); --card: var(--accent); color: var(--paper); }
+
+.slide > * { position: absolute; }
+.slide aside.notes { display: none; }
+
+/* --- type scale: 88 / 56 / 36 / 28 / 24 ------------------------------- */
+.hblock { left: 128px; width: 1664px; display: flex; flex-direction: column; }
+.hblock .title { margin-top: 12px; }
+.hblock .claim { margin-top: 16px; }
+.eyebrow {
+  left: 128px; width: 1664px;
+  font-size: 24px; line-height: 1.2; font-weight: 600;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent);
+}
+.title {
+  left: 128px; width: 1664px;
+  font-family: var(--heading); font-size: 56px; line-height: 1.1; font-weight: 600;
+  color: var(--ink);
+}
+.claim {
+  left: 128px; width: 1664px;
+  font-size: 36px; line-height: 1.25; color: var(--ink);
+}
+.footer {
+  left: 128px; bottom: 64px; width: 1664px;
+  font-size: 24px; line-height: 1.2; color: var(--muted);
+}
+.body { left: 128px; width: 1664px; overflow: hidden; }
+
+/* --- cover, dividers -------------------------------------------------- */
+.bg-s .eyebrow { color: var(--accent-soft); }
+.cover-title {
+  left: 128px; width: 1664px;
+  font-family: var(--heading); font-size: 88px; line-height: 1.08; font-weight: 600;
+}
+.bg-s .cover-title { color: var(--paper); }
+.cover-line { left: 128px; width: 1664px; font-size: 36px; line-height: 1.25; }
+.bg-s .cover-line { color: var(--paper); }
+.cover-meta { left: 128px; width: 1664px; font-size: 28px; line-height: 1.4; }
+.bg-s .cover-meta { color: var(--accent-soft); }
+.cover-meta p + p { margin-top: 4px; }
+.divider-title {
+  left: 128px; width: 1664px;
+  font-family: var(--heading); font-size: 88px; line-height: 1.08; font-weight: 600; color: var(--ink);
+}
+.toc { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 12px; }
+.toc p { font-size: 28px; line-height: 1.3; color: var(--ink); }
+.toc b { color: var(--accent); font-weight: 600; margin-right: 14px; }
+
+/* --- story: points and cards ------------------------------------------ */
+.grid { display: grid; gap: 24px; height: 100%; }
+.card {
+  background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 24px 28px; overflow: hidden;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.card .label {
+  font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent);
+}
+.card .head { font-size: 28px; line-height: 1.3; font-weight: 600; color: var(--ink); }
+.card .text { color: var(--ink); }
+.card .field { font-size: 24px; line-height: 1.3; color: var(--ink); }
+.card .field b { font-weight: 600; color: var(--muted); }
+.points { display: flex; flex-direction: column; gap: 20px; }
+.points.two { display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; row-gap: 20px; align-content: start; }
+.point {
+  border-left: 6px solid var(--accent); padding: 6px 0 6px 24px;
+  color: var(--ink);
+}
+.text b, .point b { font-weight: 600; }
+.text code, .point code { font-family: var(--mono); font-size: 0.92em; }
+
+/* --- detail: register tables and cards -------------------------------- */
+.cols { display: flex; gap: 32px; height: 100%; }
+.col { display: flex; flex-direction: column; gap: 20px; overflow: hidden; }
+.group { display: flex; flex-direction: column; gap: 8px; }
+.group-label {
+  font-size: 24px; line-height: 1.2; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--accent);
+}
+.more { font-size: 24px; line-height: 1.25; color: var(--muted); }
+.pointers { display: grid; column-gap: 16px; row-gap: 12px; }
+.pointer {
+  background: var(--card); border: 1px solid var(--rule); border-radius: 10px;
+  padding: 14px 15px; display: flex; flex-direction: column; gap: 4px; overflow: hidden;
+}
+.pointers .pointer { min-width: 0; }
+.pointer .group-label { white-space: nowrap; overflow: hidden; }
+table.reg {
+  border-collapse: collapse; table-layout: fixed;
+  font-size: 24px; line-height: 1.3; color: var(--ink);
+  background: var(--card);
+}
+table.reg th, table.reg td {
+  padding: 8px 12px; text-align: left; vertical-align: top;
+  border: 1px solid var(--rule); overflow-wrap: anywhere;
+}
+table.reg th { background: var(--accent-soft); font-weight: 600; color: var(--ink); }
+table.reg td.idc { font-weight: 600; white-space: nowrap; }
+
+.chip {
+  display: inline-block; font-size: 24px; line-height: 1.25; font-weight: 600;
+  padding: 1px 10px; border-radius: 6px; border: 1.5px solid currentColor; white-space: nowrap;
+}
+.chip.done { color: var(--done); background: var(--done-soft); }
+.chip.partial { color: var(--partial); background: var(--partial-soft); }
+.chip.not-started { color: var(--not-started); background: var(--not-started-soft); border-style: dashed; }
+.chip.tbc { color: var(--tbc); background: var(--tbc-soft); border-style: dashed; }
+
+/* --- picture ---------------------------------------------------------- */
+.picture { left: 128px; width: 1664px; }
+.picture svg, .picture img { display: block; width: 100%; height: 100%; }
+.picture img { object-fit: contain; background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; }
+.callout {
+  position: absolute; max-width: 520px;
+  font-size: 24px; line-height: 1.3; font-weight: 600;
+  color: var(--tbc); background: var(--tbc-soft); border: 1.5px solid var(--tbc);
+  padding: 6px 12px; border-radius: 8px;
+}
+
+/* --- chrome: notes, navigation, overview ----------------------------- */
+/* deck.js writes the scaled slide's box into --slide-x, --slide-y,
+   --slide-w, --slide-h and the room under it into --below; the controls sit
+   on the slide's edges, or under it (body.ui-below) when a tall viewport
+   leaves room. */
+:root { --slide-x: 0px; --slide-y: 0px; --slide-w: 100vw; --slide-h: 100vh; --below: 0px;
+        --chrome: color-mix(in srgb, var(--ink) 82%, transparent); }
+body:focus { outline: none; }
+.notes-panel {
+  position: fixed; left: 0; right: 0; bottom: 0; max-height: 40vh; overflow: auto;
+  background: var(--ink); color: var(--paper);
+  font-size: 18px; line-height: 1.5; padding: 16px 24px; display: none; z-index: 12;
+}
+body.show-notes .notes-panel { display: block; }
+body.zone-prev .stage { cursor: w-resize; }
+body.zone-next .stage { cursor: e-resize; }
+
+:where(.deck-ui) button {
+  font: inherit; color: inherit; border: 0; background: none; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.deck-ui button:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; }
+.deck-ui button > svg { display: block; }
+
+.nav-btn {
+  position: fixed; z-index: 9;
+  top: calc(var(--slide-y) + var(--slide-h) / 2 - 26px);
+  width: 52px; height: 52px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--chrome); color: var(--paper);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+  opacity: 0; transition: opacity 0.25s ease, transform 0.15s ease;
+}
+.nav-btn svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2.4;
+               stroke-linecap: round; stroke-linejoin: round; }
+.nav-btn.prev { left: calc(var(--slide-x) + 20px); }
+.nav-btn.next { right: calc(var(--slide-x) + 20px); }
+body.ui-awake .nav-btn, .nav-btn:focus-visible { opacity: 0.88; }
+.nav-btn:hover { opacity: 1; transform: scale(1.06); }
+.nav-btn:disabled { visibility: hidden; }
+
+.counter {
+  position: fixed; z-index: 9;
+  right: calc(var(--slide-x) + 20px); bottom: calc(var(--below) + 18px);
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 13px 7px 11px; border-radius: 999px;
+  background: var(--chrome); color: var(--paper);
+  font-size: 15px; line-height: 20px; font-weight: 600;
+  font-variant-numeric: tabular-nums; letter-spacing: 0.02em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  opacity: 0.86; transition: opacity 0.2s ease;
+}
+.counter svg { width: 14px; height: 14px; fill: currentColor; opacity: 0.85; }
+.counter:hover, body.ui-awake .counter { opacity: 1; }
+
+.progress {
+  position: fixed; z-index: 8; pointer-events: none;
+  left: var(--slide-x); width: var(--slide-w);
+  top: calc(var(--slide-y) + var(--slide-h) - 4px); height: 4px;
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+}
+.progress-bar { height: 100%; width: 0; background: var(--accent); transition: width 0.25s ease; }
+body.on-accent .progress { background: color-mix(in srgb, var(--paper) 25%, transparent); }
+body.on-accent .progress-bar { background: var(--paper); }
+
+.hint {
+  position: fixed; z-index: 9; pointer-events: none;
+  left: calc(var(--slide-x) + var(--slide-w) / 2); bottom: calc(var(--below) + 22px);
+  transform: translate(-50%, 6px);
+  max-width: calc(100vw - 32px); width: max-content;
+  padding: 9px 18px; border-radius: 999px;
+  background: var(--chrome); color: var(--paper);
+  font-size: 15px; line-height: 20px; font-weight: 500; text-align: center;
+  opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hint.on { opacity: 1; transform: translate(-50%, 0); }
+
+/* Tall viewports (a phone held upright): the controls go under the slide,
+   previous and next at its edges, the counter between them. */
+body.ui-below .nav-btn { top: calc(var(--slide-y) + var(--slide-h) + 16px); width: 44px; height: 44px; }
+body.ui-below .nav-btn svg { width: 22px; height: 22px; }
+body.ui-below .nav-btn.prev { left: calc(var(--slide-x) + 16px); }
+body.ui-below .nav-btn.next { right: calc(var(--slide-x) + 16px); }
+body.ui-below .counter { right: auto; left: 50%; transform: translateX(-50%);
+                         bottom: auto; top: calc(var(--slide-y) + var(--slide-h) + 20px); }
+body.ui-below .hint { bottom: auto; top: calc(var(--slide-y) + var(--slide-h) + 80px);
+                      font-size: 14px; border-radius: 14px; text-wrap: balance;
+                      max-width: min(300px, calc(100vw - 32px)); }
+
+/* Touch screens have no hover: the buttons stay visible. */
+@media (hover: none) {
+  .nav-btn { opacity: 0.85; }
+}
+
+/* --- the overview: every slide as a thumbnail ------------------------- */
+.overview {
+  position: fixed; inset: 0; z-index: 20; overflow: auto; overscroll-behavior: contain;
+  background: color-mix(in srgb, var(--ink) 94%, #000);
+  color: var(--paper); padding: 0 24px 32px;
+}
+.overview[hidden] { display: none; }
+.overview-head {
+  position: sticky; top: 0; z-index: 1;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 0 14px; margin-bottom: 6px;
+  background: inherit;
+}
+.overview-title { font-family: var(--heading); font-size: 22px; font-weight: 600; }
+.overview-title span { font-family: var(--body); font-size: 15px; font-weight: 500; opacity: 0.7; margin-left: 8px; }
+.overview-close {
+  display: flex; align-items: center; gap: 8px;
+  padding: 7px 12px; border-radius: 8px;
+  font-size: 15px; font-weight: 600;
+  background: color-mix(in srgb, var(--paper) 12%, transparent);
+}
+.overview-close:hover { background: color-mix(in srgb, var(--paper) 22%, transparent); }
+.overview-close kbd { font-family: var(--mono); font-size: 12px; opacity: 0.7;
+                      border: 1px solid currentColor; border-radius: 4px; padding: 0 4px; }
+.overview-grid {
+  display: grid; gap: 22px 18px;
+  grid-template-columns: repeat(auto-fill, minmax(min(236px, calc(50% - 9px)), 1fr));
+}
+.thumb { display: flex; flex-direction: column; gap: 7px; text-align: left; padding: 0; min-width: 0; }
+.thumb-frame {
+  position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: 6px; background: var(--paper);
+  outline: 2px solid transparent; outline-offset: 3px;
+  transition: outline-color 0.15s ease, transform 0.15s ease;
+  content-visibility: auto; contain-intrinsic-size: auto 133px;
+}
+.thumb-frame .slide {
+  visibility: visible; pointer-events: none;
+  transform-origin: 0 0; transform: scale(var(--thumb-k, 0.12));
+}
+.thumb:hover .thumb-frame { outline-color: color-mix(in srgb, var(--paper) 45%, transparent); }
+.deck-ui .thumb:focus-visible { outline: none; }
+.thumb:focus-visible .thumb-frame { outline-color: var(--paper); }
+.thumb.current .thumb-frame { outline-color: var(--accent-soft); outline-width: 3px; }
+.thumb-cap {
+  display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-size: 13px; line-height: 17px; opacity: 0.82;
+}
+.thumb-cap b { font-variant-numeric: tabular-nums; font-weight: 700; margin-right: 8px; opacity: 0.8; }
+.thumb.current .thumb-cap { opacity: 1; }
+
+body.overview-open .nav-btn, body.overview-open .counter,
+body.overview-open .hint, body.overview-open .progress { display: none; }
+
+body.shot { overflow: hidden; background: var(--bg-shot, transparent); }
+body.shot .deck-ui, body.shot .notes-panel { display: none !important; }
+#deck-check { display: none; }
+
+/* --- print: one slide per page ---------------------------------------- */
+@page { size: 1920px 1080px; margin: 0; }
+@media print {
+  html, body { height: auto; overflow: visible; background: none; }
+  .stage { position: static; transform: none !important; width: 1920px; height: auto; }
+  .slide {
+    position: relative; visibility: visible;
+    break-after: page; page-break-after: always;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .slide:last-child { break-after: auto; page-break-after: auto; }
+  .deck-ui, .notes-panel { display: none !important; }
+}
+
+/* --- dense story and detail bodies (deck.js trims them to fit) --------- */
+[hidden] { display: none !important; }
+.body.fill { display: flex; flex-direction: column; gap: 20px; }
+.cols.gridrow { align-items: flex-start; height: auto; }
+.cols.gridrow .gcol { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.story-cols { flex: 1; min-height: 0; height: auto; }
+.story-cols .col { gap: 16px; }
+.facts { display: flex; gap: 16px; flex: none; }
+.fact {
+  flex: 1; min-width: 0; background: var(--card); border: 1px solid var(--rule); border-radius: 12px;
+  padding: 12px 18px; display: flex; flex-direction: column; gap: 2px; overflow: hidden;
+}
+.fact .num { font-family: var(--heading); font-size: 36px; line-height: 1.1; font-weight: 600; color: var(--accent); }
+.fact .num span { font-family: var(--body); font-size: 24px; font-weight: 600; color: var(--ink); margin-left: 10px; }
+.fact .split { font-size: 24px; line-height: 1.3; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.openbox {
+  flex: none; background: var(--tbc-soft); border: 1.5px dashed var(--tbc); border-radius: 12px;
+  padding: 14px 18px; display: flex; flex-direction: column; gap: 4px;
+}
+.openbox .label { font-size: 24px; line-height: 1.25; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--tbc); }
+.openbox .what { font-size: 24px; line-height: 1.35; color: var(--ink); }
+.cardgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-content: start; }
+.cardgrid .card { padding: 16px 20px; gap: 6px; }
+.points.tight { gap: 12px; }
+.runstats { display: flex; flex-direction: column; gap: 16px; }
+.runstats .fact { flex: none; }
+.statbar { display: flex; height: 48px; border-radius: 8px; overflow: hidden; border: 1px solid var(--rule); }
+.statbar div { display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 600; white-space: nowrap; overflow: hidden; }
+.toc.toc-run { display: flex; flex-direction: column; gap: 14px; }
+.toc-run p { display: flex; flex-wrap: wrap; align-items: baseline; }
+.toc-run b { min-width: 44px; }
+.toc-sub { flex-basis: 100%; padding-left: 58px; font-size: 24px; color: var(--muted); }
+table.reg .chip { white-space: normal; display: inline; -webkit-box-decoration-break: clone; box-decoration-break: clone; line-height: 1.5; }
+
+/* A table's label and its one footnote share a line; a collapsed table is
+   that line alone. */
+.group-head { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 20px; row-gap: 2px; }
+.group-head .group-label { flex: none; max-width: 100%; }
+.group-head .more { flex: 1 1 auto; min-width: 0; }
+.group[data-collapsed] .group-head { flex-wrap: wrap; }
+.group[data-collapsed] .more { flex: 1 1 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.group { gap: 6px; }
+table.reg th, table.reg td { padding-top: 6px; padding-bottom: 6px; }
+.cols.gridrow .gcol { gap: 14px; }
+.body.fill { gap: 16px; }
+.cols.gridrow.stacked { flex-direction: column; gap: 14px; }
+.cols.gridrow.stacked .gcol { width: 100% !important; }
+.cols.gridrow.stacked table.reg { width: 100% !important; }
+.card .text[data-lines] { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+/* Detail bodies: open tables span the width; a section shown as its
+   one-line summary takes a third, so summaries sit three to a row. */
+.body.fill.rows { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 24px; row-gap: 14px;
+                  align-content: start; grid-auto-flow: row dense; }
+.body.fill.rows > * { grid-column: 1 / -1; min-width: 0; }
+.body.fill.rows > .group[data-collapsed] { grid-column: auto; }
+.body.fill.rows > .group[data-collapsed] .group-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cols.story-top { gap: 32px; align-items: flex-start; height: auto; }
+.cols.story-top .col { overflow: visible; }
+.openbox .who { font-size: 24px; line-height: 1.3; color: var(--muted); }
+/* Callouts with no free space on their picture: a strip under it. */
+.callout-strip { display: flex; gap: 16px; flex-wrap: nowrap; overflow: hidden; }
+.callout.strip { position: static; max-width: none; flex: 0 1 auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

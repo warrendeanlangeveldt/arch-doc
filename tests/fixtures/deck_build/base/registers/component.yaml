@@ -1,0 +1,3 @@
+- {id: CMP-01, title: Container hosting, layer: platform, owner: Platform lead, status: built}
+- {id: CMP-02, title: Managed databases, layer: data, owner: Platform lead, status: built}
+- {id: CMP-03, title: Message broker, layer: integration, owner: Platform lead, status: in-build}

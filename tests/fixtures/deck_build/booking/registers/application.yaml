@@ -1,0 +1,5 @@
+- {id: APP-01, title: Booking Service, purpose: Takes and confirms freight bookings, state: target, change: new, role: both, lifecycle: invest, criticality: high, owner: Head of Freight, status: in-build}
+- {id: APP-02, title: Carrier Gateway, purpose: Talks to carrier booking APIs, state: target, change: new, role: target, lifecycle: invest, criticality: high, owner: Integration lead, status: in-build}
+- {id: APP-03, title: Customer Portal, purpose: Customers book and track freight, state: both, change: changed, role: source, lifecycle: strategic, criticality: medium, owner: Digital lead, status: live}
+- {id: APP-04, title: Finance Ledger, purpose: Invoices and payments, state: both, change: unchanged, role: target, lifecycle: tolerate, criticality: high, owner: Finance lead, status: live}
+- {id: APP-05, title: Booking Spreadsheet, purpose: Today's manual booking log, state: current, change: retired, role: none, lifecycle: retire, criticality: low, owner: Depot manager, status: retired}

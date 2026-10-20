@@ -1,0 +1,26 @@
+# Issue register (issue). One record per item; ids are ISS-nn.
+# Fields: id, title, status
+#   severity: low | medium | high | critical
+#   impact: text
+#   raised: date
+#   due: date
+#   owner: text
+# Status: open (not-started), in-progress (partial), resolved (done), closed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ISS-01
+  title: Pre-production zone build is three weeks late
+  severity: high
+  impact: Failover and load tests move into January, close to go-live
+  raised: '2026-10-06'
+  due: '2026-11-27'
+  owner: Platform engineering lead
+  status: in-progress
+
+- id: ISS-02
+  title: Two early consumers read broker internals directly
+  severity: medium
+  impact: They break when we change partitions; ADR-02 requires them to move
+  raised: '2026-09-22'
+  due: '2026-12-18'
+  owner: Platform architect
+  status: open

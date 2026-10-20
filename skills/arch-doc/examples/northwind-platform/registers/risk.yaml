@@ -1,0 +1,103 @@
+# Risk register (risk). One record per item; ids are RSK-nn.
+# Fields: id, title, status
+#   category: architecture | operational | security | delivery
+#   cause: text
+#   consequence: text
+#   likelihood: low | medium | high
+#   impact: low | medium | high
+#   rating: low | medium | high | extreme
+#   mitigation: text
+#   residual: low | medium | high
+#   owner: text
+# Status: open (not-started), mitigating (partial), mitigated (done), accepted (done), closed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RSK-01
+  title: Shared networking is a single point of failure for every consumer
+  category: architecture
+  cause: All zones route through one shared network hub
+  consequence: A hub outage stops every consumer at once
+  likelihood: low
+  impact: high
+  rating: medium
+  mitigation: Zone-redundant hub with a tested failover path
+  residual: low
+  owner: Network lead
+  status: mitigating
+
+- id: RSK-02
+  title: Consumers adopt the platform before its support model is staffed
+  category: operational
+  cause: Consumer delivery dates are earlier than the support team's start
+  consequence: Incidents reach a team that cannot yet act on them out of hours
+  likelihood: medium
+  impact: high
+  rating: high
+  mitigation: Interim on-call roster from the build team until July 2027; risk acceptance sought in DRQ-03
+  residual: medium
+  owner: Head of Platform
+  status: open
+
+- id: RSK-03
+  title: Consumers assume global ordering that the broker does not give
+  category: architecture
+  cause: Order is kept per key, not across keys
+  consequence: A consumer processes related events out of order
+  likelihood: medium
+  impact: medium
+  rating: medium
+  mitigation: Ordering contract in the interface guide; contract tests in onboarding
+  residual: low
+  owner: Platform architect
+  status: mitigating
+
+- id: RSK-04
+  title: An event schema change breaks subscribers
+  category: architecture
+  cause: No schema registry until FR-08 is built
+  consequence: Subscribers fail on events they cannot read
+  likelihood: high
+  impact: medium
+  rating: high
+  mitigation: Backward-compatible changes only, reviewed by the platform team until the registry exists
+  residual: medium
+  owner: Platform architect
+  status: open
+
+- id: RSK-05
+  title: Credentials leak during migration from team-run queues
+  category: security
+  cause: Team-run queues use shared connection strings held in pipeline variables
+  consequence: A leaked string gives access to another team's events
+  likelihood: medium
+  impact: high
+  rating: high
+  mitigation: Workload identity only on the platform; old strings revoked as each team moves
+  residual: low
+  owner: Security architect
+  status: mitigating
+
+- id: RSK-06
+  title: Audit store retention does not meet the logging standard on day one
+  category: security
+  cause: Archive tier not provisioned for release 1
+  consequence: Records older than one year cannot be produced
+  likelihood: high
+  impact: low
+  rating: medium
+  mitigation: Exception EXC-02 until the archive tier is built
+  residual: low
+  owner: Security architect
+  status: accepted
+
+- id: RSK-07
+  title: Telemetry volume drives run cost past the budget
+  category: operational
+  cause: Debug-level logging from consumers is forwarded by default
+  consequence: Monitoring cost grows faster than consumer numbers
+  likelihood: medium
+  impact: medium
+  rating: medium
+  mitigation: Default log level of information; per-consumer daily cap with an alert at 80%
+  residual: low
+  owner: Platform product manager
+  status: open

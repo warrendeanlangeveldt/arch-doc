@@ -1,0 +1,5 @@
+- {id: CHK-01, title: Concept review, stage: initial, date: 2026-08-14, forum: FOR-01, owner: Lead Architect, status: passed}
+- {id: CHK-02, title: Detailed design review, stage: detailed, date: 2026-10-30, forum: FOR-01, owner: Lead Architect, status: ready}
+- {id: CHK-03, title: Security sign-off, stage: pre-production, date: 2026-11-20, forum: FOR-03, owner: Security lead, status: planned}
+- {id: CHK-04, title: Change approval for go-live, stage: pre-production, date: 2026-12-04, forum: FOR-02, owner: Head of Freight, status: planned}
+- {id: CHK-05, title: Post-implementation review, stage: post-implementation, timing: Six weeks after go-live, forum: FOR-01, owner: Lead Architect, status: planned}

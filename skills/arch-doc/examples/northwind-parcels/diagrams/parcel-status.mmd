@@ -1,0 +1,20 @@
+stateDiagram-v2
+  [*] --> Manifested: manifest closed
+  Manifested --> AtDepot: first depot scan
+  AtDepot --> InTransit: line-haul or carrier collection
+  InTransit --> AtDepot: arrival scan
+  InTransit --> OutForDelivery: loaded on van
+  OutForDelivery --> Delivered: delivery scan or carrier delivered
+  OutForDelivery --> AttemptFailed: no one home
+  AttemptFailed --> OutForDelivery: next attempt
+  AttemptFailed --> Returned: third failed attempt
+  Manifested --> Stalled: no event for 48 hours
+  AtDepot --> Stalled: no event for 48 hours
+  InTransit --> Stalled: no event for 48 hours
+  Stalled --> AtDepot: scan found
+  Delivered --> [*]
+  Returned --> [*]
+  AtDepot: At depot
+  InTransit: In transit
+  OutForDelivery: Out for delivery
+  AttemptFailed: Delivery attempted

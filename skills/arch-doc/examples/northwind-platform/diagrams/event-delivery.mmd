@@ -1,0 +1,19 @@
+sequenceDiagram
+  autonumber
+  participant P as Producing service
+  participant B as Event broker
+  participant S as Subscribing service
+  participant D as Dead-letter queue
+  participant O as Owning team on-call
+  P->>B: Publish event (envelope, key)
+  B-->>P: Accepted, stored for seven days
+  B->>S: Deliver (at least once, in order per key)
+  alt Subscriber acknowledges
+    S-->>B: Acknowledge
+  else Subscriber fails or times out
+    B->>S: Retry with backoff, up to 10 attempts
+    B->>D: Move event to dead-letter
+    D-->>O: Alert when depth over 100 for 10 minutes
+    O->>B: Replay from dead-letter after the fix
+    B->>S: Deliver again
+  end

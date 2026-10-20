@@ -1,0 +1,8 @@
+- {id: ACC-01, title: Context view agreed, stage: design, required: "yes", owner: Lead Architect, status: met}
+- {id: ACC-02, title: Integration contracts signed off, stage: design, required: "yes", owner: Integration lead, status: in-progress}
+- {id: ACC-03, title: Threat model reviewed, stage: design, required: "yes", owner: Security lead, status: open}
+- {id: ACC-04, title: NFR test plan agreed, stage: design, required: "yes", owner: Test lead, status: "TBC: Test lead"}
+- {id: ACC-05, title: Views published, stage: views, required: "yes", owner: Lead Architect, status: met}
+- {id: ACC-06, title: Design authority approval, stage: approval, required: "yes", owner: Chief Architect, status: open}
+- {id: ACC-07, title: Residual risk accepted, stage: approval, required: "yes", owner: Security lead, status: open}
+- {id: ACC-08, title: Carrier sandbox tests pass, stage: integration, required: "yes", owner: Integration lead, status: in-progress}

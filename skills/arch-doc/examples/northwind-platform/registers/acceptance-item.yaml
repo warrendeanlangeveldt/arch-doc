@@ -1,0 +1,104 @@
+# Acceptance item register (acceptance-item). One record per item; ids are ACC-nn.
+# Fields: id, title, status
+#   stage: design | integration | monitoring | views | approval | go-live | hypercare-exit
+#   required: yes | no
+#   target: text
+#   evidence: text
+#   owner: text
+# Status: open (not-started), in-progress (partial), met (done), waived (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ACC-01
+  stage: design
+  title: Every component traces to a requirement
+  required: 'yes'
+  evidence: Requirements register satisfied_by entries
+  owner: Platform architect
+  status: met
+
+- id: ACC-02
+  stage: design
+  title: Security design reviewed
+  required: 'yes'
+  evidence: Security Review outcome
+  owner: Security architect
+  status: in-progress
+
+- id: ACC-03
+  stage: design
+  title: Parent architecture deviation approved
+  required: 'yes'
+  evidence: ARB minutes
+  owner: Platform architect
+  status: open
+
+- id: ACC-04
+  stage: integration
+  title: Contract tests pass for every published interface
+  required: 'yes'
+  evidence: Contract test report
+  owner: Platform engineering lead
+  status: in-progress
+
+- id: ACC-05
+  stage: integration
+  title: Dead-letter and replay proven with a consumer
+  required: 'yes'
+  evidence: Replay test log
+  owner: Platform engineering lead
+  status: met
+
+- id: ACC-06
+  stage: monitoring
+  title: Every critical alert tested end to end to the on-call engineer
+  required: 'yes'
+  evidence: Alert test log
+  owner: Platform engineering lead
+  status: in-progress
+
+- id: ACC-07
+  stage: monitoring
+  title: Consumers see their own telemetry
+  required: 'yes'
+  evidence: NFR-08 test
+  owner: Platform engineering lead
+  status: open
+
+- id: ACC-08
+  stage: views
+  title: Views drawn from one model and consistent with the registers
+  required: 'yes'
+  evidence: Model and view render
+  owner: Platform architect
+  status: met
+
+- id: ACC-09
+  stage: approval
+  title: All decision requests answered
+  required: 'yes'
+  evidence: Forum outcomes
+  owner: Platform architect
+  status: open
+
+- id: ACC-10
+  stage: approval
+  title: Every TBC has an owner and a date
+  required: 'yes'
+  evidence: Open items list
+  owner: Platform architect
+  status: in-progress
+
+- id: ACC-11
+  stage: hypercare-exit
+  title: No critical incident open for ten working days
+  required: 'yes'
+  evidence: Incident report
+  owner: Platform support lead
+  status: open
+
+- id: ACC-12
+  stage: hypercare-exit
+  title: Two consumers live and meeting their latency target
+  required: 'yes'
+  evidence: Service report
+  owner: Platform product manager
+  status: open

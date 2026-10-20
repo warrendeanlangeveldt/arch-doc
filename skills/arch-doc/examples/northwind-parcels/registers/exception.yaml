@@ -1,0 +1,75 @@
+# Deviation or exception register (exception). One record per item; ids are EXC-nn.
+# Fields: id, title, status
+#   kind: deviation | standard | view
+#   standard: text
+#   reason: text
+#   impact: text
+#   risk: text
+#   control: text
+#   approval: required | not-required
+#   expiry: date
+#   owner: text
+# Status: draft (not-started), requested (partial), approved (done), declined (not-started), expired (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: EXC-01
+  kind: deviation
+  title: Carrier B is polled instead of pushing its updates
+  standard: 'Integration reference architecture 2.0: external status arrives by push'
+  reason: Carrier B offers no webhooks before its contract renews in 2028 (CON-04)
+  impact: Carrier B updates are up to five minutes old
+  risk: RSK-03
+  control: Poller backs off on rate limits (RBK-02)
+  approval: required
+  expiry: '2028-03-31'
+  owner: Integration lead
+  status: draft
+
+- id: EXC-02
+  kind: standard
+  title: Parcel history kept online for eighteen months
+  standard: 'Data retention standard: operational records online for twelve months'
+  reason: Customer service looks parcels up long after delivery; the claims window behind eighteen months is to be confirmed (ADR-02)
+  impact: Store grows by about a third
+  risk: Low; no contact data is kept beyond 30 days
+  control: Contact data excluded (CTL-05)
+  approval: required
+  expiry: '2028-03-31'
+  owner: Data owner
+  status: requested
+
+- id: EXC-03
+  kind: view
+  title: No requirement or control traceability views
+  standard: 'Required view list: requirement traceability and control traceability views'
+  reason: The model holds no motivation elements; the registers carry each trace
+  impact: Traces are read as tables
+  risk: None
+  control: Traceability in the requirements and security chapters
+  approval: not-required
+  owner: Solution architect
+  status: approved
+
+- id: EXC-04
+  kind: view
+  title: No operational support view
+  standard: 'Required view list: operational support view'
+  reason: Assignment groups are not created yet (DEP-04)
+  impact: Support ownership is read from the RACI
+  risk: None
+  control: Support RACI
+  approval: not-required
+  expiry: '2027-02-23'
+  owner: Service owner
+  status: approved
+
+- id: EXC-05
+  kind: view
+  title: No release scope or retirement impact views
+  standard: 'Required view list: release scope and retirement impact views'
+  reason: One release; the cutover plan figure and the retirement register carry it
+  impact: None
+  risk: None
+  control: Cutover plan figure and retired component register
+  approval: not-required
+  owner: Solution architect
+  status: approved

@@ -1,0 +1,13 @@
+title: Freight Booking Service
+short: FBS
+kind: solution
+layer: logical-and-physical
+version: "0.4"
+date: 2026-10-20
+author: {name: Lead Architect, role: Architect, team: Freight}
+owner: {name: Head of Freight, role: Service owner}
+profile: ../profile.yaml
+depends_on:
+  - {title: Shared Hosting Base, kind: capability, version: "1.2", path: ../base, ref: SHB}
+history:
+  - {date: 2026-10-20, version: "0.4", author: Lead Architect, change: Review draft}

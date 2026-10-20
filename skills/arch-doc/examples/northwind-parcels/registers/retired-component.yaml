@@ -1,0 +1,39 @@
+# Retired component register (retired-component). One record per item; ids are RET-nn.
+# Fields: id, title, status
+#   object_type: application | component | integration | technology | data
+#   replacement: text
+#   date: date
+#   data_retention: text
+#   records_action: text
+#   owner: text
+# Status: planned (not-started), in-progress (partial), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RET-01
+  title: Legacy tracking lookup
+  object_type: application
+  replacement: Tracking API and the website
+  date: '2027-06-30'
+  data_retention: Scan history not migrated (ADR-07); database exported to the archive, then destroyed
+  records_action: Retire the business application and its CIs
+  owner: Customer service manager
+  status: planned
+
+- id: RET-02
+  title: Nightly scan file transfer
+  object_type: integration
+  replacement: Scan events (INT-01)
+  date: '2027-03-26'
+  data_retention: Transfer logs kept one year
+  records_action: Retire the integration CI
+  owner: Customer service manager
+  status: planned
+
+- id: RET-03
+  title: Manual carrier status checks
+  object_type: integration
+  replacement: Carrier webhooks and polling
+  date: '2027-04-30'
+  data_retention: None held
+  records_action: Retire the knowledge articles for the manual check
+  owner: Customer service manager
+  status: planned

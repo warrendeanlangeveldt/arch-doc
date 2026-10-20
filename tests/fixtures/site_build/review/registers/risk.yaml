@@ -1,0 +1,4 @@
+- {id: RSK-01, title: Scan events arrive out of order across depots, category: architecture, mitigation: "Order by sequence number; replay window TBC", likelihood: medium, impact: high, rating: high, owner: Integration lead, status: mitigating}
+- {id: RSK-02, title: Handheld batteries fail before the shift ends, category: operational, likelihood: high, impact: medium, rating: TBC, owner: Depot operations lead, status: open}
+- {id: RSK-03, title: Clock drift corrupts event order, category: architecture, likelihood: low, impact: high, rating: medium, owner: "TBC: Network team", status: open}
+- {id: RSK-04, title: Unused risk nobody cites, category: delivery, likelihood: low, impact: low, rating: low, mitigation: TBC, owner: PMO, status: open}

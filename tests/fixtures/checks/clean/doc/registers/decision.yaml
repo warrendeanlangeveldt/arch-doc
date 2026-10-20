@@ -1,0 +1,2 @@
+- {id: ADR-01, title: Events for scans, rationale: Depots scan in bursts, consequence: We run a queue, owner: Solution Architect, status: accepted}
+- {id: ADR-02, title: Poll carriers, rationale: Carriers offer no push, consequence: Five-minute lag, owner: Solution Architect, status: accepted}

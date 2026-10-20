@@ -1,0 +1,8 @@
+org: {name: Northwind, short: NW}
+systems:
+  itsm: {name: none}
+  ea_metamodel: archimate
+  cloud: [azure]
+house:
+  palette: {ink: "#15252B", accent: "#2F6F7C", accent_soft: "#E1EEF0", paper: "#FFFFFF", panel: "#F2F5F6", rule: "#CFD8DB", muted: "#53646A"}
+  fonts: {heading: Source Serif 4, body: IBM Plex Sans, mono: IBM Plex Mono}

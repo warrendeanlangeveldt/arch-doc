@@ -1,0 +1,75 @@
+# Deviation or exception register (exception). One record per item; ids are EXC-nn.
+# Fields: id, title, status
+#   kind: deviation | standard | view
+#   standard: text
+#   reason: text
+#   impact: text
+#   risk: text
+#   control: text
+#   approval: required | not-required
+#   expiry: date
+#   owner: text
+# Status: draft (not-started), requested (partial), approved (done), declined (not-started), expired (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: EXC-01
+  kind: deviation
+  title: Event broker and gateway in place of an enterprise service bus
+  standard: Integration reference architecture 2.0 requires a central service bus for all integration
+  reason: Teams need event distribution and API publication; a central bus would put one team in every change
+  impact: The reference architecture needs an event-led pattern added
+  risk: Low; the patterns are well understood
+  control: Published interfaces and catalogue ownership per team
+  approval: required
+  expiry: '2027-06-30'
+  owner: Platform architect
+  status: requested
+
+- id: EXC-02
+  kind: standard
+  title: Audit records archived after one year rather than kept online for two
+  standard: 'Logging standard 3.1: audit records online for two years'
+  reason: Archive tier not in release 1
+  impact: Records older than one year take up to a day to restore
+  risk: RSK-06
+  control: Restore procedure tested quarterly
+  approval: required
+  expiry: '2027-09-30'
+  owner: Security architect
+  status: requested
+
+- id: EXC-03
+  kind: view
+  title: No requirement, motivation or control traceability views
+  standard: 'Required view list: requirement traceability, business outcome, capability and control traceability views'
+  reason: The model holds no motivation elements; the registers carry each trace and keep it current
+  impact: Reviewers read the traces as tables instead of pictures
+  risk: None
+  control: Traceability tables in the context, requirements and security chapters
+  approval: not-required
+  owner: Platform architect
+  status: approved
+
+- id: EXC-04
+  kind: view
+  title: No operational support view
+  standard: 'Required view list: operational support view for operations, monitoring and service processes'
+  reason: Support organisations are not yet confirmed (RDY-02); a view now would show roles that may change
+  impact: Support ownership is read from the RACI table
+  risk: None
+  control: Support RACI table; the view is drawn once the roster is final
+  approval: not-required
+  expiry: '2027-01-12'
+  owner: Platform support lead
+  status: approved
+
+- id: EXC-05
+  kind: view
+  title: No release scope or retirement impact views
+  standard: 'Required view list: release scope and retirement impact views'
+  reason: Release 1 is one plateau; the cutover and retirement registers say what moves and when
+  impact: None for release 1
+  risk: None
+  control: Cutover and retired component registers
+  approval: not-required
+  owner: Platform architect
+  status: approved

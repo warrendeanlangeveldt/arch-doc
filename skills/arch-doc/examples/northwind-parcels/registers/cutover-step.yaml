@@ -1,0 +1,95 @@
+# Cutover step register (cutover-step). One record per item; ids are CUT-nn.
+# Fields: id, title, status
+#   order: number
+#   start: text
+#   finish: text
+#   after: refs:cutover-step
+#   rollback_point: yes | no
+#   owner: text
+# Status: planned (not-started), rehearsed (partial), done (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CUT-01
+  order: 1
+  title: Go/no-go on the platform in production
+  start: '2027-02-01'
+  finish: '2027-02-01'
+  rollback_point: 'no'
+  owner: Head of Parcels
+  status: planned
+
+- id: CUT-02
+  order: 2
+  title: Deploy the solution to production, dark
+  start: '2027-03-01'
+  finish: '2027-03-01'
+  after:
+  - CUT-01
+  rollback_point: 'yes'
+  owner: Integration lead
+  status: rehearsed
+
+- id: CUT-03
+  order: 3
+  title: Pilot depot publishes scans; legacy file keeps running
+  start: '2027-03-02'
+  finish: '2027-03-05'
+  after:
+  - CUT-02
+  rollback_point: 'yes'
+  owner: Depot operations manager
+  status: planned
+
+- id: CUT-04
+  order: 4
+  title: Carriers A and C switch webhooks to production; carrier B polling starts
+  start: '2027-03-08'
+  finish: '2027-03-09'
+  after:
+  - CUT-03
+  rollback_point: 'yes'
+  owner: Integration lead
+  status: planned
+
+- id: CUT-05
+  order: 5
+  title: All depots publish scans
+  start: '2027-03-10'
+  finish: '2027-03-17'
+  after:
+  - CUT-04
+  rollback_point: 'yes'
+  owner: Depot operations manager
+  status: planned
+
+- id: CUT-06
+  order: 6
+  title: Website and agents switch to the tracking API
+  start: '2027-03-18'
+  finish: '2027-03-18'
+  after:
+  - CUT-05
+  rollback_point: 'yes'
+  owner: Digital channels lead
+  status: planned
+
+- id: CUT-07
+  order: 7
+  title: Customer notifications switched on
+  start: '2027-03-22'
+  finish: '2027-03-22'
+  after:
+  - CUT-06
+  rollback_point: 'yes'
+  owner: Product owner
+  status: planned
+
+- id: CUT-08
+  order: 8
+  title: Legacy lookup made read-only; nightly file stopped; hypercare starts
+  start: '2027-03-26'
+  finish: '2027-03-26'
+  after:
+  - CUT-07
+  rollback_point: 'no'
+  owner: Customer service manager
+  status: planned

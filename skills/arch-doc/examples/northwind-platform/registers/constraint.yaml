@@ -1,0 +1,31 @@
+# Constraint register (constraint). One record per item; ids are CON-nn.
+# Fields: id, title, status
+#   type: time | cost | vendor | regulatory | technology | organisational
+#   impact: text
+#   response: text
+#   owner: text
+# Status: active (done), under-review (partial), lifted (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CON-01
+  title: Data stays in the organisation's primary region and its pair
+  type: regulatory
+  impact: No consumer may replicate events to another region
+  response: Replication only to the paired region
+  owner: Security architect
+  status: active
+
+- id: CON-02
+  title: Release 1 run cost is capped by the approved budget
+  type: cost
+  impact: Premium tiers only where an NFR requires them
+  response: Tier choices recorded against each NFR
+  owner: Head of Platform
+  status: active
+
+- id: CON-03
+  title: The platform team has six engineers until July 2027
+  type: organisational
+  impact: Business-hours support only at go-live
+  response: Interim on-call roster; see RSK-02
+  owner: Head of Platform
+  status: active

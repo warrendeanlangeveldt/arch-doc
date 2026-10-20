@@ -1,0 +1,116 @@
+# Risk register (risk). One record per item; ids are RSK-nn.
+# Fields: id, title, status
+#   category: architecture | operational | security | delivery
+#   cause: text
+#   consequence: text
+#   likelihood: low | medium | high
+#   impact: low | medium | high
+#   rating: low | medium | high | extreme
+#   mitigation: text
+#   residual: low | medium | high
+#   owner: text
+# Status: open (not-started), mitigating (partial), mitigated (done), accepted (done), closed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RSK-01
+  title: Scan events arrive out of order across depots
+  category: architecture
+  cause: Handhelds buffer scans while offline and send them later
+  consequence: A parcel shows delivered before it shows out for delivery
+  likelihood: medium
+  impact: medium
+  rating: medium
+  mitigation: Order events by scan time at ingest, not arrival time
+  residual: low
+  owner: Integration lead
+  status: mitigating
+
+- id: RSK-02
+  title: Depot handhelds lose connectivity for long periods
+  category: operational
+  cause: Poor coverage in two regional depots
+  consequence: Tracking lags reality by hours for those depots
+  likelihood: high
+  impact: medium
+  rating: high
+  mitigation: TBC
+  residual: 'TBC: Service owner'
+  owner: Depot operations manager
+  status: open
+
+- id: RSK-03
+  title: Carrier API rate limits throttle peak scans
+  category: architecture
+  cause: The carrier caps calls per minute below our peak rate
+  consequence: Status updates queue and arrive late in peak weeks
+  likelihood: medium
+  impact: high
+  rating: high
+  mitigation: Queue and back off; carrier quota uplift requested
+  residual: medium
+  owner: Integration lead
+  status: open
+
+- id: RSK-04
+  title: Public lookups reveal parcels to someone guessing numbers
+  category: security
+  cause: Parcel numbers are sequential within a depot
+  consequence: A stranger learns delivery times for other people's parcels
+  likelihood: high
+  impact: high
+  rating: extreme
+  mitigation: Postcode required and rate limited (CTL-08); sweep alerts (CTL-09)
+  residual: low
+  owner: Security architect
+  status: mitigating
+
+- id: RSK-05
+  title: A notification reaches the wrong person after a contact changes
+  category: security
+  cause: Contact corrections reach the depot system after the manifest closes
+  consequence: Delivery details sent to a previous contact
+  likelihood: low
+  impact: medium
+  rating: medium
+  mitigation: Contact read from the store at send time (CTL-10); corrections flow as manifest updates
+  residual: low
+  owner: Privacy officer
+  status: mitigating
+
+- id: RSK-06
+  title: Duplicate alerts flood the service desk with incidents
+  category: operational
+  cause: Every replica alerts on the same fault
+  consequence: Real incidents are lost among duplicates
+  likelihood: medium
+  impact: medium
+  rating: medium
+  mitigation: One incident per monitor, grouped by service (ADR-06)
+  residual: low
+  owner: Service owner
+  status: mitigating
+
+- id: RSK-07
+  title: The platform reaches production too late for our March cutover
+  category: architecture
+  cause: The platform's pre-production zone is late
+  consequence: Cutover moves into April and hypercare overlaps the end of financial year
+  likelihood: medium
+  impact: high
+  rating: high
+  mitigation: Go/no-go on 1 February; acceptance sought in DRQ-04
+  residual: medium
+  owner: Head of Parcels
+  status: open
+
+- id: RSK-08
+  title: The first peak season is the first real test of capacity
+  category: operational
+  cause: Load tests use synthetic patterns
+  consequence: A scaling limit appears in November 2027 under real load
+  likelihood: medium
+  impact: high
+  rating: high
+  mitigation: Repeat the soak test in September with recorded scan traffic
+  residual: medium
+  owner: Integration lead
+  status: open

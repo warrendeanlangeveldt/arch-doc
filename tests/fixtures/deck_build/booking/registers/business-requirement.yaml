@@ -1,0 +1,3 @@
+- {id: BR-01, title: Customers book freight online without calling a depot, priority: must, owner: Head of Freight, status: agreed}
+- {id: BR-02, title: Every booking reaches the carrier within five minutes, priority: must, owner: Integration lead, status: designed}
+- {id: BR-03, title: Charges reach finance on the day of dispatch, priority: should, owner: Finance lead, status: proposed}

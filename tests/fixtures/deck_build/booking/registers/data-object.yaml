@@ -1,0 +1,3 @@
+- {id: DAT-01, title: Booking, category: Transaction, system_of_record: Booking Service, classification: confidential, owner: Head of Freight, status: modelled}
+- {id: DAT-02, title: Carrier reference, category: Reference, system_of_record: Carrier Gateway, classification: internal, owner: Integration lead, status: agreed}
+- {id: DAT-03, title: Charge, category: Financial, system_of_record: Finance Ledger, classification: confidential, owner: Finance lead, status: identified}

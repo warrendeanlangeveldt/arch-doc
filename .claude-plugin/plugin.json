@@ -1,0 +1,23 @@
+{
+  "name": "arch-doc",
+  "version": "0.1.0",
+  "description": "Architecture design documents for review boards: capability and solution designs built from typed registers and a metamodel into a Word document, a review site with anchored comments, and a TL;DR slide deck",
+  "author": {
+    "name": "Warren Langeveldt"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/warrendeanlangeveldt/arch-doc",
+  "homepage": "https://github.com/warrendeanlangeveldt/arch-doc#readme",
+  "keywords": [
+    "architecture",
+    "solution-architecture",
+    "capability-design",
+    "sad",
+    "docx",
+    "review",
+    "slides",
+    "enterprise-architecture",
+    "archimate",
+    "togaf"
+  ]
+}

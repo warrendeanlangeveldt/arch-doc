@@ -1,0 +1,266 @@
+# TL;DR deck for the Parcel Tracking Solution design: one entry per chapter.
+# Texts may use the content placeholders.
+
+cover:
+  line: Approve parcel tracking for build, so customers see each scan within a minute and hear from us first
+
+runs:
+  1: What we ask for, what the solution covers and what it must satisfy
+  2: Today's tracking, the target, its parts, integrations, data, hosting and controls
+  3: Decisions, operations, monitoring and the runbooks support needs
+  4: The March cutover, the risks, the evidence and what retires
+
+chapters:
+  summary:
+    claim: We ask for approval to build event-driven parcel tracking on the Northwind Platform, which must reach production first.
+    points:
+      - Scans visible within a minute; customers told by email or SMS
+      - "{count:risk where rating=high|extreme} high or extreme risks, the worst being guessable parcel numbers"
+      - Carrier B can only be polled before 2028 (EXC-01)
+      - Go/no-go on 1 February against the platform's go-live
+    callouts:
+      - {text: "We use the platform; we do not describe it", x: 0.3, y: 0.9}
+    notes: >-
+      The design is ready for review once privacy and security have seen it. The dependency on the
+      platform's dates is the biggest single exposure, and the 1 February go/no-go is where we decide.
+
+  context:
+    claim: Tracking sits between the depots and carriers that know where a parcel is and the people who want to know.
+    cards:
+      - {title: In, text: "Depot scans, manifests, carrier webhooks and carrier B polling"}
+      - {title: Out, text: "Timelines, lookups, notifications, the ops dashboard and incidents"}
+      - {title: Not here, text: "The platform's own services, delivery predictions and legacy history"}
+    callouts:
+      - {text: "Platform interfaces only", x: 0.55, y: 0.95}
+    notes: >-
+      The boundary is the platform's published interfaces on one side and the customers and agents on the
+      other. We migrate no history.
+
+  governance:
+    claim: Privacy reviews first, then security, then the design review on 3 December.
+    points:
+      - Privacy and data forum on 19 November decides the eighteen-month history
+      - Security review on 26 November covers the public lookup
+      - The service owner is not appointed
+    callouts:
+      - {text: "Either review can move the March cutover", x: 0.55, y: 0.95}
+    notes: >-
+      The sequence matters: retention needs privacy approval before the design that relies on it. Without a
+      service owner nobody can accept the support model.
+
+  requirements:
+    claim: Customers see their parcel within a minute, hear when it moves, and their contact data is gone 30 days after delivery.
+    points:
+      - "{count:business-requirement} business, {count:functional-requirement} functional and {count:nfr} non-functional requirements"
+      - Scan to visible under 60 seconds for 95% of scans
+      - Peak weeks assumed at three times normal volume
+    callouts:
+      - {text: "Every requirement traces to a component", x: 0.15, y: 0.99}
+    notes: >-
+      The privacy requirement shapes the data design as much as the customer requirements shape the rest.
+
+  current-state:
+    claim: Tracking today is a day behind, and parcels handed to partner carriers disappear from it.
+    points:
+      - A nightly file feeds a lookup page
+      - Agents phone carriers, about four minutes a call
+      - Nothing monitors the lookup or the transfer
+    callouts:
+      - {text: "Yesterday's scans, no carrier data", x: 0.45, y: 0.85}
+    notes: >-
+      Customers and agents both work from stale data, and nobody notices a failed file until a customer
+      calls.
+
+  target:
+    claim: One timeline per parcel, from scans and carrier updates, shown to customers and agents and pushed to customers as it changes.
+    cards:
+      - {title: Customers, text: "Look up by parcel number and postcode; email or SMS on each status change"}
+      - {title: Agents, text: "The full timeline, carrier detail included, in their workspace"}
+      - {title: Depots, text: "Stalled parcels and missed scans on the ops dashboard"}
+    callouts:
+      - {text: "Runs on platform interfaces", x: 0.72, y: 0.72}
+      - {text: "No queues or gateways of our own", x: 0.72, y: 0.8}
+    notes: >-
+      The operating model changes for customer service, which stops phoning carriers, and for depots, which
+      take on the stalled-parcel queue. A new support team is needed.
+
+  application:
+    claim: "{count:component} components; four are not started, and notifications wait on a contract."
+    points:
+      - Ingest, webhooks, tracking service, store and API are in build
+      - Poller, notifications, dashboard and exception workflows are not started
+      - Each environment is a resource group in the matching platform zone
+    callouts:
+      - {text: "{count:application where change=changed} other applications change", x: 0.35, y: 0.95}
+    notes: >-
+      The build is on track for the core; the customer-facing extras depend on the messaging provider
+      contract.
+
+  integration:
+    claim: Every integration can fail without losing a scan.
+    points:
+      - Scans wait on the platform for seven days when ingest is down
+      - Carriers retry webhooks for 24 hours
+      - Carrier B polling backs off and resumes from its last position
+    callouts:
+      - {text: "Carrier B is polled under EXC-01", x: 0.55, y: 0.92}
+    notes: >-
+      The failure table shows a detector, a recovery and an owner for each integration. The messaging
+      provider's interface is open until the contract is signed.
+
+  data:
+    claim: Contact data is the only personal data; it lives apart from the timeline and goes 30 days after delivery.
+    points:
+      - The website never sees an address or a contact
+      - Eighteen months of history needs an exception (EXC-02)
+      - No legacy history is migrated (ADR-07)
+    callouts:
+      - {text: "Only the tracking service writes the timeline", x: 0.55, y: 0.15}
+    notes: >-
+      The access matrix shows one writer for each object. The notification record's retention is still open
+      with the privacy officer.
+
+  infrastructure:
+    claim: Containers and one document database in the platform's zones on Azure, replicated to the paired region.
+    points:
+      - Production in rg-pts-prd, subnet 10.42.16.0/24
+      - Store on a private endpoint only
+      - Releases by pipeline; failed health checks roll back automatically
+    callouts:
+      - {text: "Replica in the paired region", x: 0.02, y: 0.6}
+    notes: >-
+      Hosting rides on the platform. The only data store is ours, and it is private.
+
+  security:
+    claim: The exposure that matters is the public lookup; requiring the postcode treats it.
+    points:
+      - Lookups need the parcel number and the destination postcode
+      - Ten lookups a minute per client address, and sweep alerts
+      - Webhooks accepted only when signed
+    callouts:
+      - {text: "Public route closed until CTL-08 is tested", x: 0.2, y: 0.75}
+    notes: >-
+      Parcel numbers are guessable, so the postcode is the key. The rest leans on the platform's controls.
+
+  nfr:
+    claim: Every target has a design and a test, and none is proven until pre-production exists.
+    points:
+      - 99.9% availability for lookups and scan ingest
+      - Lookups under 300 ms at 400 a second
+      - Recovery time 2 hours, recovery point 5 minutes
+    callouts:
+      - {text: "Most of the 60-second budget is ours", x: 0.5, y: 0.1}
+    notes: >-
+      The platform contributes under half a second to scan-to-visible. The restore runbook is not written,
+      so the recovery objective is a design figure.
+
+  decisions:
+    claim: "{count:decision} decisions; polling carrier B and eighteen months of history need approval elsewhere."
+    points:
+      - Webhooks where offered, polling only where not (ADR-03)
+      - Postcode required for public lookups (ADR-04)
+      - We send our own notifications (ADR-05)
+    callouts:
+      - {text: "The reason for eighteen months is still to be written", x: 0.6, y: 0.12}
+    notes: >-
+      The retention decision lacks its rationale, and we say so; the data owner confirms the claims window.
+
+  operations:
+    claim: Operational readiness is the weakest part of the design; the support team does not exist yet.
+    points:
+      - No service owner, assignment group or roster
+      - Support 07:00 to 19:00 every day, because depots work weekends
+      - CSDM records maintained by hand, containers discovered
+    callouts:
+      - {text: "{count:readiness-item where status=not-ready} readiness items not ready", x: 0.4, y: 0.97}
+    notes: >-
+      Appointing the service owner unblocks most of the readiness items: the group, the roster and the records.
+
+  monitoring:
+    claim: Every alert raises one incident in ServiceNow against the Parcel Tracking application service.
+    points:
+      - Monitors alert on the service, not on each replica
+      - Our alerts are suppressed while the platform's event interface is down
+      - Security alerts go to security operations
+    callouts:
+      - {text: "Every alert links a runbook or a security procedure", x: 0.5, y: 0.1}
+    notes: >-
+      One fault, one incident. Until the CMDB records exist, no event binds to a configuration item.
+
+  service-processes:
+    claim: Incident, change and knowledge are in progress; the rest waits on the service owner.
+    points:
+      - Category Parcels, subcategory Tracking, against the application service
+      - Pipeline releases become standard changes
+      - Three knowledge articles needed on day one
+    callouts:
+      - {text: "Dashboard access is a go-live item", x: 0.35, y: 0.97}
+    notes: >-
+      Without the dashboard access request, depots cannot work stalled parcels, so it is a go-live item.
+
+  runbooks:
+    claim: "{count:runbook where outcome=pass} of {count:runbook} runbooks have passed a test; the restore runbook does not exist."
+    points:
+      - Carrier poller and messaging provider failures untested
+      - Depot connectivity loss in draft
+      - Replay, API degradation and webhook secret rotation have passed
+    callouts:
+      - {text: "An untested runbook is an open item", x: 0.5, y: 0.1}
+    notes: >-
+      The restore runbook is the gap that matters most, because the recovery objective rests on it.
+
+  transition:
+    claim: One depot, then the carriers, then every depot, then the customer switches; every step but the last can be undone.
+    points:
+      - Cutover from 1 to 26 March 2027
+      - The nightly file runs until every depot publishes scans
+      - Hypercare from 26 March to 23 April
+    callouts:
+      - {text: "No way back after CUT-08", x: 0.6, y: 0.12}
+    notes: >-
+      The legacy file is the safety net until the last step. Notifications can be switched off in five
+      minutes if they go wrong.
+
+  risks:
+    claim: The public lookup and the platform's dates are the risks to weigh; carrier B's missing webhooks are already an issue.
+    points:
+      - RSK-04 rated extreme before its controls
+      - RSK-07 decided at the 1 February go/no-go
+      - DEP-03 at risk; without it, no notifications at go-live
+    callouts:
+      - {text: "RSK-04: high likelihood, high impact", x: 0.82, y: 0.15}
+    notes: >-
+      The extreme risk has a strong treatment. The platform dependency does not, which is why we ask the
+      steering group to accept it.
+
+  assurance:
+    claim: Ready to approve once privacy and security pass and every decision request is answered.
+    points:
+      - Components trace to requirements; only platform interfaces are used
+      - Privacy impact assessment in progress
+      - Security review not yet held
+    callouts:
+      - {text: "Two reviews stand between us and approval", x: 0.45, y: 0.63}
+    notes: >-
+      Tracing and interface use are met; the open design items are reviews by other forums.
+
+  lifecycle:
+    claim: The legacy lookup, the nightly file and the manual carrier checks retire; the lookup goes last.
+    points:
+      - Nightly file stops at cutover
+      - Manual carrier checks end by April
+      - Legacy lookup read-only until 30 June, then archived and destroyed
+    callouts:
+      - {text: "Agents keep the lookup for older parcels", x: 0.5, y: 0.1}
+    notes: >-
+      Retirement is short because nothing is migrated; the read-only lookup covers parcels manifested
+      before cutover.
+
+  appendix:
+    claim: The glossary, the list of views and figures, and the model behind them.
+    points:
+      - Terms a reviewer outside parcels would not know
+      - Every view and figure with its source
+      - The model's objects counted against the registers
+    notes: >-
+      Reference material for reviewers.

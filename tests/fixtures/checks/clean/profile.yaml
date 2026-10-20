@@ -1,0 +1,17 @@
+# A fictional organisation for the checks fixtures.
+org: {name: Northwind, short: NW}
+systems:
+  itsm: {name: ServiceNow, framework: itil, has_cmdb: true, cmdb_title: "ServiceNow CMDB & CSDM",
+         category_title: "Service Management & Configuration Records"}
+  ea_repository: {name: none}
+  ea_metamodel: archimate
+  cloud: [azure]
+  identity: {name: Entra ID, logical_name: identity provider}
+  cicd: {name: GitHub Actions, logical_name: delivery pipeline}
+  monitoring: {name: Datadog, logical_name: monitoring platform}
+  source_control: {name: GitHub}
+forums:
+  design_authority: {name: Architecture Review Board, short: ARB}
+  change: {name: Change Advisory Board, short: CAB}
+  security: {name: Security Review, short: SR}
+roles: {architect: Solution Architect, service_owner: Service Owner}

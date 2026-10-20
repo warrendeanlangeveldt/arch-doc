@@ -1,0 +1,63 @@
+# Process readiness register (process-readiness). One record per item; ids are PRC-nn.
+# Fields: id, title, status
+#   process: incident | major-incident | problem | change | release | request | knowledge | event | configuration | availability | capacity | continuity | service-level
+#   design: text
+#   evidence: text
+#   owner: text
+# Status: not-started (not-started), in-progress (partial), ready (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: PRC-01
+  process: incident
+  title: Incidents raised against the application service
+  design: Category Parcels > Tracking; assignment group Parcels Tracking Support; priority from the impact and urgency matrix
+  evidence: Test incident from Datadog routed to the group
+  owner: Service owner
+  status: in-progress
+
+- id: PRC-02
+  process: major-incident
+  title: Tracking outage is a major incident
+  design: Public lookup or scan ingest down for 15 minutes in business hours, or 30 minutes outside them
+  evidence: Tabletop exercise
+  owner: Service owner
+  status: not-started
+
+- id: PRC-03
+  process: change
+  title: Change models for the service
+  design: Standard change for application releases through the pipeline; normal change for store and route changes
+  evidence: Standard change template approved by the CAB
+  owner: Service owner
+  status: in-progress
+
+- id: PRC-04
+  process: request
+  title: Requests for dashboard access and carrier onboarding
+  design: 'Catalogue items: ops dashboard access (approved by the depot operations manager); new carrier (approved by the Head of Parcels)'
+  evidence: Catalogue items in the test instance
+  owner: Service owner
+  status: not-started
+
+- id: PRC-05
+  process: knowledge
+  title: Articles for agents and the service desk
+  design: Reading a timeline; what each status means; when to escalate a stalled parcel
+  evidence: Articles published
+  owner: Customer service manager
+  status: in-progress
+
+- id: PRC-06
+  process: event
+  title: Alerts become incidents
+  design: Datadog ServiceNow integration, one incident per monitor (ADR-06)
+  evidence: Integration test in pre-production
+  owner: Service owner
+  status: not-started
+
+- id: PRC-07
+  process: configuration
+  title: Configuration items kept current
+  design: Service Mapping discovers the containers; the application service and its relationships are kept by hand
+  evidence: CMDB health report
+  owner: Service owner
+  status: not-started

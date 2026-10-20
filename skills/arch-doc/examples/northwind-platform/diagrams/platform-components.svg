@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 297" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>Northwind Platform: components</title>
+<rect x="0" y="0" width="1100" height="297" fill="#ffffff"/>
+<defs><marker id="arr-platformcomponents" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker><marker id="arrow-open-platformcomponents" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#475569" stroke-width="1.2"/></marker><marker id="arrow-filled-platformcomponents" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker></defs>
+<rect x="20.9" y="16.0" width="1058.2" height="189.0" rx="0" fill="#b5ffff" fill-opacity="0.45" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(1059.1 20.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="1073.1" y="200.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-NP</text>
+<text x="27.9" y="30.5" font-size="10.5" fill="#0f172a" font-weight="600">Northwind Platform</text>
+<rect x="36.9" y="61.0" width="200.7" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(217.6 65.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="137.3" y="84.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">API gateway</text>
+<text x="232.6" y="93.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-GW</text>
+<rect x="277.6" y="61.0" width="164.4" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(422.0 65.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="359.8" y="84.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Event broker</text>
+<text x="437.0" y="93.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-BRK</text>
+<rect x="482.0" y="61.0" width="175.6" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(637.6 65.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="569.8" y="84.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Workflow runtime</text>
+<text x="652.6" y="93.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-WF</text>
+<rect x="697.6" y="61.0" width="167.5" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(845.1 65.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="781.4" y="84.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Secrets store</text>
+<text x="860.1" y="93.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-SEC</text>
+<rect x="913.1" y="61.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(1043.1 65.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="988.1" y="84.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Workload identity</text>
+<text x="1058.1" y="93.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-WID</text>
+<rect x="36.9" y="155.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(166.9 159.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="111.9" y="178.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Platform portal</text>
+<text x="181.9" y="187.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-PORTAL</text>
+<rect x="265.4" y="155.0" width="172.9" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(418.3 159.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="351.9" y="178.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Environment templates</text>
+<text x="433.3" y="187.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-TPL</text>
+<rect x="478.3" y="155.0" width="174.7" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(633.0 159.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="565.6" y="178.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Telemetry pipeline</text>
+<text x="648.0" y="187.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-TEL</text>
+<rect x="56.9" y="50.0" width="152.7" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="65.9" y="64.5" font-size="8.0" fill="#0f172a" font-weight="600">API publication interface</text>
+<text x="200.6" y="64.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-API</text>
+<rect x="297.6" y="50.0" width="116.4" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="306.6" y="64.5" font-size="8.25" fill="#0f172a" font-weight="600">Event interface</text>
+<text x="405.0" y="64.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-EVT</text>
+<rect x="502.0" y="50.0" width="127.6" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="511.0" y="64.5" font-size="8.25" fill="#0f172a" font-weight="600">Workflow interface</text>
+<text x="620.6" y="64.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-WF</text>
+<rect x="717.6" y="50.0" width="119.5" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="726.6" y="64.5" font-size="8.25" fill="#0f172a" font-weight="600">Secret interface</text>
+<text x="828.1" y="64.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-SEC</text>
+<rect x="498.3" y="144.0" width="126.7" height="22.0" rx="11" fill="#ffffff" stroke="#236e71" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="507.3" y="158.5" font-size="8.25" fill="#0f172a" font-weight="600">Telemetry stream</text>
+<text x="616.0" y="158.5" font-size="7" fill="#94a3b8" text-anchor="end">AIF-TEL</text>
+<polyline points="958.1,97.0 958.1,105.0 245.6,105.0 245.6,79.0 239.6,79.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformcomponents)"/>
+<polyline points="913.1,79.0 867.1,79.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformcomponents)"/>
+<polyline points="186.9,173.0 263.4,173.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-platformcomponents)"/>
+<text x="225.1" y="168.0" font-size="8.5" fill="#64748b" text-anchor="middle" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">registrations</text>
+<polyline points="442.0,79.0 470.3,79.0 470.3,173.0 476.3,173.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-platformcomponents)"/>
+<text x="475.3" y="129.0" font-size="8.5" fill="#64748b" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">envelopes</text>
+<line x1="16" y1="225.0" x2="1084" y2="225.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="16.0" y="245.5" font-size="7.5" fill="#2b7c8c" font-weight="700" letter-spacing="0.6">APPLICATION</text>
+<rect x="83.229" y="236.0" width="22" height="14" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1"/>
+<g transform="translate(86.229 237.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g></g>
+<text x="110.2" y="245.5" font-size="8.5" fill="#475569">Application Component</text>
+<rect x="208.969" y="236.0" width="22" height="12" rx="6" fill="#ffffff" stroke="#236e71" stroke-width="1.2"/>
+<text x="236.0" y="245.5" font-size="8.5" fill="#475569">Application Interface</text>
+<rect x="16" y="257.0" width="16" height="10" rx="2" fill="#ffffff" stroke="#475569" stroke-width="1.2" stroke-dasharray="3 2"/>
+<text x="37.0" y="265.5" font-size="8.5" fill="#475569">Proposed / designed / not started</text>
+<line x1="176.70999999999992" y1="262.0" x2="202.70999999999992" y2="262.0" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-platformcomponents)"/>
+<text x="207.7" y="265.5" font-size="8.5" fill="#475569">Serving</text>
+<line x1="246.77999999999992" y1="262.0" x2="272.7799999999999" y2="262.0" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-platformcomponents)"/>
+<text x="277.8" y="265.5" font-size="8.5" fill="#475569">Flow</text>
+<text x="16.0" y="283.5" font-size="8.5" fill="#475569">Box in a box: composition</text>
+<text x="134.3" y="283.5" font-size="8.5" fill="#475569">Pill on a component: the interface it publishes</text>
+</svg>

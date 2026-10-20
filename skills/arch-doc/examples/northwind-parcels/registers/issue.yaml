@@ -1,0 +1,26 @@
+# Issue register (issue). One record per item; ids are ISS-nn.
+# Fields: id, title, status
+#   severity: low | medium | high | critical
+#   impact: text
+#   raised: date
+#   due: date
+#   owner: text
+# Status: open (not-started), in-progress (partial), resolved (done), closed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ISS-01
+  title: Carrier B has no webhooks and no date for them
+  severity: high
+  impact: We poll carrier B against the reference architecture (EXC-01), within its rate limit (RSK-03)
+  raised: '2026-09-24'
+  due: '2027-01-31'
+  owner: Integration lead
+  status: open
+
+- id: ISS-02
+  title: Handheld firmware 4.2 drops the time zone from scan times
+  severity: medium
+  impact: Scans from affected handhelds sort in the wrong order at depots outside the head-office time zone
+  raised: '2026-10-09'
+  due: '2027-02-01'
+  owner: Depot operations manager
+  status: in-progress

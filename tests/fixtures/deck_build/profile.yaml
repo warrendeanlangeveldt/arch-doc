@@ -1,0 +1,12 @@
+# A fictional organisation for the deck tests.
+org: {name: Example Freight, short: EF}
+systems:
+  itsm: {name: Example Desk, framework: itil, has_cmdb: true, cmdb_title: "Configuration Records",
+         category_title: "Service Management & Configuration Records"}
+  ea_repository: {name: none}
+  ea_metamodel: archimate
+  cloud: [azure]
+  identity: {name: Example Identity}
+  cicd: {name: Example Pipelines}
+  monitoring: {name: Example Monitor}
+  source_control: {name: Example Git}

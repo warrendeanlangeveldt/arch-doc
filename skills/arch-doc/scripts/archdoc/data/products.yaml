@@ -1,0 +1,195 @@
+# Cloud product names the `layer` check rejects in a `layer: logical`
+# document. A logical design names what a thing does ("secrets store",
+# "edge gateway"), not the product that does it.
+#
+# Names are matched case-sensitively on word boundaries, as written here, so
+# "Key Vault" is caught and "a key vault for the team" is not. A generic word
+# that is also a product ("Functions", "Monitor", "Lambda") is listed only
+# with its vendor prefix, so ordinary prose is not flagged.
+#
+# Vendor names on their own ("Azure", "AWS", "Google Cloud") are not listed:
+# a logical design may say whose cloud it is about. Only service names are.
+#
+# The check adds the profile's systems that have a logical_name (their
+# `name` is the product) unless the system has `keep_name: true`, and the
+# document's own banned_terms. arch-doc.yaml `allowed_terms` lets a design
+# keep a name it deliberately uses.
+
+azure:
+  - Microsoft Entra ID
+  - Entra ID
+  - Azure Active Directory
+  - Azure AD
+  - Key Vault
+  - Application Gateway
+  - Front Door
+  - ExpressRoute
+  - Virtual WAN
+  - Log Analytics
+  - Application Insights
+  - Azure Monitor
+  - Microsoft Sentinel
+  - Defender for Cloud
+  - Azure Firewall
+  - Azure Policy
+  - Azure DevOps
+  - Azure Functions
+  - Function App
+  - App Service
+  - Azure App Service
+  - Logic Apps
+  - Azure Kubernetes Service
+  - AKS
+  - Container Apps
+  - Azure Container Apps
+  - Azure Container Registry
+  - Azure Container Instances
+  - Cosmos DB
+  - Azure Cosmos DB
+  - Azure SQL
+  - SQL Managed Instance
+  - Azure Database for PostgreSQL
+  - Azure Database for MySQL
+  - Azure Storage
+  - Blob Storage
+  - Data Lake Storage
+  - ADLS
+  - Azure Files
+  - Service Bus
+  - Azure Service Bus
+  - Event Hubs
+  - Event Grid
+  - API Management
+  - Azure Data Factory
+  - Synapse Analytics
+  - Azure Synapse
+  - Microsoft Fabric
+  - Power BI
+  - Azure OpenAI
+  - Azure AI Foundry
+  - Azure AI Search
+  - Azure Cognitive Search
+  - Cognitive Services
+  - Azure Virtual Desktop
+  - Azure Virtual Network
+  - VNet
+  - Private Link
+  - Private Endpoint
+  - Azure Bastion
+  - Azure Load Balancer
+  - Traffic Manager
+  - Azure DNS
+  - Azure Backup
+  - Site Recovery
+  - Azure Arc
+  - Managed Identity
+  - Azure Cache for Redis
+  - Static Web Apps
+  - Microsoft Purview
+  - Bicep
+
+aws:
+  - Amazon EC2
+  - EC2
+  - Amazon S3
+  - S3
+  - AWS Lambda
+  - Amazon ECS
+  - ECS
+  - Amazon EKS
+  - EKS
+  - Fargate
+  - AWS Fargate
+  - Amazon RDS
+  - RDS
+  - Amazon Aurora
+  - DynamoDB
+  - ElastiCache
+  - Redshift
+  - CloudFront
+  - Route 53
+  - Amazon API Gateway
+  - Amazon VPC
+  - Direct Connect
+  - AWS Direct Connect
+  - CloudWatch
+  - CloudTrail
+  - GuardDuty
+  - AWS Security Hub
+  - IAM Identity Center
+  - Amazon Cognito
+  - Cognito
+  - AWS KMS
+  - Secrets Manager
+  - AWS Secrets Manager
+  - Systems Manager
+  - Amazon SQS
+  - SQS
+  - Amazon SNS
+  - SNS
+  - EventBridge
+  - Kinesis
+  - Step Functions
+  - AWS Glue
+  - Amazon Athena
+  - SageMaker
+  - Amazon Bedrock
+  - CloudFormation
+  - Elastic Beanstalk
+  - Elastic Load Balancing
+  - AWS WAF
+  - Transit Gateway
+  - Amazon MQ
+  - Lightsail
+  - AWS Backup
+  - Control Tower
+
+gcp:
+  - Compute Engine
+  - GKE
+  - Google Kubernetes Engine
+  - Cloud Run
+  - Cloud Functions
+  - App Engine
+  - Cloud Storage
+  - Cloud SQL
+  - Cloud Spanner
+  - Spanner
+  - Bigtable
+  - BigQuery
+  - Firestore
+  - Pub/Sub
+  - Cloud Pub/Sub
+  - Dataflow
+  - Dataproc
+  - Cloud Composer
+  - Vertex AI
+  - Cloud Armor
+  - Cloud CDN
+  - Cloud DNS
+  - Cloud Interconnect
+  - Cloud Load Balancing
+  - Cloud Logging
+  - Cloud Monitoring
+  - Secret Manager
+  - Cloud KMS
+  - Apigee
+  - Cloud Build
+  - Artifact Registry
+  - Memorystore
+  - Looker
+  - Anthos
+
+# Physical detail that is banned in a logical document whatever the vendor:
+# addresses, SKUs and resource names. Each is a regular expression.
+patterns:
+  ip-address: '(?<![\w.])(?:25[0-5]|2[0-4]\d|1?\d?\d)(?:\.(?:25[0-5]|2[0-4]\d|1?\d?\d)){3}(?:/\d{1,2})?(?![\w.]*\d)'
+  ipv6-address: '(?<![\w:])(?:[0-9A-Fa-f]{1,4}:){1,7}:(?:[0-9A-Fa-f]{1,4})?(?:/\d{1,3})?(?![\w:])'
+  azure-vm-sku: '\bStandard_[A-Z][A-Za-z0-9]*_?[A-Za-z0-9_]*\b'
+  azure-plan-sku: '\b[PSBI][1-3]v[2-3]\b'
+  aws-instance-type: '\b(?:t2|t3|t3a|t4g|m5|m5a|m6i|m6g|m7g|c5|c6i|c6g|c7g|r5|r6i|r6g|x2idn|i3|g4dn|g5|p3|p4d)\.(?:nano|micro|small|medium|large|\d*xlarge|metal)\b'
+  gcp-machine-type: '\b(?:e2|n1|n2|n2d|c2|c3|t2d|m1|m2|a2)-(?:standard|highmem|highcpu|micro|small|medium)(?:-\d+)?\b'
+  aws-arn: '\barn:aws[a-z-]*:[^\s,;)]+'
+  azure-resource-id: '/subscriptions/[0-9A-Fa-f-]{36}'
+  cloud-hostname: '\b[\w-]+(?:\.[\w-]+)*\.(?:azurewebsites\.net|azurecr\.io|blob\.core\.windows\.net|vault\.azure\.net|database\.windows\.net|servicebus\.windows\.net|azure-api\.net|azurefd\.net|cloudapp\.azure\.com|amazonaws\.com|cloudfront\.net|run\.app|appspot\.com|googleapis\.com)\b'
+  azure-resource-name: '\b(?:rg|kv|vnet|snet|nsg|appgw|aks|acr|apim|evhns|sbns|cosmos|appi)-[a-z0-9]+(?:-[a-z0-9]+)+\b'

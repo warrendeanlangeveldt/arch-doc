@@ -1,0 +1,28 @@
+# How consumers and the organisation's shared services meet the platform.
+# ArchiMate Application Cooperation viewpoint.
+model "model.json"
+
+view platform-cooperation "Northwind Platform: application cooperation" {
+  width 1100
+  viewpoint "Application Cooperation"
+  ACOL-CONS
+  ACMP-GW
+  ACMP-BRK
+  ACMP-WF
+  ACMP-SEC
+  AIF-API on ACMP-GW
+  AIF-EVT on ACMP-BRK
+  AIF-WF on ACMP-WF
+  AIF-SEC on ACMP-SEC
+  ACMP-IDP
+  ACMP-WID
+  ACMP-TEL
+  ACMP-MON
+  ACMP-ITSM
+  AIF-INC on ACMP-ITSM
+  ACOL-CONS above ACMP-GW
+  same ACMP-GW ACMP-BRK ACMP-WF ACMP-SEC
+  ACMP-GW above ACMP-WID
+  same ACMP-IDP ACMP-WID ACMP-TEL ACMP-MON ACMP-ITSM
+  key "Pill on a component: the interface it publishes"
+}

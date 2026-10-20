@@ -1,0 +1,98 @@
+# Control register (control). One record per item; ids are CTL-nn.
+# Fields: id, title, status
+#   area: identity | privileged-access | data-protection | network | monitoring | application | compliance
+#   response: text
+#   mitigates: refs:risk
+#   evidence: text
+#   owner: text
+# Status: planned (not-started), implemented (partial), verified (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CTL-01
+  area: identity
+  title: Every consumer workload has its own identity
+  response: Workload identity federated with the identity provider; no shared keys
+  mitigates:
+  - RSK-05
+  evidence: Role assignment export
+  owner: Security architect
+  status: implemented
+
+- id: CTL-02
+  area: identity
+  title: Access to topics and APIs is granted per consumer with owner approval
+  response: Portal access request approved by the producing team's owner; reviewed quarterly
+  mitigates:
+  - RSK-05
+  evidence: Access request history
+  owner: Platform product manager
+  status: planned
+
+- id: CTL-03
+  area: privileged-access
+  title: Platform engineers elevate just in time
+  response: Time-boxed elevation for two hours, approved by a second engineer, logged
+  mitigates:
+  - RSK-05
+  evidence: Elevation log sample
+  owner: Security architect
+  status: implemented
+
+- id: CTL-04
+  area: privileged-access
+  title: Break-glass accounts are sealed and alarmed
+  response: Two accounts, credentials split between two holders; any use pages security operations
+  evidence: 'TBC: Security architect'
+  owner: Security architect
+  status: planned
+
+- id: CTL-05
+  area: data-protection
+  title: Encryption in transit and at rest
+  response: TLS 1.2 or later on every path; platform-managed keys at rest, customer-managed keys for the audit store
+  evidence: Configuration policy report
+  owner: Security architect
+  status: implemented
+
+- id: CTL-06
+  area: data-protection
+  title: Secrets rotate at least every 90 days
+  response: Rotation policy on every vault; consumers notified through an event before expiry
+  mitigates:
+  - RSK-05
+  evidence: Rotation report
+  owner: Security architect
+  status: planned
+
+- id: CTL-07
+  area: network
+  title: Platform services take private traffic only
+  response: Private endpoints in each zone; the gateway is the only public entry point
+  mitigates:
+  - RSK-01
+  evidence: Network policy report
+  owner: Network lead
+  status: implemented
+
+- id: CTL-08
+  area: network
+  title: Public routes pass a web application firewall policy
+  response: Managed rule set in prevention mode on every public route
+  evidence: Policy export
+  owner: Network lead
+  status: planned
+
+- id: CTL-09
+  area: monitoring
+  title: Security events reach security operations
+  response: Sign-in, elevation, secret access and policy changes forwarded to the security operations platform
+  evidence: 'TBC: Security architect'
+  owner: Security architect
+  status: planned
+
+- id: CTL-10
+  area: compliance
+  title: Audit records are write-once and retained for seven years
+  response: Immutable audit store; one year online, six years archived
+  evidence: Retention policy
+  owner: Security architect
+  status: planned

@@ -1,0 +1,31 @@
+# Every system the solution exchanges data with, and the platform interfaces
+# each exchange uses. ArchiMate Application Cooperation viewpoint.
+model "model.json"
+
+view pts-integration "Parcel Tracking Solution: integrations" {
+  width 1100
+  viewpoint "Application Cooperation"
+  ACMP-HH
+  ACMP-CARR
+  AIF-CB on ACMP-CARR
+  ACMP-DOS
+  ACMP-PTS {
+    ACMP-INGEST
+    ACMP-HOOK
+    ACMP-POLL
+    ACMP-TRK
+    ACMP-API
+    ACMP-NOTIFY
+  }
+  ACMP-WEB
+  ACMP-SN
+  ACMP-MSG
+  ACMP-DD
+  hide ACMP-HH -[flow]-> ACMP-DOS
+  hide ACMP-API -[serving]-> ACMP-SN
+  same ACMP-HH ACMP-CARR ACMP-DOS
+  same ACMP-INGEST ACMP-HOOK ACMP-POLL ACMP-TRK
+  ACMP-TRK above ACMP-NOTIFY
+  same ACMP-API ACMP-NOTIFY
+  key "Box in a box: composition" "Pill on a component: an interface it publishes"
+}

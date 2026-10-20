@@ -1,0 +1,27 @@
+# The solution's components and how data moves between them.
+# ArchiMate Application Structure viewpoint.
+model "model.json"
+
+view pts-components "Parcel Tracking Solution: components" {
+  width 1100
+  viewpoint "Application Structure"
+  ACMP-PTS {
+    ACMP-INGEST
+    ACMP-HOOK
+    ACMP-POLL
+    ACMP-TRK
+    ACMP-STORE
+    ACMP-API
+    ACMP-NOTIFY
+    ACMP-WFX
+    ACMP-OPS
+    ACMP-MONCFG
+  }
+  same ACMP-INGEST ACMP-HOOK ACMP-POLL
+  ACMP-HOOK above ACMP-TRK
+  same ACMP-TRK ACMP-STORE
+  ACMP-TRK above ACMP-NOTIFY
+  same ACMP-API ACMP-NOTIFY ACMP-WFX ACMP-OPS
+  ACMP-OPS above ACMP-MONCFG
+  key "Box in a box: composition"
+}

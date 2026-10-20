@@ -1,0 +1,39 @@
+# Retired component register (retired-component). One record per item; ids are RET-nn.
+# Fields: id, title, status
+#   object_type: application | component | integration | technology | data
+#   replacement: text
+#   date: date
+#   data_retention: text
+#   records_action: text
+#   owner: text
+# Status: planned (not-started), in-progress (partial), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: RET-01
+  title: Legacy file exchange
+  object_type: application
+  replacement: Event broker and consumer events
+  date: '2027-09-30'
+  data_retention: Transfer logs kept one year after shutdown
+  records_action: Retire the application record
+  owner: Platform support lead
+  status: planned
+
+- id: RET-02
+  title: Team-run message queues
+  object_type: component
+  replacement: Event broker topics
+  date: '2027-06-30'
+  data_retention: Queues drained; no data kept
+  records_action: Retire each queue's record as the team moves
+  owner: Platform product manager
+  status: planned
+
+- id: RET-03
+  title: Nightly batch scheduler jobs that move data between teams
+  object_type: integration
+  replacement: Events and workflows
+  date: 'TBC: Platform product manager'
+  data_retention: None held
+  records_action: Remove the job relationships
+  owner: Platform support lead
+  status: planned

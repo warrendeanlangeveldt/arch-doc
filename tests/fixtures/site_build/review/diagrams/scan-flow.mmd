@@ -1,0 +1,5 @@
+flowchart LR
+  H[Handheld] -->|scan.v2| I[Scan intake]
+  I --> L[(Event log)]
+  L --> R[Replay worker]
+  R -->|tracking.v3| T[Parcel tracking]

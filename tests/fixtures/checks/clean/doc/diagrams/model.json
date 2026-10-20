@@ -1,0 +1,107 @@
+{
+ "metamodel": "archimate",
+ "name": "Parcel Tracking",
+ "objects": [
+  {
+   "id": "ACMP-01",
+   "type": "Application Component",
+   "name": "Tracking service"
+  },
+  {
+   "id": "ACMP-02",
+   "type": "Application Component",
+   "name": "Depot scanner app"
+  },
+  {
+   "id": "ACMP-03",
+   "type": "Application Component",
+   "name": "Legacy tracker"
+  },
+  {
+   "id": "ACMP-04",
+   "type": "Application Component",
+   "name": "Scan intake"
+  },
+  {
+   "id": "ACMP-05",
+   "type": "Application Component",
+   "name": "Tracking API"
+  },
+  {
+   "id": "ACMP-06",
+   "type": "Application Component",
+   "name": "Notification sender"
+  },
+  {
+   "id": "ACMP-07",
+   "type": "Application Component",
+   "name": "Secret store"
+  },
+  {
+   "id": "RISK-01",
+   "type": "Risk",
+   "name": "Risk number 1",
+   "ref": "RSK-01"
+  },
+  {
+   "id": "RISK-02",
+   "type": "Risk",
+   "name": "Risk number 2",
+   "ref": "RSK-02"
+  },
+  {
+   "id": "RISK-03",
+   "type": "Risk",
+   "name": "Risk number 3",
+   "ref": "RSK-03"
+  },
+  {
+   "id": "RISK-04",
+   "type": "Risk",
+   "name": "Risk number 4",
+   "ref": "RSK-04"
+  },
+  {
+   "id": "RISK-05",
+   "type": "Risk",
+   "name": "Risk number 5",
+   "ref": "RSK-05"
+  },
+  {
+   "id": "RISK-06",
+   "type": "Risk",
+   "name": "Risk number 6",
+   "ref": "RSK-06"
+  },
+  {
+   "id": "RISK-07",
+   "type": "Risk",
+   "name": "Risk number 7",
+   "ref": "RSK-07"
+  },
+  {
+   "id": "RISK-08",
+   "type": "Risk",
+   "name": "Risk number 8",
+   "ref": "RSK-08"
+  },
+  {
+   "id": "RISK-09",
+   "type": "Risk",
+   "name": "Risk number 9",
+   "ref": "RSK-09"
+  },
+  {
+   "id": "RISK-10",
+   "type": "Risk",
+   "name": "Risk number 10",
+   "ref": "RSK-10"
+  },
+  {
+   "id": "DOBJ-01",
+   "type": "Data Object",
+   "name": "Scan event"
+  }
+ ],
+ "relationships": []
+}

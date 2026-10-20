@@ -1,0 +1,6 @@
+- {id: NFR-01, title: Booking availability, category: availability, target: 99.9% in business hours, owner: Head of Freight, status: designed}
+- {id: NFR-02, title: Booking response time, category: performance, target: p95 under 2 s, owner: Lead Architect, status: designed}
+- {id: NFR-03, title: Month-end peak, category: scalability, target: 5x normal volume, owner: Lead Architect, status: agreed}
+- {id: NFR-04, title: Carrier outage tolerance, category: resilience, target: Queue 24 h of bookings, owner: Integration lead, status: proposed}
+- {id: NFR-05, title: Support hours, category: supportability, target: 7am to 7pm weekdays, owner: Support lead, status: agreed}
+- {id: NFR-06, title: Tracing across services, category: observability, target: Every request traced, owner: Lead Architect, status: "TBC: Platform lead"}

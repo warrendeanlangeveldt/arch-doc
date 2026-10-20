@@ -1,0 +1,5 @@
+- {id: ALT-01, title: Booking API errors above threshold, area: errors, threshold: 2% for 5 min, severity: high, target: Support queue, status: configured}
+- {id: ALT-02, title: Carrier queue backlog, area: integration, threshold: 500 messages, severity: critical, target: Gateway on-call, status: planned}
+- {id: ALT-03, title: Portal response time, area: performance, threshold: p95 above 2 s, severity: medium, target: Support queue, status: tested}
+- {id: ALT-04, title: Database storage, area: capacity, threshold: 80% used, severity: medium, target: Platform team, status: configured}
+- {id: ALT-05, title: Failed sign-ins, area: security, threshold: 50 in 10 min, severity: high, target: Security operations, status: planned}

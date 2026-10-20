@@ -1,0 +1,209 @@
+# Integration register (integration). One record per item; ids are INT-nn.
+# Fields: id, title, status
+#   source: text
+#   target: text
+#   interface: text
+#   data: text
+#   pattern: api | event | file | etl | message | manual
+#   protocol: text
+#   trigger: text
+#   criticality: high | medium | low
+#   state: current | target
+#   failure: text
+#   owner: text
+# Status: planned (not-started), in-build (partial), tested (partial), live (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: INT-01
+  title: Depot scans to the tracking service
+  source: Depot handheld app
+  target: Tracking service
+  interface: Scan route on the platform API publication interface, then topic parcels.scans
+  data: Parcel scan
+  pattern: event
+  protocol: HTTPS, then AMQP over TLS
+  trigger: Each scan
+  criticality: high
+  state: target
+  failure: Handhelds buffer offline; the topic holds scans for seven days
+  owner: Integration lead
+  status: in-build
+
+- id: INT-02
+  title: Carrier B status updates
+  source: Carrier systems
+  target: Tracking service
+  interface: Carrier B tracking API
+  data: Carrier parcel status
+  pattern: api
+  protocol: HTTPS
+  trigger: Every five minutes
+  criticality: high
+  state: target
+  failure: Back off on a rate-limit response; resume from the last poll position
+  owner: Integration lead
+  status: planned
+
+- id: INT-03
+  title: Status changes to the customer notification service
+  source: Tracking service
+  target: Customer notification service
+  interface: Topic parcels.status-changed on the platform event interface
+  data: Parcel status change
+  pattern: event
+  protocol: AMQP over TLS
+  trigger: On status change
+  criticality: medium
+  state: target
+  failure: Dead-letter after retries; replay (RBK-01)
+  owner: Product owner
+  status: planned
+
+- id: INT-04
+  title: Carrier A and C status webhooks
+  source: Carrier systems
+  target: Carrier webhook receiver
+  interface: Webhook route on the platform API publication interface
+  data: Carrier parcel status
+  pattern: api
+  protocol: HTTPS with signed payloads
+  trigger: Each carrier status change
+  criticality: high
+  state: target
+  failure: Carriers retry for 24 hours; we answer only after the update is stored
+  owner: Integration lead
+  status: in-build
+
+- id: INT-05
+  title: Public tracking lookups
+  source: Customer website
+  target: Tracking API
+  interface: GET /parcels/{number}?postcode=
+  data: Parcel status and timeline summary
+  pattern: api
+  protocol: HTTPS
+  trigger: On lookup
+  criticality: high
+  state: target
+  failure: Website shows a retry message; nothing is cached on error
+  owner: Integration lead
+  status: in-build
+
+- id: INT-06
+  title: Notification delivery
+  source: Customer notification service
+  target: Messaging provider
+  interface: 'TBC: Product owner'
+  data: Message, address or number
+  pattern: api
+  protocol: HTTPS
+  trigger: Per notification
+  criticality: medium
+  state: target
+  failure: Retry for an hour, then record as failed
+  owner: Product owner
+  status: planned
+
+- id: INT-07
+  title: Parcel manifests
+  source: Depot operations system
+  target: Tracking service
+  interface: Topic depot.manifests on the platform event interface
+  data: Parcel, destination and contact
+  pattern: event
+  protocol: AMQP over TLS
+  trigger: On manifest close
+  criticality: high
+  state: target
+  failure: Scans for an unknown parcel wait 12 hours for its manifest
+  owner: Integration lead
+  status: in-build
+
+- id: INT-08
+  title: Telemetry to Datadog
+  source: Parcel Tracking Solution
+  target: Datadog
+  interface: Platform telemetry stream
+  data: Metrics, logs and traces tagged pts
+  pattern: event
+  protocol: HTTPS
+  trigger: Continuous
+  criticality: medium
+  state: target
+  failure: Collector buffers for an hour
+  owner: Service owner
+  status: planned
+
+- id: INT-09
+  title: Datadog alerts to ServiceNow incidents
+  source: Datadog
+  target: ServiceNow
+  interface: Datadog ServiceNow integration
+  data: Alert with configuration item and assignment group
+  pattern: api
+  protocol: HTTPS
+  trigger: On alert
+  criticality: high
+  state: target
+  failure: Datadog pages the on-call engineer directly if incident creation fails
+  owner: Service owner
+  status: planned
+
+- id: INT-10
+  title: Customer service lookups
+  source: ServiceNow
+  target: Tracking API
+  interface: Internal route GET /internal/parcels/{number}
+  data: Full timeline with carrier detail
+  pattern: api
+  protocol: HTTPS
+  trigger: On agent lookup
+  criticality: medium
+  state: target
+  failure: Agents fall back to the carrier portals
+  owner: Customer service manager
+  status: planned
+
+- id: INT-11
+  title: Staff sign-in to the ops dashboard
+  source: Ops dashboard
+  target: Entra ID
+  interface: OpenID Connect
+  data: Staff identity and group claims
+  pattern: api
+  protocol: OpenID Connect
+  trigger: On sign-in
+  criticality: high
+  state: target
+  failure: Sign-in fails closed
+  owner: Security architect
+  status: planned
+
+- id: INT-12
+  title: Nightly scan file to the legacy lookup
+  source: Depot operations system
+  target: Legacy tracking lookup
+  interface: SFTP file drop
+  data: Yesterday's scans
+  pattern: file
+  protocol: SFTP
+  trigger: Nightly at 02:00
+  criticality: high
+  state: current
+  failure: Customer service finds a missing file the next morning
+  owner: Customer service manager
+  status: live
+
+- id: INT-13
+  title: Manual carrier status checks
+  source: Customer service agents
+  target: Carrier systems
+  interface: Carrier web portals
+  data: Carrier parcel status
+  pattern: manual
+  protocol: Web browser
+  trigger: On customer call
+  criticality: medium
+  state: current
+  failure: Agent calls the carrier
+  owner: Customer service manager
+  status: live

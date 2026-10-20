@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 491" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>Parcel Tracking Solution: layered view</title>
+<rect x="0" y="0" width="1100" height="491" fill="#ffffff"/>
+<defs><marker id="arr-ptslayered" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker><marker id="arrow-open-ptslayered" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#475569" stroke-width="1.2"/></marker><marker id="arrow-filled-ptslayered" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker></defs>
+<rect x="29.0" y="184.0" width="1042.0" height="81.0" rx="0" fill="#b5ffff" fill-opacity="0.45" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(1051.0 188.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="1065.0" y="260.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-PTS</text>
+<text x="36.0" y="198.5" font-size="10.5" fill="#0f172a" font-weight="600">Parcel Tracking Solution</text>
+<rect x="224.4" y="325.0" width="460.7" height="74.0" rx="6" fill="none" stroke="#64748b" stroke-width="1"/>
+<text x="232.4" y="338.0" font-size="8" fill="#64748b" font-weight="700" letter-spacing="0.5">NORTHWIND PLATFORM, DEFINED IN ITS OWN DESIGN</text>
+<rect x="282.3" y="16.0" width="150.0" height="36.0" rx="0" fill="#ffffb5" stroke="#8a7a12" stroke-width="1.2"/>
+<g transform="translate(412.3 20.0)" fill="none" stroke="#8a7a12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="2.4" r="2"/><line x1="8" y1="4.4" x2="8" y2="8.2"/><line x1="4.6" y1="6" x2="11.4" y2="6"/><polyline points="5,11.6 8,8.2 11,11.6"/></g>
+<text x="357.3" y="39.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Depot staff</text>
+<text x="427.3" y="48.0" font-size="7" fill="#94a3b8" text-anchor="end">BACT-DEPOT</text>
+<rect x="472.3" y="16.0" width="150.0" height="36.0" rx="0" fill="#ffffb5" stroke="#8a7a12" stroke-width="1.2"/>
+<g transform="translate(602.3 20.0)" fill="none" stroke="#8a7a12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="2.4" r="2"/><line x1="8" y1="4.4" x2="8" y2="8.2"/><line x1="4.6" y1="6" x2="11.4" y2="6"/><polyline points="5,11.6 8,8.2 11,11.6"/></g>
+<text x="547.3" y="39.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Customer</text>
+<text x="617.3" y="48.0" font-size="7" fill="#94a3b8" text-anchor="end">BACT-CUST</text>
+<rect x="662.3" y="16.0" width="176.4" height="36.0" rx="0" fill="#ffffb5" stroke="#8a7a12" stroke-width="1.2"/>
+<g transform="translate(818.7 20.0)" fill="none" stroke="#8a7a12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="2.4" r="2"/><line x1="8" y1="4.4" x2="8" y2="8.2"/><line x1="4.6" y1="6" x2="11.4" y2="6"/><polyline points="5,11.6 8,8.2 11,11.6"/></g>
+<text x="750.5" y="39.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Customer service agent</text>
+<text x="833.7" y="48.0" font-size="7" fill="#94a3b8" text-anchor="end">BACT-AGENT</text>
+<rect x="905.0" y="16.0" width="150.0" height="36.0" rx="0" fill="#ffffb5" stroke="#8a7a12" stroke-width="1.2"/>
+<g transform="translate(1035.0 20.0)" fill="none" stroke="#8a7a12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="2.4" r="2"/><line x1="8" y1="4.4" x2="8" y2="8.2"/><line x1="4.6" y1="6" x2="11.4" y2="6"/><polyline points="5,11.6 8,8.2 11,11.6"/></g>
+<text x="980.0" y="39.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Operations lead</text>
+<text x="1050.0" y="48.0" font-size="7" fill="#94a3b8" text-anchor="end">BACT-OPS</text>
+<rect x="281.9" y="104.0" width="155.7" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(417.6 108.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="359.8" y="127.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Depot handheld app</text>
+<text x="432.6" y="136.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-HH</text>
+<rect x="477.6" y="104.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(607.6 108.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="552.6" y="127.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Customer website</text>
+<text x="622.6" y="136.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-WEB</text>
+<rect x="667.6" y="104.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2"/>
+<g transform="translate(797.6 108.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="742.6" y="127.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">ServiceNow</text>
+<text x="812.6" y="136.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-SN</text>
+<rect x="45.0" y="215.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(175.0 219.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="120.0" y="238.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Scan ingest</text>
+<text x="190.0" y="247.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-INGEST</text>
+<rect x="280.3" y="215.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(410.3 219.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="355.3" y="238.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Tracking service</text>
+<text x="425.3" y="247.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-TRK</text>
+<rect x="470.3" y="215.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(600.3 219.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="545.3" y="238.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Tracking API</text>
+<text x="615.3" y="247.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-API</text>
+<rect x="660.3" y="215.0" width="204.7" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(845.0 219.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="762.6" y="238.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Customer notification service</text>
+<text x="860.0" y="247.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-NOTIFY</text>
+<rect x="905.0" y="215.0" width="150.0" height="36.0" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(1035.0 219.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g>
+<text x="980.0" y="238.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Ops dashboard</text>
+<text x="1050.0" y="247.0" font-size="7" fill="#94a3b8" text-anchor="end">ACMP-OPS</text>
+<rect x="240.4" y="349.0" width="178.7" height="36.0" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(399.1 353.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="6" r="3.2"/><line x1="2" y1="6" x2="7.8" y2="6"/></g>
+<text x="329.8" y="372.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Platform event interface</text>
+<text x="414.1" y="381.0" font-size="7" fill="#94a3b8" text-anchor="end">AIF-PEVT</text>
+<rect x="459.1" y="349.0" width="210.0" height="36.0" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1.2" stroke-dasharray="4 3"/>
+<g transform="translate(649.1 353.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="6" r="3.2"/><line x1="2" y1="6" x2="7.8" y2="6"/></g>
+<text x="564.1" y="372.5" font-size="10.5" fill="#0f172a" text-anchor="middle" font-weight="600">Platform API publication interface</text>
+<text x="664.1" y="381.0" font-size="7" fill="#94a3b8" text-anchor="end">AIF-PAPI</text>
+<polyline points="550.0,104.0 550.0,54.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="357.3,104.0 357.3,54.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="742.6,104.0 742.6,54.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="980.0,215.0 980.0,54.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="195.0,233.0 278.3,233.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-ptslayered)"/>
+<text x="236.7" y="228.0" font-size="8.5" fill="#64748b" text-anchor="middle" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">ordered scans</text>
+<polyline points="385.3,215.0 385.3,207.0 652.3,207.0 652.3,233.0 658.3,233.0" fill="none" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-ptslayered)"/>
+<text x="465.4" y="202.0" font-size="8.5" fill="#64748b" text-anchor="middle" font-style="italic" stroke="#ffffff" stroke-width="3" stroke-linejoin="round" paint-order="stroke">status changes</text>
+<polyline points="549.0,215.0 549.0,142.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="620.3,233.0 644.0,233.0 644.0,122.0 665.6,122.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="240.4,367.0 150.0,367.0 150.0,253.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="419.1,367.0 451.1,367.0 451.1,407.0 721.7,407.0 721.7,253.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="522.1,349.0 522.1,273.0 21.0,273.0 21.0,122.0 279.9,122.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<polyline points="545.3,349.0 545.3,253.0" fill="none" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<line x1="16" y1="419.0" x2="1084" y2="419.0" stroke="#e2e8f0" stroke-width="1"/>
+<text x="16.0" y="439.5" font-size="7.5" fill="#8a7a12" font-weight="700" letter-spacing="0.6">BUSINESS</text>
+<rect x="68.232" y="430.0" width="22" height="14" rx="0" fill="#ffffb5" stroke="#8a7a12" stroke-width="1"/>
+<g transform="translate(71.232 431.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#8a7a12" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="2.4" r="2"/><line x1="8" y1="4.4" x2="8" y2="8.2"/><line x1="4.6" y1="6" x2="11.4" y2="6"/><polyline points="5,11.6 8,8.2 11,11.6"/></g></g>
+<text x="95.2" y="439.5" font-size="8.5" fill="#475569">Business Actor</text>
+<text x="172.1" y="439.5" font-size="7.5" fill="#2b7c8c" font-weight="700" letter-spacing="0.6">APPLICATION</text>
+<rect x="239.281" y="430.0" width="22" height="14" rx="0" fill="#b5ffff" stroke="#2b7c8c" stroke-width="1"/>
+<g transform="translate(242.281 431.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#2b7c8c" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="1" width="10" height="10"/><rect x="2" y="3" width="4" height="2" fill="#fff"/><rect x="2" y="7" width="4" height="2" fill="#fff"/></g></g>
+<text x="266.3" y="439.5" font-size="8.5" fill="#475569">Application Component</text>
+<rect x="365.02099999999996" y="430.0" width="22" height="14" rx="0" fill="#a3f3ff" stroke="#3385a7" stroke-width="1"/>
+<g transform="translate(368.02099999999996 431.6) scale(1)"><g transform="translate(0.0 0.0)" fill="none" stroke="#3385a7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="6" r="3.2"/><line x1="2" y1="6" x2="7.8" y2="6"/></g></g>
+<text x="392.0" y="439.5" font-size="8.5" fill="#475569">Application Interface</text>
+<rect x="16" y="451.0" width="16" height="10" rx="2" fill="#ffffff" stroke="#475569" stroke-width="1.2" stroke-dasharray="3 2"/>
+<text x="37.0" y="459.5" font-size="8.5" fill="#475569">Proposed / designed / not started</text>
+<line x1="176.70999999999992" y1="456.0" x2="202.70999999999992" y2="456.0" stroke="#475569" stroke-width="1.1" marker-end="url(#arrow-open-ptslayered)"/>
+<text x="207.7" y="459.5" font-size="8.5" fill="#475569">Serving</text>
+<line x1="246.77999999999992" y1="456.0" x2="272.7799999999999" y2="456.0" stroke="#475569" stroke-width="1.1" stroke-dasharray="7 3" marker-end="url(#arrow-filled-ptslayered)"/>
+<text x="277.8" y="459.5" font-size="8.5" fill="#475569">Flow</text>
+<text x="16.0" y="477.5" font-size="8.5" fill="#475569">Box in a box: composition</text>
+<text x="134.3" y="477.5" font-size="8.5" fill="#475569">Dashed frame: services of the platform this design runs on</text>
+</svg>

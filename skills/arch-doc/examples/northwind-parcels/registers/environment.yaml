@@ -1,0 +1,49 @@
+# Environment register (environment). One record per item; ids are ENV-nn.
+# Fields: id, title, status
+#   purpose: text
+#   hosting: text
+#   classification: public | internal | confidential | restricted
+#   access: text
+#   refresh: text
+#   owner: text
+# Status: planned (not-started), provisioning (partial), ready (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ENV-01
+  title: Development
+  purpose: Build and unit test
+  hosting: Platform development zone, rg-pts-dev, Azure primary region
+  classification: internal
+  access: Parcels engineers
+  refresh: Synthetic parcels and contacts
+  owner: Integration lead
+  status: ready
+
+- id: ENV-02
+  title: Test
+  purpose: Integration with carrier sandboxes and the depot test system
+  hosting: Platform test zone, rg-pts-tst, Azure primary region
+  classification: internal
+  access: Engineers and testers
+  refresh: Synthetic contacts; carrier sandbox data
+  owner: Integration lead
+  status: ready
+
+- id: ENV-03
+  title: Pre-production
+  purpose: Load, failover and readiness testing
+  hosting: Platform pre-production zone, rg-pts-pre, Azure primary region
+  classification: confidential
+  access: Engineers by request
+  refresh: Production parcels with contacts replaced, refreshed monthly
+  owner: Integration lead
+  status: planned
+
+- id: ENV-04
+  title: Production
+  purpose: Live tracking
+  hosting: Platform production zone, rg-pts-prd, Azure primary region and pair
+  classification: confidential
+  access: Pipelines only; engineers by just-in-time elevation
+  refresh: Not applicable
+  owner: Service owner
+  status: planned

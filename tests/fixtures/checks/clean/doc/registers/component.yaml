@@ -1,0 +1,4 @@
+- {id: CMP-01, title: Scan intake, description: Receives scans from depots, application: APP-01, runtime: Container, interfaces: [scan API], owner: Tracking lead, status: in-build}
+- {id: CMP-02, title: Tracking API, description: Answers tracking queries, application: APP-01, runtime: Container, interfaces: [tracking API], owner: Tracking lead, status: in-build}
+- {id: CMP-03, title: Notification sender, description: Sends delivery updates, application: APP-01, runtime: Function, interfaces: [], owner: Tracking lead, status: planned}
+- {id: CMP-04, title: Secret store, description: Holds carrier credentials, application: APP-01, data: Four secrets, owner: Security lead, status: planned}

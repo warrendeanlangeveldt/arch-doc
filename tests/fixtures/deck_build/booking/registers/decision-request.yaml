@@ -1,0 +1,2 @@
+- {id: DRQ-01, title: Approve the detailed design, area: Architecture, ask: approve, forum: FOR-01, due: 2026-10-30, owner: Lead Architect, status: submitted}
+- {id: DRQ-02, title: Accept the single-region risk, area: Risk, ask: accept-risk, forum: FOR-03, due: 2026-11-20, owner: Platform lead, status: draft}

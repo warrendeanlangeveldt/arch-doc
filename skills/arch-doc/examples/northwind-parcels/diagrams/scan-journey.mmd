@@ -1,0 +1,24 @@
+sequenceDiagram
+  autonumber
+  participant H as Depot handheld app
+  participant P as Northwind Platform
+  participant I as Scan ingest
+  participant T as Tracking service
+  participant S as Tracking store
+  participant N as Customer notification<br/>service
+  participant M as Messaging provider
+  participant A as Tracking API
+  participant W as Customer website
+  H->>P: Scan (parcel, depot, scan time)
+  P->>I: Deliver on parcels.scans
+  I->>I: Validate, drop duplicates, order by scan time
+  I->>T: Ordered scan
+  T->>S: Append to timeline, derive status
+  T->>P: Publish on parcels.status-changed
+  P->>N: Deliver status change
+  N->>S: Read contact and preference
+  N->>M: Send email or SMS
+  M-->>N: Delivery result
+  W->>A: Lookup by parcel number and postcode
+  A->>S: Read the timeline
+  A-->>W: Status and timeline summary

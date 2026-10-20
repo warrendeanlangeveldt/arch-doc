@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 267" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif">
+<title>Parcel Tracking Solution: data access</title>
+<rect x="0" y="0" width="1000" height="267" fill="#ffffff"/>
+<defs><marker id="arr-ptsdata" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/></marker></defs>
+<text x="16.0" y="26.0" font-size="8" fill="#64748b" font-weight="700" letter-spacing="0.5">DATA OBJECT BY COMPONENT</text>
+<rect x="16.0" y="34.0" width="968.0" height="40.0" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+<text x="264.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Scan ingest</text>
+<text x="264.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-INGEST</text>
+<line x1="216.0" y1="34.0" x2="216.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="360.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Carrier webhook</text>
+<text x="360.0" y="58.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">receiver</text>
+<text x="360.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-HOOK</text>
+<line x1="312.0" y1="34.0" x2="312.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="456.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Carrier poller</text>
+<text x="456.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-POLL</text>
+<line x1="408.0" y1="34.0" x2="408.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="552.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Tracking service</text>
+<text x="552.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-TRK</text>
+<line x1="504.0" y1="34.0" x2="504.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="648.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Tracking API</text>
+<text x="648.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-API</text>
+<line x1="600.0" y1="34.0" x2="600.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="744.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Customer notification</text>
+<text x="744.0" y="58.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">service</text>
+<text x="744.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-NOTIFY</text>
+<line x1="696.0" y1="34.0" x2="696.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="840.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Exception workflows</text>
+<text x="840.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-WFX</text>
+<line x1="792.0" y1="34.0" x2="792.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="936.0" y="47.0" font-size="8.5" fill="#0f172a" text-anchor="middle" font-weight="600">Ops dashboard</text>
+<text x="936.0" y="69.0" font-size="7" fill="#94a3b8" text-anchor="middle">ACMP-OPS</text>
+<line x1="888.0" y1="34.0" x2="888.0" y2="74.0" stroke="#e2e8f0"/>
+<text x="24.0" y="89.0" font-size="9" fill="#0f172a" font-weight="600">Parcel</text>
+<text x="208.0" y="89.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-PCL</text>
+<text x="552.0" y="89.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="97.0" x2="984.0" y2="97.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="97.0" width="968.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="112.0" font-size="9" fill="#0f172a" font-weight="600">Scan event</text>
+<text x="208.0" y="112.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-SCAN</text>
+<text x="264.0" y="112.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<text x="552.0" y="112.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="120.0" x2="984.0" y2="120.0" stroke="#e2e8f0"/>
+<text x="24.0" y="135.0" font-size="9" fill="#0f172a" font-weight="600">Carrier status update</text>
+<text x="208.0" y="135.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-CSU</text>
+<text x="360.0" y="135.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<text x="456.0" y="135.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<text x="552.0" y="135.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="143.0" x2="984.0" y2="143.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="143.0" width="968.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="158.0" font-size="9" fill="#0f172a" font-weight="600">Tracking timeline</text>
+<text x="208.0" y="158.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-TL</text>
+<text x="552.0" y="158.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">RW</text>
+<text x="648.0" y="158.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<text x="936.0" y="158.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<line x1="16.0" y1="166.0" x2="984.0" y2="166.0" stroke="#e2e8f0"/>
+<text x="24.0" y="181.0" font-size="9" fill="#0f172a" font-weight="600">Customer contact</text>
+<text x="208.0" y="181.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-CONT</text>
+<text x="552.0" y="181.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<text x="648.0" y="181.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<text x="744.0" y="181.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<line x1="16.0" y1="189.0" x2="984.0" y2="189.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="189.0" width="968.0" height="23.0" fill="#f8fafc"/>
+<text x="24.0" y="204.0" font-size="9" fill="#0f172a" font-weight="600">Notification record</text>
+<text x="208.0" y="204.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-NOTE</text>
+<text x="744.0" y="204.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<line x1="16.0" y1="212.0" x2="984.0" y2="212.0" stroke="#e2e8f0"/>
+<text x="24.0" y="227.0" font-size="9" fill="#0f172a" font-weight="600">Delivery exception</text>
+<text x="208.0" y="227.0" font-size="7" fill="#94a3b8" text-anchor="end">DOBJ-EXC</text>
+<text x="840.0" y="227.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">W</text>
+<text x="936.0" y="227.0" font-size="9" fill="#0f172a" text-anchor="middle" font-weight="700" letter-spacing="0.6">R</text>
+<line x1="16.0" y1="235.0" x2="984.0" y2="235.0" stroke="#e2e8f0"/>
+<rect x="16.0" y="34.0" width="968.0" height="201.0" fill="none" stroke="#94a3b8" stroke-width="1"/>
+<line x1="216.0" y1="34.0" x2="216.0" y2="235.0" stroke="#e2e8f0"/>
+<text x="16.0" y="253.5" font-size="8.5" fill="#475569">R: reads. W: writes. RW: reads and writes. From the access relationships in the model</text>
+</svg>

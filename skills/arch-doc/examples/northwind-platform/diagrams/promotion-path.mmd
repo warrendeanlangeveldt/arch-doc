@@ -1,0 +1,10 @@
+flowchart TB
+  PIPE["Delivery pipeline<br/>templates and code, workload identity, no stored secrets"]
+  PIPE --> DEV["Development zone<br/>synthetic data"]
+  DEV -->|"contract tests pass"| TEST["Test zone<br/>synthetic data"]
+  TEST -->|"load and failover tests pass"| PRE["Pre-production zone<br/>masked data on request"]
+  PRE -->|"change approved"| PROD["Production zone<br/>primary region"]
+  PROD -. "asynchronous replication" .-> PAIR["Production zone<br/>paired region"]
+  PROD -->|"failed health check"| RB["Roll back to the last good release"]
+  classDef prod stroke-width:3px;
+  class PROD,PAIR prod

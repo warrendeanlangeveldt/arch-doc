@@ -1,0 +1,49 @@
+# Governance forum register (forum). One record per item; ids are FOR-nn.
+# Fields: id, title, status
+#   short: text
+#   role: design-authority | change | security | data | service-transition | steering | other
+#   purpose: text
+#   decision: text
+#   cadence: text
+#   owner: text
+# Status: pending (not-started), scheduled (partial), conditional (partial), approved (done), rejected (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: FOR-01
+  title: Architecture Review Board
+  short: ARB
+  role: design-authority
+  purpose: Approve the capability design
+  decision: Approval to build release 1
+  cadence: Fortnightly
+  owner: Platform architect
+  status: scheduled
+
+- id: FOR-02
+  title: Security Review
+  short: SR
+  role: security
+  purpose: Review identity, secrets, network and audit controls
+  decision: Security sign-off before production
+  cadence: Weekly
+  owner: Security architect
+  status: scheduled
+
+- id: FOR-03
+  title: Change Advisory Board
+  short: CAB
+  role: change
+  purpose: Authorise the production go-live change
+  decision: Go-live change approval
+  cadence: Weekly
+  owner: Platform support lead
+  status: pending
+
+- id: FOR-04
+  title: Platform steering group
+  short: PSG
+  role: steering
+  purpose: Funding, priorities and risk acceptance
+  decision: Accept the support staffing risk
+  cadence: Monthly
+  owner: Head of Platform
+  status: scheduled

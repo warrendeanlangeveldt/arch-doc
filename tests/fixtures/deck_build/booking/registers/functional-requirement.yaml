@@ -1,0 +1,6 @@
+- {id: FR-01, title: Take a booking with addresses and parcels, traces_to: [BR-01], satisfied_by: [Booking API, Booking web front end], priority: must, owner: Head of Freight, status: designed}
+- {id: FR-02, title: Validate addresses as they are typed, traces_to: [BR-01], satisfied_by: [Booking API], priority: should, owner: Data steward, status: agreed}
+- {id: FR-03, title: Send confirmed bookings to the carrier, traces_to: [BR-02], satisfied_by: [Carrier adapter], priority: must, owner: Integration lead, status: designed}
+- {id: FR-04, title: Retry a rejected booking with back-off, traces_to: [BR-02], satisfied_by: [Carrier adapter, Event bus topics], priority: must, owner: Integration lead, status: proposed}
+- {id: FR-05, title: Post charges to the ledger, traces_to: [BR-03], satisfied_by: [Booking API], priority: should, owner: Finance lead, status: proposed}
+- {id: FR-06, title: Print labels at the depot, traces_to: [BR-01], satisfied_by: [Depot handheld app], priority: could, owner: Depot manager, status: verified}

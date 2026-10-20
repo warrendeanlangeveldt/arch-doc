@@ -1,0 +1,108 @@
+# Application register (application). One record per item; ids are APP-nn.
+# Fields: id, title, status
+#   purpose: text
+#   state: current | target | both
+#   change: new | changed | unchanged | retired
+#   hosting: saas | cloud | on-prem | hybrid
+#   role: source | target | both | none
+#   lifecycle: strategic | invest | tolerate | migrate | retire
+#   criticality: high | medium | low
+#   repository: text
+#   owner: text
+# Status: planned (not-started), in-build (partial), live (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: APP-01
+  title: Northwind Platform
+  purpose: Shared integration and event services for internal teams
+  state: target
+  change: new
+  hosting: cloud
+  role: both
+  lifecycle: invest
+  criticality: high
+  owner: Head of Platform
+  status: in-build
+
+- id: APP-02
+  title: Legacy file exchange
+  purpose: Scheduled file drops between depot, billing and finance systems
+  state: current
+  change: retired
+  hosting: on-prem
+  role: both
+  lifecycle: retire
+  criticality: high
+  owner: Platform support lead
+  status: live
+
+- id: APP-03
+  title: Nightly batch scheduler
+  purpose: Runs overnight extract and load jobs
+  state: current
+  change: retired
+  hosting: on-prem
+  role: both
+  lifecycle: migrate
+  criticality: medium
+  owner: Platform support lead
+  status: live
+
+- id: APP-04
+  title: Team-run message queues
+  purpose: Queues that individual teams built and run for their own systems
+  state: current
+  change: retired
+  hosting: cloud
+  role: both
+  lifecycle: migrate
+  criticality: medium
+  owner: 'TBC: Platform product manager'
+  status: live
+
+- id: APP-05
+  title: Point-to-point API adapters
+  purpose: Custom adapters calling partner and internal APIs directly
+  state: current
+  change: unchanged
+  hosting: hybrid
+  role: both
+  lifecycle: tolerate
+  criticality: medium
+  owner: Consumer team leads
+  status: live
+
+- id: APP-06
+  title: Identity provider
+  purpose: The organisation's sign-in and directory service
+  state: both
+  change: unchanged
+  hosting: saas
+  role: source
+  lifecycle: strategic
+  criticality: high
+  owner: Identity team
+  status: live
+
+- id: APP-07
+  title: Monitoring platform
+  purpose: The organisation's metrics, logs, traces and alerting service
+  state: both
+  change: changed
+  hosting: saas
+  role: target
+  lifecycle: strategic
+  criticality: high
+  owner: Technology Operations
+  status: live
+
+- id: APP-08
+  title: Service Management Platform
+  purpose: Incidents, changes, requests and configuration records
+  state: both
+  change: changed
+  hosting: saas
+  role: target
+  lifecycle: strategic
+  criticality: high
+  owner: Service management lead
+  status: live

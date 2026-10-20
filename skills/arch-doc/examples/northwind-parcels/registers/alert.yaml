@@ -1,0 +1,130 @@
+# Alert register (alert). One record per item; ids are ALT-nn.
+# Fields: id, title, status
+#   area: availability | performance | capacity | errors | integration | security | data | cost
+#   source: text
+#   metric: text
+#   threshold: text
+#   severity: critical | high | medium | low
+#   target: text
+#   runbook: ref:runbook
+#   owner: text
+# Status: planned (not-started), configured (partial), tested (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ALT-01
+  area: performance
+  title: Scan ingest lag
+  source: Datadog, pts-scan-ingest
+  metric: Age of the oldest unprocessed scan
+  threshold: Over 5 minutes for 10 minutes
+  severity: high
+  target: Parcels Tracking Support
+  runbook: RBK-01
+  owner: Integration lead
+  status: configured
+
+- id: ALT-02
+  area: errors
+  title: Tracking API errors
+  source: Datadog APM, pts-tracking-api
+  metric: Server error rate
+  threshold: Over 2% for 5 minutes
+  severity: critical
+  target: Parcels Tracking Support
+  runbook: RBK-04
+  owner: Integration lead
+  status: tested
+
+- id: ALT-03
+  area: performance
+  title: Tracking API slow
+  source: Datadog APM, pts-tracking-api
+  metric: 95th percentile latency
+  threshold: Over 300 ms for 10 minutes
+  severity: high
+  target: Parcels Tracking Support
+  runbook: RBK-04
+  owner: Integration lead
+  status: tested
+
+- id: ALT-04
+  area: integration
+  title: Dead-lettered scans or status changes
+  source: Platform broker metrics
+  metric: Dead-letter depth on pts subscriptions
+  threshold: Over 100 for 10 minutes
+  severity: high
+  target: Parcels Tracking Support
+  runbook: RBK-01
+  owner: Integration lead
+  status: configured
+
+- id: ALT-05
+  area: integration
+  title: Carrier B polls failing
+  source: Datadog, pts-carrier-b-poll
+  metric: Consecutive failed polls
+  threshold: 3 in a row
+  severity: medium
+  target: Parcels Tracking Support
+  runbook: RBK-02
+  owner: Integration lead
+  status: planned
+
+- id: ALT-06
+  area: errors
+  title: Notifications failing
+  source: Datadog, pts-notify
+  metric: Provider failure rate
+  threshold: Over 5% for 15 minutes
+  severity: medium
+  target: Parcels Tracking Support
+  runbook: RBK-03
+  owner: Product owner
+  status: planned
+
+- id: ALT-07
+  area: security
+  title: Webhook signature failures
+  source: Datadog, pts-webhooks
+  metric: Rejected signatures per carrier
+  threshold: Over 20 in 5 minutes
+  severity: high
+  target: Security operations
+  runbook: RBK-06
+  owner: Security architect
+  status: planned
+
+- id: ALT-08
+  area: security
+  title: Lookup sweep
+  source: Platform gateway logs in Datadog
+  metric: Lookups with a wrong postcode per client address
+  threshold: Over 50 in 10 minutes
+  severity: high
+  target: Security operations
+  owner: Security architect
+  status: planned
+
+- id: ALT-09
+  area: data
+  title: Depot scan lag
+  source: Datadog, pts-tracking
+  metric: Minutes since a depot's last scan in working hours
+  threshold: Over 30 minutes
+  severity: medium
+  target: Depot operations duty manager
+  runbook: RBK-05
+  owner: Depot operations manager
+  status: planned
+
+- id: ALT-10
+  area: capacity
+  title: Tracking store near its throughput limit
+  source: Datadog, pts-prd-tracking-db
+  metric: Throughput used
+  threshold: Over 80% for 15 minutes
+  severity: medium
+  target: Parcels Tracking Support
+  runbook: RBK-07
+  owner: Integration lead
+  status: planned

@@ -1,0 +1,44 @@
+# Dependency register (dependency). One record per item; ids are DEP-nn.
+# Fields: id, title, status
+#   type: business | technology | vendor | data | integration | security | platform
+#   provider: text
+#   required_by: date
+#   impact: text
+#   owner: text
+# Status: open (not-started), in-progress (partial), at-risk (partial), met (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DEP-01
+  title: Shared network connectivity to every zone
+  type: technology
+  provider: Infrastructure network team
+  required_by: '2026-12-01'
+  impact: Zones cannot reach the identity provider or consumers
+  owner: Network lead
+  status: in-progress
+
+- id: DEP-02
+  title: Workload identity federation approved for the delivery pipeline
+  type: security
+  provider: Identity team
+  required_by: '2026-11-30'
+  impact: Pipelines would need stored credentials
+  owner: Security architect
+  status: in-progress
+
+- id: DEP-03
+  title: Security operations onboards platform security events
+  type: security
+  provider: Security operations
+  required_by: '2027-01-08'
+  impact: Security events are collected but nobody watches them
+  owner: Security architect
+  status: open
+
+- id: DEP-04
+  title: Configuration record classes for platform services
+  type: business
+  provider: Service management team
+  required_by: '2026-12-15'
+  impact: Incidents cannot be raised against platform services
+  owner: Platform support lead
+  status: at-risk

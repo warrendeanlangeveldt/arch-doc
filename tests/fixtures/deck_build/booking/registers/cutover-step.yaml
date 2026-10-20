@@ -1,0 +1,7 @@
+- {id: CUT-01, title: Freeze spreadsheet bookings, order: 1, owner: Depot manager, start: "Fri 18:00", finish: "Fri 18:30", rollback_point: "no", status: rehearsed}
+- {id: CUT-02, title: Migrate open bookings, order: 2, after: [CUT-01], owner: Data steward, start: "Fri 18:30", finish: "Fri 22:00", rollback_point: "yes", status: rehearsed}
+- {id: CUT-03, title: Switch carrier traffic, order: 3, after: [CUT-02], owner: Integration lead, start: "Sat 06:00", finish: "Sat 07:00", rollback_point: "yes", status: planned}
+- {id: CUT-04, title: Open the portal, order: 4, after: [CUT-03], owner: Digital lead, start: "Sat 08:00", finish: "Sat 08:15", rollback_point: "no", status: planned}
+- {id: CUT-05, title: Smoke test bookings, order: 5, after: [CUT-04], owner: Test lead, start: "Sat 08:15", finish: "Sat 10:00", rollback_point: "no", status: planned}
+- {id: CUT-06, title: Retire the spreadsheet, order: 6, after: [CUT-05], owner: Depot manager, start: "Mon 09:00", finish: "Mon 10:00", rollback_point: "no", status: planned}
+- {id: CUT-07, title: Hypercare begins, order: 7, after: [CUT-05], owner: Support lead, start: "Sat 10:00", rollback_point: "no", status: planned}

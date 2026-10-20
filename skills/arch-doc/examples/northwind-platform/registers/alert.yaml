@@ -1,0 +1,104 @@
+# Alert register (alert). One record per item; ids are ALT-nn.
+# Fields: id, title, status
+#   area: availability | performance | capacity | errors | integration | security | data | cost
+#   source: text
+#   metric: text
+#   threshold: text
+#   severity: critical | high | medium | low
+#   target: text
+#   runbook: ref:runbook
+#   owner: text
+# Status: planned (not-started), configured (partial), tested (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ALT-01
+  area: availability
+  title: Broker unavailable
+  source: Synthetic probe
+  metric: Publish probe failures
+  threshold: 3 consecutive failures
+  severity: critical
+  target: Platform on-call
+  runbook: RBK-02
+  owner: Platform engineering lead
+  status: configured
+
+- id: ALT-02
+  area: availability
+  title: Gateway unavailable
+  source: Synthetic probe
+  metric: Health route failures
+  threshold: 3 consecutive failures
+  severity: critical
+  target: Platform on-call
+  runbook: RBK-03
+  owner: Platform engineering lead
+  status: configured
+
+- id: ALT-03
+  area: errors
+  title: Dead-letter queue growing
+  source: Broker metrics
+  metric: Dead-letter depth per subscription
+  threshold: Over 100 for 10 minutes
+  severity: high
+  target: Owning consumer team
+  runbook: RBK-01
+  owner: Platform engineering lead
+  status: tested
+
+- id: ALT-04
+  area: performance
+  title: Delivery latency high
+  source: Broker metrics
+  metric: 95th percentile delivery latency
+  threshold: Over 500 ms for 15 minutes
+  severity: medium
+  target: Platform on-call
+  owner: Platform engineering lead
+  status: planned
+
+- id: ALT-05
+  area: capacity
+  title: Broker throughput near limit
+  source: Broker metrics
+  metric: Throughput used
+  threshold: Over 80% for 30 minutes
+  severity: medium
+  target: Platform on-call
+  owner: Platform engineering lead
+  status: planned
+
+- id: ALT-06
+  area: security
+  title: Secret read by an unexpected identity
+  source: Secrets store audit
+  metric: Read by an identity not assigned to the vault
+  threshold: Any
+  severity: high
+  target: Security operations
+  runbook: RBK-04
+  owner: Security architect
+  status: planned
+
+- id: ALT-07
+  area: errors
+  title: Workflow backlog
+  source: Workflow runtime
+  metric: Instances waiting over 1 hour
+  threshold: Over 50
+  severity: medium
+  target: Platform on-call
+  runbook: RBK-06
+  owner: Platform engineering lead
+  status: planned
+
+- id: ALT-08
+  area: cost
+  title: Consumer telemetry over its daily cap
+  source: Monitoring platform
+  metric: Ingested volume per consumer
+  threshold: 80% of daily cap
+  severity: low
+  target: Owning consumer team
+  owner: Platform product manager
+  status: planned

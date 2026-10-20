@@ -1,0 +1,6 @@
+- {id: CTL-01, title: Single sign-on for staff, area: identity, response: Staff sign in through the identity provider, owner: Security lead, status: implemented}
+- {id: CTL-02, title: Customer accounts with MFA, area: identity, response: Optional MFA for customers, owner: Digital lead, status: planned}
+- {id: CTL-03, title: Break-glass admin accounts, area: privileged-access, response: Two named accounts in the vault, owner: Platform lead, status: verified}
+- {id: CTL-04, title: Encryption at rest, area: data-protection, response: Platform default keys, owner: Platform lead, status: verified}
+- {id: CTL-05, title: Private endpoints for the database, area: network, response: No public endpoint, owner: Platform lead, status: implemented}
+- {id: CTL-06, title: Security events to the SIEM, area: monitoring, response: TBC, owner: Security lead, status: planned}

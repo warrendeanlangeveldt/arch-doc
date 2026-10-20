@@ -1,0 +1,1 @@
+- {id: DEP-01, title: Platform event broker, type: platform, provider: Northwind Platform, required_by: 2026-11-15, impact: No scan feed, owner: Platform lead, status: in-progress}

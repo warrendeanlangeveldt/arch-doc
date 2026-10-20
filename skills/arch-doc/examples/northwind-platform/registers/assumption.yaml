@@ -1,0 +1,31 @@
+# Assumption register (assumption). One record per item; ids are ASM-nn.
+# Fields: id, title, status
+#   impact: text
+#   confidence: low | medium | high
+#   validate_by: date
+#   owner: text
+# Status: open (not-started), validated (done), invalid (partial)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: ASM-01
+  title: Consumers accept at-least-once delivery and discard duplicates
+  impact: We would need exactly-once delivery, which the broker role offers only at much higher latency
+  confidence: high
+  validate_by: '2026-11-12'
+  owner: Platform architect
+  status: validated
+
+- id: ASM-02
+  title: Peak event volume stays below 5,000 events per second through 2027
+  impact: Partitions and throughput would need resizing before the 2027 peak season
+  confidence: medium
+  validate_by: '2027-06-30'
+  owner: Platform product manager
+  status: open
+
+- id: ASM-03
+  title: Each consumer team names an on-call owner before onboarding
+  impact: Alerts for that consumer reach no one
+  confidence: medium
+  validate_by: '2026-12-15'
+  owner: Platform product manager
+  status: open

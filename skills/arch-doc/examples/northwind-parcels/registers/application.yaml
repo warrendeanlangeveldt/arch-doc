@@ -1,0 +1,121 @@
+# Application register (application). One record per item; ids are APP-nn.
+# Fields: id, title, status
+#   purpose: text
+#   state: current | target | both
+#   change: new | changed | unchanged | retired
+#   hosting: saas | cloud | on-prem | hybrid
+#   role: source | target | both | none
+#   lifecycle: strategic | invest | tolerate | migrate | retire
+#   criticality: high | medium | low
+#   repository: text
+#   owner: text
+# Status: planned (not-started), in-build (partial), live (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: APP-01
+  title: Parcel Tracking Solution
+  purpose: Tracks every parcel from manifest to delivery and tells customers
+  state: target
+  change: new
+  hosting: cloud
+  role: both
+  lifecycle: invest
+  criticality: high
+  repository: pts
+  owner: Head of Parcels
+  status: in-build
+
+- id: APP-02
+  title: Depot handheld app
+  purpose: Scans parcels at depots and on vans
+  state: both
+  change: changed
+  hosting: hybrid
+  role: source
+  lifecycle: strategic
+  criticality: high
+  owner: Depot operations manager
+  status: live
+
+- id: APP-03
+  title: Legacy tracking lookup
+  purpose: Web page showing yesterday's scans, fed by a nightly file
+  state: current
+  change: retired
+  hosting: on-prem
+  role: target
+  lifecycle: retire
+  criticality: medium
+  owner: Customer service manager
+  status: live
+
+- id: APP-04
+  title: Customer website
+  purpose: The public website, where customers track parcels
+  state: both
+  change: changed
+  hosting: cloud
+  role: target
+  lifecycle: strategic
+  criticality: high
+  owner: Digital channels lead
+  status: live
+
+- id: APP-05
+  title: Depot operations system
+  purpose: Plans depot work and closes manifests
+  state: both
+  change: changed
+  hosting: on-prem
+  role: source
+  lifecycle: tolerate
+  criticality: high
+  owner: Depot operations manager
+  status: live
+
+- id: APP-06
+  title: ServiceNow
+  purpose: Incidents, changes, requests, the CMDB and the customer service workspace
+  state: both
+  change: changed
+  hosting: saas
+  role: both
+  lifecycle: strategic
+  criticality: high
+  owner: Service owner
+  status: live
+
+- id: APP-07
+  title: Datadog
+  purpose: Monitoring, dashboards and alerting
+  state: both
+  change: changed
+  hosting: saas
+  role: target
+  lifecycle: strategic
+  criticality: high
+  owner: Technology Operations
+  status: live
+
+- id: APP-08
+  title: Messaging provider
+  purpose: Sends email and SMS on our behalf
+  state: target
+  change: new
+  hosting: saas
+  role: target
+  lifecycle: invest
+  criticality: medium
+  owner: Product owner
+  status: planned
+
+- id: APP-09
+  title: Carrier systems
+  purpose: Partner carriers A, B and C, who deliver some of our parcels
+  state: both
+  change: unchanged
+  hosting: saas
+  role: source
+  lifecycle: tolerate
+  criticality: high
+  owner: Carrier relationship manager
+  status: live

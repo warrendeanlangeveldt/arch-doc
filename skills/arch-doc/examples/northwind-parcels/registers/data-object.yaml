@@ -1,0 +1,87 @@
+# Data object register (data-object). One record per item; ids are DAT-nn.
+# Fields: id, title, status
+#   description: text
+#   category: text
+#   source_of_truth: text
+#   system_of_record: text
+#   classification: public | internal | confidential | restricted
+#   retention: text
+#   owner: text
+# Status: identified (not-started), modelled (partial), agreed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DAT-01
+  title: Parcel
+  description: 'A parcel from its manifest: number, destination postcode, service, carrier'
+  category: Operational
+  source_of_truth: Depot operations system
+  system_of_record: Tracking store
+  classification: internal
+  retention: 18 months after delivery
+  owner: Data owner
+  status: agreed
+
+- id: DAT-02
+  title: Scan event
+  description: 'One scan: parcel, depot or van, scan type, scan time, handheld'
+  category: Operational
+  source_of_truth: Depot handheld app
+  system_of_record: Tracking store
+  classification: internal
+  retention: 18 months after delivery
+  owner: Data owner
+  status: agreed
+
+- id: DAT-03
+  title: Carrier status update
+  description: A status from a partner carrier for a parcel it carries
+  category: Operational
+  source_of_truth: Carrier systems
+  system_of_record: Tracking store
+  classification: internal
+  retention: 18 months after delivery
+  owner: Data owner
+  status: agreed
+
+- id: DAT-04
+  title: Tracking timeline
+  description: The ordered events of one parcel and its derived status
+  category: Operational
+  source_of_truth: Tracking service
+  system_of_record: Tracking store
+  classification: internal
+  retention: 18 months after delivery
+  owner: Data owner
+  status: modelled
+
+- id: DAT-05
+  title: Customer contact
+  description: Email or mobile number and notification preference, from the manifest
+  category: Personal
+  source_of_truth: Depot operations system
+  system_of_record: Tracking store
+  classification: confidential
+  retention: 30 days after delivery
+  owner: Privacy officer
+  status: agreed
+
+- id: DAT-06
+  title: Notification record
+  description: What we sent, when, to which channel, and the provider's result
+  category: Operational
+  source_of_truth: Customer notification service
+  system_of_record: Tracking store
+  classification: confidential
+  retention: 'TBC: Privacy officer'
+  owner: Privacy officer
+  status: identified
+
+- id: DAT-07
+  title: Delivery exception
+  description: A parcel flagged as stalled, with its depot and age
+  category: Operational
+  source_of_truth: Exception workflows
+  system_of_record: Tracking store
+  classification: internal
+  retention: 18 months after delivery
+  owner: Depot operations manager
+  status: modelled

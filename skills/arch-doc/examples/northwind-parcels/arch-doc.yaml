@@ -1,0 +1,16 @@
+title: Parcel Tracking Solution
+short: PTS
+kind: solution                # solution | capability
+layer: logical-and-physical   # logical | logical-and-physical; logical bans product names
+version: "0.1"
+date: 2026-10-20
+author: {name: Priya Nair, role: Solution Architect, team: Parcels Digital}
+owner: {name: Tom Okafor, role: Head of Parcels}
+metamodel: seed
+profile: ../northwind-profile.yaml
+template: null
+depends_on:
+  - {title: Northwind Platform, kind: capability, version: '0.2', path: ../northwind-platform, ref: NP}
+history:
+  - {date: 2026-10-20, version: "0.1", author: Priya Nair, change: First draft}
+banned_terms: []

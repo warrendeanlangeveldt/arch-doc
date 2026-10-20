@@ -1,0 +1,8 @@
+# Which platform component reads and writes which data object, drawn as a
+# matrix from the model's access relationships.
+model "model.json"
+
+view platform-data "Northwind Platform: data access" {
+  matrix "access" rows DOBJ-ENV DOBJ-PAY DOBJ-WFS DOBJ-SECRET DOBJ-AUDIT DOBJ-TEL DOBJ-CAT DOBJ-REG cols ACMP-BRK ACMP-WF ACMP-SEC ACMP-TEL ACMP-PORTAL title="Data object by component"
+  key "W: writes. RW: reads and writes. From the access relationships in the model"
+}

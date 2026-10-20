@@ -1,0 +1,25 @@
+# Northwind Platform: the consumers, the platform's interfaces and parts, and
+# the services it relies on. ArchiMate Layered viewpoint.
+model "model.json"
+
+view platform-layered "Northwind Platform: layered view" {
+  width 1100
+  viewpoint "Layered"
+  ACOL-CONS
+  ACMP-NP {
+    ACMP-GW
+    ACMP-BRK
+    ACMP-WF
+    ACMP-SEC
+    ACMP-WID
+    ACMP-TEL
+  }
+  AIF-API on ACMP-GW
+  AIF-EVT on ACMP-BRK
+  AIF-WF on ACMP-WF
+  AIF-SEC on ACMP-SEC
+  ACMP-IDP
+  ACMP-MON
+  hide ACMP-WID -[serving]-> ACMP-GW
+  key "Box in a box: composition" "Pill on a component: the interface it publishes to consumers"
+}

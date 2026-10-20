@@ -1,0 +1,5 @@
+- {id: INT-01, title: Scan feed, source: APP-02, target: APP-01, data: Scan events, pattern: event, trigger: Each scan, criticality: high, state: target, owner: Integration lead, status: in-build}
+- {id: INT-02, title: Carrier status, source: Carrier gateway, target: APP-01, data: Carrier events, pattern: api, trigger: Every five minutes, criticality: high, state: target, owner: Integration lead, status: planned}
+- {id: INT-03, title: Delivery notices, source: APP-01, target: Messaging service, data: Notices, pattern: message, trigger: Each status change, criticality: medium, state: target, owner: Integration lead, status: planned}
+- {id: INT-04, title: Label requests, source: APP-01, target: Label service, data: Labels, pattern: api, trigger: On booking, criticality: medium, state: target, owner: Integration lead, status: planned}
+- {id: INT-05, title: Legacy export, source: APP-03, target: Reporting, data: Daily extract, pattern: file, trigger: Nightly, criticality: low, state: current, owner: Integration lead, status: live}

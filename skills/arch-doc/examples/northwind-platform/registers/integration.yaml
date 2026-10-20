@@ -1,0 +1,164 @@
+# Integration register (integration). One record per item; ids are INT-nn.
+# Fields: id, title, status
+#   source: text
+#   target: text
+#   interface: text
+#   data: text
+#   pattern: api | event | file | etl | message | manual
+#   protocol: text
+#   trigger: text
+#   criticality: high | medium | low
+#   state: current | target
+#   failure: text
+#   owner: text
+# Status: planned (not-started), in-build (partial), tested (partial), live (done), retired (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: INT-01
+  title: Identity federation for platform services
+  source: Platform services
+  target: Identity provider
+  interface: Federated sign-in and workload identity
+  data: User identity, workload identity and group claims
+  pattern: api
+  protocol: OpenID Connect
+  trigger: On sign-in and token refresh
+  criticality: high
+  state: target
+  failure: Cached tokens last one hour; sign-in fails closed
+  owner: Security architect
+  status: live
+
+- id: INT-02
+  title: Platform telemetry export
+  source: Telemetry pipeline
+  target: Monitoring platform
+  interface: Telemetry stream
+  data: Metrics, logs and traces tagged by consumer
+  pattern: event
+  protocol: 'TBC: Platform engineering lead'
+  trigger: Continuous
+  criticality: medium
+  state: target
+  failure: Collectors buffer for one hour
+  owner: Platform engineering lead
+  status: in-build
+
+- id: INT-03
+  title: API publication
+  source: Consumer services
+  target: API gateway
+  interface: API publication interface
+  data: Route definitions and policies
+  pattern: api
+  protocol: HTTPS
+  trigger: On consumer release
+  criticality: high
+  state: target
+  failure: Publication is rejected and the previous route stays live
+  owner: Platform architect
+  status: in-build
+
+- id: INT-04
+  title: Event publish and subscribe
+  source: Producing consumer services
+  target: Subscribing consumer services
+  interface: Event interface
+  data: Business events in the platform envelope
+  pattern: event
+  protocol: AMQP 1.0
+  trigger: Each event
+  criticality: high
+  state: target
+  failure: Retries with backoff, then the subscription's dead-letter queue
+  owner: Platform architect
+  status: in-build
+
+- id: INT-05
+  title: Workflow start and callback
+  source: Consumer services
+  target: Workflow runtime
+  interface: Workflow interface
+  data: Workflow inputs and completion callbacks
+  pattern: api
+  protocol: HTTPS
+  trigger: On request
+  criticality: medium
+  state: target
+  failure: Start is idempotent on the caller's key; callbacks retry for 24 hours
+  owner: Platform architect
+  status: planned
+
+- id: INT-06
+  title: Secret retrieval
+  source: Consumer workloads
+  target: Secrets store
+  interface: Secret interface
+  data: Secrets and certificates
+  pattern: api
+  protocol: HTTPS
+  trigger: On start and on rotation notice
+  criticality: high
+  state: target
+  failure: Workloads keep the last value until restart
+  owner: Security architect
+  status: in-build
+
+- id: INT-07
+  title: Environment deployment
+  source: Delivery pipeline
+  target: Platform zones
+  interface: Deployment interface
+  data: Templates and consumer resource definitions
+  pattern: api
+  protocol: HTTPS
+  trigger: On approved release
+  criticality: medium
+  state: target
+  failure: Deployment stops; the last good version stays
+  owner: Platform engineering lead
+  status: in-build
+
+- id: INT-08
+  title: Alerts to the service management platform
+  source: Monitoring platform
+  target: Service management platform
+  interface: Incident interface
+  data: Alerts as incidents against configuration records
+  pattern: api
+  protocol: HTTPS
+  trigger: On alert
+  criticality: high
+  state: target
+  failure: Alerts queue in the monitoring platform and page the on-call engineer directly
+  owner: Platform support lead
+  status: planned
+
+- id: INT-09
+  title: Nightly file exchange
+  source: Depot and billing systems
+  target: Finance systems
+  interface: File drop
+  data: Manifests and invoices
+  pattern: file
+  protocol: SFTP
+  trigger: Nightly
+  criticality: high
+  state: current
+  failure: Manual rerun next morning; failures found by users
+  owner: Platform support lead
+  status: live
+
+- id: INT-10
+  title: Direct database reads between team systems
+  source: Team systems
+  target: Other teams' databases
+  interface: Database connection
+  data: Operational records
+  pattern: etl
+  protocol: Database protocol
+  trigger: Scheduled
+  criticality: medium
+  state: current
+  failure: None; schema changes break readers silently
+  owner: Consumer team leads
+  status: live

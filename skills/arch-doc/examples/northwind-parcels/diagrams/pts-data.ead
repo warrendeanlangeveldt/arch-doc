@@ -1,0 +1,8 @@
+# Which component reads and writes which data object, from the model's
+# access relationships.
+model "model.json"
+
+view pts-data "Parcel Tracking Solution: data access" {
+  matrix "access" rows DOBJ-PCL DOBJ-SCAN DOBJ-CSU DOBJ-TL DOBJ-CONT DOBJ-NOTE DOBJ-EXC cols ACMP-INGEST ACMP-HOOK ACMP-POLL ACMP-TRK ACMP-API ACMP-NOTIFY ACMP-WFX ACMP-OPS title="Data object by component"
+  key "R: reads. W: writes. RW: reads and writes. From the access relationships in the model"
+}

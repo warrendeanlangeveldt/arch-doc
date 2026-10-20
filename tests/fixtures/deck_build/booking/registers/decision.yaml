@@ -1,0 +1,4 @@
+- {id: ADR-01, title: Event bus between booking and carrier gateway, rationale: Carriers reject bursts; a queue absorbs them, consequence: Bookings confirm asynchronously, owner: Lead Architect, status: accepted}
+- {id: ADR-02, title: One database per service, rationale: Services release on their own schedule, consequence: Reporting reads a replica, owner: Lead Architect, status: accepted}
+- {id: ADR-03, title: Reuse the hosting base containers, rationale: No new platform to run, consequence: We follow the base release train, owner: Platform lead, status: accepted}
+- {id: ADR-04, title: Address validation as a shared service, rationale: Depots validate the same way, consequence: A new dependency, owner: Data steward, status: proposed}

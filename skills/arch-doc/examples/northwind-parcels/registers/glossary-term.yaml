@@ -1,0 +1,54 @@
+# Glossary term register (glossary-term). One record per item; ids are GLO-nn.
+# Fields: id, title, status
+#   definition: text
+#   domain: text
+#   source: text
+# Status: draft (partial), agreed (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: GLO-01
+  title: Manifest
+  definition: The list of parcels a depot closes for a run, with each destination and contact
+  domain: Depot operations
+  status: agreed
+
+- id: GLO-02
+  title: Scan
+  definition: A handheld reading a parcel's label at a depot, on a van or at the door
+  domain: Depot operations
+  status: agreed
+
+- id: GLO-03
+  title: Timeline
+  definition: Every event for one parcel, in scan-time order, with the status derived from it
+  domain: Tracking
+  status: agreed
+
+- id: GLO-04
+  title: Stalled parcel
+  definition: A parcel with no scan or carrier update for 48 hours before delivery
+  domain: Tracking
+  status: agreed
+
+- id: GLO-05
+  title: Webhook
+  definition: A call a carrier makes to us when a status changes
+  domain: Integration
+  status: agreed
+
+- id: GLO-06
+  title: Partner carrier
+  definition: Another company that delivers some of our parcels; carriers A, B and C today
+  domain: Carriers
+  status: agreed
+
+- id: GLO-07
+  title: CSDM
+  definition: The common service data model ServiceNow uses to structure the CMDB
+  domain: Service management
+  status: agreed
+
+- id: GLO-08
+  title: Hypercare
+  definition: The weeks after go-live when the build team supports the service alongside support
+  domain: Transition
+  status: agreed

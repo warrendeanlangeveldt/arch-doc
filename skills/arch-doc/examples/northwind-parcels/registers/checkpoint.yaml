@@ -1,0 +1,76 @@
+# Architecture checkpoint register (checkpoint). One record per item; ids are CHK-nn.
+# Fields: id, title, status
+#   stage: initial | detailed | pre-production | post-implementation | other
+#   timing: text
+#   date: date
+#   forum: ref:forum
+#   purpose: text
+#   evidence: text
+#   owner: text
+# Status: planned (not-started), ready (partial), passed (done), failed (not-started)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CHK-01
+  title: Initial architecture review
+  stage: initial
+  timing: Concept agreed
+  date: '2026-10-01'
+  forum: FOR-01
+  purpose: Agree scope and the event-led approach on the platform
+  evidence: Concept paper
+  owner: Solution architect
+  status: passed
+
+- id: CHK-02
+  title: Privacy impact assessment review
+  stage: detailed
+  timing: Before the detailed review
+  date: '2026-11-19'
+  forum: FOR-03
+  purpose: Accept the use and retention of contact data
+  evidence: Privacy impact assessment and the data classification table
+  owner: Privacy officer
+  status: planned
+
+- id: CHK-03
+  title: Security design review
+  stage: detailed
+  timing: Before the detailed review
+  date: '2026-11-26'
+  forum: FOR-02
+  purpose: Review the public lookup and the webhooks
+  evidence: Security chapter and control register
+  owner: Security architect
+  status: planned
+
+- id: CHK-04
+  title: Detailed design review
+  stage: detailed
+  timing: Design complete
+  date: '2026-12-03'
+  forum: FOR-01
+  purpose: Approve the design for build
+  evidence: This document
+  owner: Solution architect
+  status: planned
+
+- id: CHK-05
+  title: Pre-production readiness
+  stage: pre-production
+  timing: Before go-live
+  date: '2027-02-23'
+  forum: FOR-04
+  purpose: Confirm operational readiness
+  evidence: Readiness register, tested runbooks, monitoring acceptance
+  owner: Service owner
+  status: planned
+
+- id: CHK-06
+  title: Post-implementation review
+  stage: post-implementation
+  timing: Eight weeks after go-live
+  date: '2027-05-20'
+  forum: FOR-01
+  purpose: Compare outcomes with the design
+  evidence: Service reports and customer measures
+  owner: Solution architect
+  status: planned

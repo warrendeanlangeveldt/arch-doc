@@ -1,0 +1,56 @@
+# Capability register (capability). One record per item; ids are CAP-nn.
+# Fields: id, title, status
+#   description: text
+#   state: current | target | both
+#   parent: ref:capability
+#   realised_by: list
+#   owner: text
+# Status: identified (not-started), designed (partial), realised (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CAP-01
+  title: Parcel tracking
+  description: Knowing where every parcel is and telling the people who ask
+  state: both
+  realised_by:
+  - CMP-04
+  - CMP-06
+  owner: Product owner
+  status: designed
+
+- id: CAP-02
+  title: Customer notification
+  description: Telling customers about their delivery before they ask
+  state: target
+  realised_by:
+  - CMP-07
+  owner: Product owner
+  status: designed
+
+- id: CAP-03
+  title: Delivery exception management
+  description: Finding parcels that have stopped moving and acting on them
+  state: target
+  realised_by:
+  - CMP-08
+  - CMP-09
+  owner: Depot operations manager
+  status: designed
+
+- id: CAP-04
+  title: Carrier integration
+  description: Exchanging parcel status with partner carriers
+  state: both
+  realised_by:
+  - CMP-02
+  - CMP-03
+  owner: Integration lead
+  status: designed
+
+- id: CAP-05
+  title: Customer service enquiry
+  description: Answering a customer's question about their parcel
+  state: both
+  realised_by:
+  - CMP-06
+  owner: Customer service manager
+  status: designed

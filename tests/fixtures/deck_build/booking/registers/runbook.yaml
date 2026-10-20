@@ -1,0 +1,3 @@
+- {id: RBK-01, title: Replay failed carrier bookings, required_when: Carrier rejects a batch, owner: Integration lead, tested: "yes", status: tested}
+- {id: RBK-02, title: Restore the booking store, required_when: Data loss, owner: Platform lead, tested: "no", status: draft}
+- {id: RBK-03, title: Rotate carrier credentials, required_when: Every 90 days, owner: Integration lead, tested: "no", status: required}

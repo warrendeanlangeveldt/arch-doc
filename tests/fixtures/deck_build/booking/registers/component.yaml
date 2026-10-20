@@ -1,0 +1,8 @@
+- {id: CMP-01, title: Booking web front end, layer: experience, runtime: Container, owner: Digital lead, status: in-build}
+- {id: CMP-02, title: Depot handheld app, layer: experience, runtime: Mobile, owner: Depot manager, status: planned}
+- {id: CMP-03, title: Booking API, layer: application, runtime: Container, owner: Head of Freight, status: in-build}
+- {id: CMP-04, title: Pricing engine, layer: application, runtime: Container, owner: Commercial lead, status: built}
+- {id: CMP-05, title: Carrier adapter, layer: integration, runtime: Function, owner: Integration lead, status: in-build}
+- {id: CMP-06, title: Event bus topics, layer: integration, runtime: Managed broker, owner: Integration lead, status: planned}
+- {id: CMP-07, title: Booking store, layer: data, runtime: Managed database, owner: Data steward, status: built}
+- {id: CMP-08, title: Container hosting, layer: platform, runtime: Hosting base, owner: Platform lead, status: built}

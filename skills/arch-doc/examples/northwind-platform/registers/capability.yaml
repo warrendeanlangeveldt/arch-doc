@@ -1,0 +1,74 @@
+# Capability register (capability). One record per item; ids are CAP-nn.
+# Fields: id, title, status
+#   description: text
+#   state: current | target | both
+#   parent: ref:capability
+#   realised_by: list
+#   owner: text
+# Status: identified (not-started), designed (partial), realised (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: CAP-01
+  title: Integration management
+  description: Connecting systems so data moves between them reliably
+  state: both
+  realised_by:
+  - CMP-01
+  - CMP-02
+  owner: Head of Platform
+  status: designed
+
+- id: CAP-02
+  title: Event distribution
+  description: Publishing business events once for any number of subscribers
+  state: target
+  parent: CAP-01
+  realised_by:
+  - CMP-02
+  owner: Platform architect
+  status: designed
+
+- id: CAP-03
+  title: API management
+  description: Publishing, securing and metering APIs
+  state: target
+  parent: CAP-01
+  realised_by:
+  - CMP-01
+  - CMP-07
+  owner: Platform architect
+  status: designed
+
+- id: CAP-04
+  title: Process orchestration
+  description: Running long-lived, multi-step processes that survive restarts
+  state: target
+  realised_by:
+  - CMP-03
+  owner: Platform architect
+  status: designed
+
+- id: CAP-05
+  title: Secrets management
+  description: Issuing, storing and rotating credentials and keys
+  state: both
+  realised_by:
+  - CMP-04
+  - CMP-05
+  owner: Security architect
+  status: designed
+
+- id: CAP-06
+  title: Platform observability
+  description: Collecting and routing telemetry so each team sees its own
+  state: target
+  realised_by:
+  - CMP-06
+  owner: Platform engineering lead
+  status: designed
+
+- id: CAP-07
+  title: File exchange
+  description: Moving batch files between systems on a schedule
+  state: current
+  owner: Platform support lead
+  status: realised

@@ -1,0 +1,4 @@
+flowchart LR
+  APP02[Depot scanner app] -->|event| APP01[Tracking service]
+  CG[Carrier gateway] -->|api| APP01
+  APP01 -->|message| MSG[Messaging service]

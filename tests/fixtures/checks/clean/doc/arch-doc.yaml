@@ -1,0 +1,20 @@
+# The clean fixture: a five-chapter solution design on a trimmed seed
+# metamodel (test_checks.py writes metamodel.yaml from the seed). Every check
+# must find nothing here.
+title: Parcel Tracking
+short: PT
+kind: solution
+layer: logical-and-physical
+version: "0.3"
+date: 2026-10-20
+author: {name: Solution Architect, role: Architect, team: TBC}
+owner: {name: Head of Parcels, role: Business owner}
+metamodel: metamodel.yaml
+profile: ../profile.yaml
+template: null
+depends_on:
+  - {title: Northwind Platform, kind: capability, version: "0.2", path: ../platform, ref: NP}
+history:
+  - {date: 2026-09-01, version: "0.1", author: Solution Architect, change: First draft}
+  - {date: 2026-10-20, version: "0.3", author: Solution Architect, change: Review comments}
+banned_terms: []

@@ -1,0 +1,27 @@
+flowchart TB
+  subgraph CON["Consumer teams"]
+    C1["Consumer services: APIs, producers, subscribers and workflows"]
+  end
+  subgraph NP["Northwind Platform, one zone per environment"]
+    GW["API gateway<br/>publish, authenticate, limit"]
+    BR["Event broker<br/>topics, order per key, replay"]
+    WF["Workflow runtime<br/>timers, retries, compensation"]
+    SE["Secrets store<br/>a vault per consumer"]
+    PO["Platform portal<br/>onboarding and catalogue"]
+    TE["Telemetry pipeline<br/>tagged by consumer"]
+  end
+  subgraph ORG["Organisation services"]
+    IDP["Identity provider"]
+    MON["Monitoring platform"]
+    ITSM["Service Management Platform"]
+  end
+  C1 --> PO
+  C1 --> GW
+  C1 <--> BR
+  C1 --> WF
+  C1 --> SE
+  BR -->|"envelopes"| TE
+  IDP -->|"user tokens"| GW
+  IDP -->|"workload identity"| SE
+  TE -->|"telemetry"| MON
+  MON -->|"alerts as incidents"| ITSM

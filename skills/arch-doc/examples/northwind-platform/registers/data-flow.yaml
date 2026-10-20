@@ -1,0 +1,76 @@
+# Data flow register (data-flow). One record per item; ids are DF-nn.
+# Fields: id, title, status
+#   data: ref:data-object
+#   source: text
+#   target: text
+#   interface: ref:integration
+#   classification: public | internal | confidential | restricted
+#   transformation: text
+#   frequency: text
+# Status: planned (not-started), built (partial), verified (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: DF-01
+  title: Events from producer to subscribers
+  data: DAT-02
+  source: Producing service
+  target: Subscribing services
+  interface: INT-04
+  classification: confidential
+  transformation: None; the envelope is added at publish
+  frequency: Continuous
+  status: built
+
+- id: DF-02
+  title: Envelope metadata to telemetry
+  data: DAT-01
+  source: Event broker
+  target: Monitoring platform
+  interface: INT-02
+  classification: internal
+  transformation: Payload removed; envelope only
+  frequency: Continuous
+  status: planned
+
+- id: DF-03
+  title: Secrets to workloads
+  data: DAT-05
+  source: Secrets store
+  target: Consumer workloads
+  interface: INT-06
+  classification: restricted
+  transformation: None
+  frequency: On start and rotation
+  status: built
+
+- id: DF-04
+  title: Audit records to the audit store
+  data: DAT-06
+  source: Platform services
+  target: Audit store
+  interface: INT-02
+  classification: confidential
+  transformation: None; write-once
+  frequency: Continuous
+  status: planned
+
+- id: DF-05
+  title: Consumer telemetry to the monitoring platform
+  data: DAT-08
+  source: Telemetry pipeline
+  target: Monitoring platform
+  interface: INT-02
+  classification: internal
+  transformation: Consumer tag added
+  frequency: Continuous
+  status: planned
+
+- id: DF-06
+  title: Registrations to environment templates
+  data: DAT-04
+  source: Platform portal
+  target: Delivery pipeline
+  interface: INT-07
+  classification: internal
+  transformation: Rendered into template parameters
+  frequency: On request
+  status: planned

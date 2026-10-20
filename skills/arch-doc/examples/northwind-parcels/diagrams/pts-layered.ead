@@ -1,0 +1,30 @@
+# Parcel tracking: who uses it, what it is made of, and the platform
+# interfaces it runs on. ArchiMate Layered viewpoint.
+model "model.json"
+
+view pts-layered "Parcel Tracking Solution: layered view" {
+  width 1100
+  viewpoint "Layered"
+  BACT-DEPOT
+  BACT-CUST
+  BACT-AGENT
+  BACT-OPS
+  ACMP-HH
+  ACMP-WEB
+  ACMP-SN
+  ACMP-PTS {
+    ACMP-INGEST
+    ACMP-TRK
+    ACMP-API
+    ACMP-NOTIFY
+    ACMP-OPS
+  }
+  frame "Northwind Platform, defined in its own design" dashed=true {
+    AIF-PEVT
+    AIF-PAPI
+  }
+  hide ACMP-HH -[flow]-> ACMP-INGEST
+  hide AIF-PEVT -[serving]-> ACMP-TRK
+  same BACT-DEPOT BACT-CUST BACT-AGENT BACT-OPS
+  key "Box in a box: composition" "Dashed frame: services of the platform this design runs on"
+}

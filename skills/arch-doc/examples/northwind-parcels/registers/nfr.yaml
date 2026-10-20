@@ -1,0 +1,109 @@
+# Non-functional requirement register (nfr). One record per item; ids are NFR-nn.
+# Fields: id, title, status
+#   category: availability | performance | scalability | resilience | security | privacy | supportability | observability | maintainability | compliance
+#   target: text
+#   response: text
+#   test: text
+#   evidence: text
+#   owner: text
+# Status: proposed (not-started), agreed (partial), designed (partial), verified (done), deferred (not-started), withdrawn (done)
+# Any value may be TBC or "TBC: <owner>"; a bare TBC takes the record's owner.
+- id: NFR-01
+  category: availability
+  title: Tracking API availability
+  target: 99.9% monthly
+  response: Three replicas or more across zones; read replica of the store in the paired region
+  test: Synthetic lookups every minute
+  evidence: 'TBC: Service owner'
+  owner: Service owner
+  status: designed
+
+- id: NFR-02
+  category: availability
+  title: Scan ingest availability
+  target: 99.9% monthly; no scan lost
+  response: Scans wait on the platform's event interface while ingest is down
+  test: Kill ingest replicas under load
+  evidence: Pre-production test report
+  owner: Integration lead
+  status: designed
+
+- id: NFR-03
+  category: performance
+  title: Scan to visible
+  target: 95th percentile under 60 seconds
+  response: Event-driven ingest; timeline updated in place
+  test: Timestamp a synthetic scan end to end
+  evidence: 'TBC: Integration lead'
+  owner: Integration lead
+  status: designed
+
+- id: NFR-04
+  category: performance
+  title: Lookup latency
+  target: 95th percentile under 300 ms at 400 lookups per second
+  response: Read by parcel number from the document store; responses cached for 30 seconds
+  test: Load test at 400 lookups per second
+  evidence: 'TBC: Integration lead'
+  owner: Integration lead
+  status: designed
+
+- id: NFR-05
+  category: scalability
+  title: Scan volume
+  target: 2 million scans a day; 600 scans a second for an hour in peak weeks
+  response: Ingest and tracking scale on queue depth; store autoscales
+  test: Soak at 600 scans a second for two hours
+  evidence: 'TBC: Integration lead'
+  owner: Integration lead
+  status: designed
+
+- id: NFR-06
+  category: resilience
+  title: Recovery
+  target: Recovery time 2 hours, recovery point 5 minutes
+  response: Continuous backup of the store; replica in the paired region; scans replayable from the platform for seven days
+  test: Restore drill in pre-production
+  evidence: 'TBC: Service owner'
+  owner: Service owner
+  status: designed
+
+- id: NFR-07
+  category: supportability
+  title: Supportable at go-live
+  target: Configuration items, assignment groups, runbooks and knowledge articles in place
+  response: Readiness gate at the pre-production checkpoint
+  test: Readiness review
+  evidence: Readiness register
+  owner: Service owner
+  status: agreed
+
+- id: NFR-08
+  category: observability
+  title: Every alert leads somewhere
+  target: Every alert has a runbook and raises an incident against the application service
+  response: Monitors kept as code with the runbook link and the service tag
+  test: Fire each alert in pre-production
+  evidence: Alert test log
+  owner: Service owner
+  status: designed
+
+- id: NFR-09
+  category: privacy
+  title: Contact data retention
+  target: Deleted 30 days after delivery
+  response: Contact data in its own container with a 30-day expiry from the delivered event
+  test: Deletion check on a sample
+  evidence: 'TBC: Privacy officer'
+  owner: Privacy officer
+  status: designed
+
+- id: NFR-10
+  category: security
+  title: No lookup reveals a parcel without its postcode
+  target: Zero successful lookups without a matching postcode
+  response: Route policy and rate limit (CTL-08)
+  test: Penetration test
+  evidence: 'TBC: Security architect'
+  owner: Security architect
+  status: designed

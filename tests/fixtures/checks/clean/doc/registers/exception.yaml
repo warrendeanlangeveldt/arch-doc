@@ -1,0 +1,4 @@
+- {id: EXC-01, title: Shared queue, kind: deviation, standard: One queue per service, reason: Volume is low, impact: Noisy neighbour, approval: required, owner: Solution Architect, status: requested}
+- {id: EXC-02, title: Nightly file, kind: standard, standard: No file transfers, reason: Reporting cannot take events, impact: Day-old reports, approval: required, owner: Solution Architect, status: requested}
+- {id: EXC-03, title: Context view without users, kind: view, standard: Context views show users, reason: Users are in the channels table, impact: None, approval: not-required, owner: Solution Architect, status: approved}
+- {id: EXC-04, title: Flows view without data, kind: view, standard: Flow views label data, reason: The overview table lists it, impact: None, approval: not-required, owner: Solution Architect, status: approved}
