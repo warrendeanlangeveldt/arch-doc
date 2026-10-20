@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 316" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#475569"/>
+    </marker>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9 z" fill="#9A5A0E"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="820" height="316" rx="12" fill="#F6F7F4"/>
+
+  <text x="24" y="28" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5E6E73">YOU AND CLAUDE</text>
+  <text x="312" y="28" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5E6E73">THE GATE</text>
+  <text x="576" y="28" font-size="11" font-weight="700" letter-spacing="1.2" fill="#5E6E73">THREE OUTPUTS</text>
+
+  <rect x="24" y="40" width="216" height="56" rx="8" fill="#FBFBF9" stroke="#D5DEDF"/>
+  <text x="38" y="63" font-size="13" font-weight="600" fill="#15252B">Your template (optional)</text>
+  <text x="38" y="82" font-size="11" fill="#46565C">extract → metamodel, column headers</text>
+
+  <rect x="24" y="112" width="216" height="56" rx="8" fill="#FBFBF9" stroke="#D5DEDF"/>
+  <text x="38" y="135" font-size="13" font-weight="600" fill="#15252B">Interview</text>
+  <text x="38" y="154" font-size="11" fill="#46565C">ITSM, EA tool, cloud, forums → profile</text>
+
+  <rect x="24" y="184" width="216" height="56" rx="8" fill="#FBFBF9" stroke="#D5DEDF"/>
+  <text x="38" y="207" font-size="13" font-weight="600" fill="#15252B">Registers and chapters</text>
+  <text x="38" y="226" font-size="11" fill="#46565C">typed facts; prose that cites them</text>
+
+  <path d="M 240 68 H 272 V 132 H 310" fill="none" stroke="#475569" stroke-width="1.3" marker-end="url(#arr)"/>
+  <path d="M 240 140 H 310" fill="none" stroke="#475569" stroke-width="1.3" marker-end="url(#arr)"/>
+  <path d="M 240 212 H 272 V 148 H 310" fill="none" stroke="#475569" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <rect x="312" y="96" width="196" height="88" rx="10" fill="#1F4A53"/>
+  <text x="410" y="126" font-size="14" font-weight="700" fill="#F2F6F5" text-anchor="middle">archdoc check</text>
+  <text x="410" y="147" font-size="11" fill="#C3D9D9" text-anchor="middle">counts against registers, refs,</text>
+  <text x="410" y="163" font-size="11" fill="#C3D9D9" text-anchor="middle">TBC owners, layer terms</text>
+
+  <path d="M 508 132 H 540 V 68 H 574" fill="none" stroke="#475569" stroke-width="1.3" marker-end="url(#arr)"/>
+  <path d="M 508 140 H 574" fill="none" stroke="#475569" stroke-width="1.3" marker-end="url(#arr)"/>
+  <path d="M 508 148 H 540 V 212 H 574" fill="none" stroke="#475569" stroke-width="1.3" marker-end="url(#arr)"/>
+  <text x="557" y="62" font-size="9" fill="#5E6E73" text-anchor="middle">build</text>
+
+  <rect x="576" y="40" width="220" height="56" rx="8" fill="#E2EEF0" stroke="#2F6F7C"/>
+  <text x="590" y="63" font-size="13" font-weight="600" fill="#15252B">Word document</text>
+  <text x="590" y="82" font-size="11" fill="#46565C">your template filled, or a neutral A4</text>
+
+  <rect x="576" y="112" width="220" height="56" rx="8" fill="#E2EEF0" stroke="#2F6F7C"/>
+  <text x="590" y="135" font-size="13" font-weight="600" fill="#15252B">Review site</text>
+  <text x="590" y="154" font-size="11" fill="#46565C">anchored comments, open items</text>
+
+  <rect x="576" y="184" width="220" height="56" rx="8" fill="#E2EEF0" stroke="#2F6F7C"/>
+  <text x="590" y="207" font-size="13" font-weight="600" fill="#15252B">TL;DR deck</text>
+  <text x="590" y="226" font-size="11" fill="#46565C">three slides a chapter, one a picture</text>
+
+  <path d="M 796 140 H 808 V 280 H 132 V 244" fill="none" stroke="#9A5A0E" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#arr2)"/>
+  <rect x="300" y="270" width="232" height="20" rx="4" fill="#F6F7F4"/>
+  <text x="416" y="284" font-size="11" fill="#9A5A0E" text-anchor="middle">comments import: review notes back by anchor</text>
+</svg>
